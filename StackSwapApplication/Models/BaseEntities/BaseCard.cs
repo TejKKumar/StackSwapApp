@@ -11,8 +11,8 @@ namespace StackSwapApplication.Models.BaseEntities
         public override uint Id { get => _id; set => _id = value; }
 
 
-        public uint CharacterID { get; set; }
-        public virtual BaseCharacter Character { get; set; }
+        
+       
 
         public uint GetID => _id;
     }
