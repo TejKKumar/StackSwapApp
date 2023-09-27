@@ -18,10 +18,10 @@ namespace StackSwapApplication.Models
 
         public uint GetId => _id;
 
-        public string Name { get => _name; set= _name; }
-        public string Email { get => _email; set = _email; }
-        public string Password { get => _password; set = _password;}
-        public string UserName { get => _userName; set = _userName;}
+        public string Name { get => _name; set=> SetProperty(ref _name, value); }
+        public string Email { get => _email; set => SetProperty(ref _email, value); }
+        public string Password { get => _password; set => SetProperty(ref _password, value); }
+        public string UserName { get => _userName; set => SetProperty(ref _userName, value);}
 
 
 
