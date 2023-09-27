@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using StackSwapApplication.Models;
 using DbContext = Microsoft.EntityFrameworkCore.DbContext;
 
 namespace StackSwapApplication.Data
@@ -9,6 +10,10 @@ namespace StackSwapApplication.Data
         { 
             
         }
+
+        public DbSet<User> Users { get; set; }
+        
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
