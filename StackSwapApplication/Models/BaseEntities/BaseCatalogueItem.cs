@@ -13,5 +13,7 @@ namespace StackSwapApplication.Models.BaseEntities
        
 
         public uint GetID => _id;
+
     }
+
 }
