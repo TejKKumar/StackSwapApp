@@ -31,7 +31,7 @@ namespace StackSwapApplication.Models
 		public uint CardId { get => _cardId; set => _cardId = value; }
 		public string Champion { get => _champion; set => _champion = value; }
 		public uint ChampionId { get => _championId; set => _championId = value; }
-		public Tier Tier { get => _tier; set => _tier = value; }
+		public Tier Tier { get => _tier; set => SetProperty(ref _tier , value); }
 		public double Damage { get => _damage; set => SetProperty(ref _damage, value); }
 		public double Magic { get => _magic; set => SetProperty(ref _magic, value); }
 		public double Health { get => _health; set => SetProperty(ref _health, value); }
