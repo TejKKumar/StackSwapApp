@@ -1,21 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StackSwapApplication.Models;
+using StackSwapApplication.Services;
+using StackSwapApplication.ViewModels;
 using System.Diagnostics;
 
 namespace StackSwapApplication.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
+        private IDataService _repo;
+
+        public HomeController(IDataService repo)
         {
-            _logger = logger;
+            this._repo = repo;
         }
 
         public IActionResult Index()
         {
-            return View();
+            TestDataVM vm = new TestDataVM();
+            vm.testCards = _repo.GetCards.AsEnumerable();
+            vm.testUsers = _repo.GetUsers.AsEnumerable();
+            return View(vm);
         }
 
         public IActionResult Privacy()
@@ -27,6 +38,16 @@ namespace StackSwapApplication.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public List<Card> SeeTestCards()
+        {
+            return _repo.GetCards.ToList();
+        }
+
+        public List<TradeUser> SeeTestUsers() 
+        { 
+            return _repo.GetUsers.ToList(); 
         }
     }
 }

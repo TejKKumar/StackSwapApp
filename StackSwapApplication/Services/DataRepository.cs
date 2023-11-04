@@ -1,6 +1,7 @@
 ﻿using StackSwapApplication.Data;
 using StackSwapApplication.Models;
 using StackSwapApplication.Models.BaseEntities;
+using StackSwapApplication.Utility;
 using System.CodeDom;
 
 namespace StackSwapApplication.Services
@@ -14,6 +15,7 @@ namespace StackSwapApplication.Services
         public DataRepository(TradeContext tradeContext)
         {
             _tradeContext = tradeContext;
+            DBInitializer.Initialize(_tradeContext);
         }
 
         public IQueryable<TradeUser> GetUsers => _tradeContext.Users;

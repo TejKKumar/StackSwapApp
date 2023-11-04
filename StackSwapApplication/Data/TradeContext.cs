@@ -21,7 +21,25 @@ namespace StackSwapApplication.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Card>().ToTable("Cards");
+            modelBuilder.Entity<TradeUser>().ToTable("Users");
+
+
+            modelBuilder.Entity<Card>(entity =>
+            {
+                entity.HasOne(c => c.Owner)
+                .WithMany(o => o.Cards)
+                .HasForeignKey(o => o.OwnerID);
+            });
+
+            modelBuilder.Entity<TradeUser>(entity =>
+            {
+                entity.HasMany(u => u.Cards)
+                .WithOne(c => c.Owner)
+                .HasForeignKey(c => c.OwnerID);
+
+            });
+
         }
     }
 }

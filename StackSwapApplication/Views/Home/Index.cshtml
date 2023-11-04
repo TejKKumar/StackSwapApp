@@ -1,8 +1,35 @@
-﻿@{
+﻿@model StackSwapApplication.ViewModels.TestDataVM
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div>
+   <header style="font-weight:bold">Test Users</header>
+    @foreach (var item in Model.testUsers)
+    {
+        <div>
+            <label>Name: @item.Name</label><br/>
+            <label>Email: @item.Email</label><br/>
+            <label>User Name: @item.UserName</label>
+        </div><br/>
+    }
+
+</div>
+
+<div>
+    <header style="font-weight:bold">Test Cards</header>
+    @foreach (var item in Model.testCards)
+    {
+        <div>
+            <label>Champion: @item.Champion</label><br/>
+            <label>Owner: @item.Owner.UserName</label>
+        </div><br />
+    }
+ 
 </div>

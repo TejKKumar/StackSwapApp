@@ -22,6 +22,7 @@ namespace StackSwapApplication.Models
         public string Email { get => _email; set => SetProperty(ref _email, value); }
         public string Password { get => _password; set => SetProperty(ref _password, value); }
         public string UserName { get => _userName; set => SetProperty(ref _userName, value);}
+        public List<Card>? Cards { get; set; }
 
 
         public void Change(TradeUser user)
@@ -30,6 +31,7 @@ namespace StackSwapApplication.Models
             this.Email = user.Email;
             this.Password = user.Password;
             this.UserName = user.UserName;
+            this.Cards = user.Cards;
         }  
 
 

@@ -1,9 +1,19 @@
+using Microsoft.EntityFrameworkCore;
+using StackSwapApplication.Data;
 using StackSwapApplication.Services;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=StackSwappDB.MDF;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False;  MultipleActiveResultSets=True";
+
+builder.Services.AddDbContext<TradeContext>(options =>
+{
+options.UseSqlServer(builder.Configuration.GetConnectionString("StackSwappContext") ?? connectionString);
+});
 
 builder.Services.AddTransient<IDataService, DataRepository>();
 
