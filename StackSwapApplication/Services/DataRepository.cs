@@ -16,54 +16,70 @@ namespace StackSwapApplication.Services
             _tradeContext = tradeContext;
         }
 
+        public IQueryable<TradeUser> GetUsers => _tradeContext.Users;
 
+        public IQueryable<Card> GetCards => _tradeContext.Cards;
 
-        public IQueryable<User> GetUsers => _tradeContext.Users;
-
-        public void AddEntity(BaseEntity entity)
+        public virtual void AddEntity<T>(T entity) where T : BaseEntity
         {
-            
-            if(entity == null)
-                throw new ArgumentNullException(nameof(entity));
-
-
-
-            switch (entity)
-            {
-                case User u:
-                    
-                    _tradeContext.Users.Add(u);
-                    break;
-                    
-
-            }
-        }
-
-        public void RemoveEntity(BaseEntity entity)
-        {
-            if(entity == null)
-                throw new ArgumentNullException(nameof(entity));
-
             switch(entity) 
             {
-                case User u:
-                    _tradeContext.Users.Remove(u);
+                case TradeUser u:
+                    _tradeContext.Users.Add(u);
                     break;
-            
+                case Card c:
+                    _tradeContext.Cards.Add(c);
+                    break;
+                
             }
+
+            _tradeContext.SaveChanges();
         }
 
-        public void UpdateEntity(BaseEntity entity)
-        {
-            if(entity == null)
-                throw new ArgumentException(nameof(entity));
+     
 
+        public virtual void RemoveEntity<T>(T entity) where T : BaseEntity
+        {
             switch (entity)
             {
-                case User u:
-                    _tradeContext.Users.Update(u);
+                case TradeUser u:
+                    _tradeContext.Users.Remove(u);
                     break;
+                case Card c:
+                    _tradeContext.Cards.Remove(c);
+                    break;
+
             }
+
+            _tradeContext.SaveChanges();
+        }
+
+        public virtual void UpdateEntity<T>(T entity) where T : BaseEntity
+        {
+            switch (entity)
+            {
+                case TradeUser u:
+                    {
+                        TradeUser? user = _tradeContext.Users.Find(u.Id);
+                        if (user != null)
+                        {
+                            user.Change(u);
+                        }
+                        break;
+                    }
+                case Card c:
+                    {
+                        Card? card = _tradeContext.Cards.Find(c.Id);
+                        if (card != null)
+                        {
+                            card.Change(c);
+                        }
+                        break;
+                    }
+
+            }
+
+            _tradeContext.SaveChanges();
         }
     }
 }

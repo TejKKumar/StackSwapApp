@@ -4,7 +4,7 @@ using StackSwapApplication.Models.BaseEntities;
 
 namespace StackSwapApplication.Models
 {
-    public class User : BaseEntity
+    public class TradeUser : BaseEntity
     {
         private uint _id;
         private string _name;
@@ -24,7 +24,13 @@ namespace StackSwapApplication.Models
         public string UserName { get => _userName; set => SetProperty(ref _userName, value);}
 
 
-
+        public void Change(TradeUser user)
+        {
+            this.Name = user.Name;
+            this.Email = user.Email;
+            this.Password = user.Password;
+            this.UserName = user.UserName;
+        }  
 
 
 

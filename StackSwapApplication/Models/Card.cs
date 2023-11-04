@@ -36,6 +36,17 @@ namespace StackSwapApplication.Models
 		public double Magic { get => _magic; set => SetProperty(ref _magic, value); }
 		public double Health { get => _health; set => SetProperty(ref _health, value); }
 
+
+		public void Change(Card c)
+		{
+			this.Champion = c.Champion;
+			this.ChampionId = c.ChampionId;
+			this.Tier = c.Tier;
+			this.Damage = c.Damage;
+			this.Magic = c.Magic;
+			this.Health = c.Health;
+		}
+
 		
 	}
 }
