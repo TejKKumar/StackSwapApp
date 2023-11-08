@@ -11,8 +11,8 @@ using StackSwapApplication.Data;
 namespace StackSwapApplication.Migrations
 {
     [DbContext(typeof(TradeContext))]
-    [Migration("20231104165545_Initial")]
-    partial class Initial
+    [Migration("20231108132247_InitialCreateCredits")]
+    partial class InitialCreateCredits
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,6 +65,9 @@ namespace StackSwapApplication.Migrations
                         .HasColumnType("bigint");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("Credits")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Email")
                         .IsRequired()

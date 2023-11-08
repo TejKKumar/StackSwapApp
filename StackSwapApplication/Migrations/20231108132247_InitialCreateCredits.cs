@@ -5,7 +5,7 @@
 namespace StackSwapApplication.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class InitialCreateCredits : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,7 +19,8 @@ namespace StackSwapApplication.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Credits = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {

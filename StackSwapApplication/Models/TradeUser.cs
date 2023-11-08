@@ -11,6 +11,7 @@ namespace StackSwapApplication.Models
         private string _email;
         private string _password;
         private string _userName;
+        private uint _credits;
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public override uint Id { get => _id; set => SetProperty(ref _id, value); }
@@ -22,6 +23,7 @@ namespace StackSwapApplication.Models
         public string Email { get => _email; set => SetProperty(ref _email, value); }
         public string Password { get => _password; set => SetProperty(ref _password, value); }
         public string UserName { get => _userName; set => SetProperty(ref _userName, value);}
+        public uint Credits { get => _credits; set => SetProperty(ref _credits, value); }
         public List<Card>? Cards { get; set; }
 
 
@@ -32,6 +34,7 @@ namespace StackSwapApplication.Models
             this.Password = user.Password;
             this.UserName = user.UserName;
             this.Cards = user.Cards;
+            this.Credits = user.Credits;
         }  
 
 
