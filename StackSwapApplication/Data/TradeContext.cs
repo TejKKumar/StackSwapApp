@@ -17,8 +17,6 @@ namespace StackSwapApplication.Data
 
         public DbSet<Purchase> Purchases { get; set; }
 
-        
-        
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

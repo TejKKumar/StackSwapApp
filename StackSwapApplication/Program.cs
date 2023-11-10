@@ -8,12 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=StackSwappDB.MDF;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False;  MultipleActiveResultSets=True";
+string? connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddDbContext<TradeContext>(options =>
-{
-options.UseSqlServer(builder.Configuration.GetConnectionString("StackSwappContext") ?? connectionString);
-});
+builder.Services.AddDbContext<TradeContext>(options => options.UseSqlite(connectionString));
 
 builder.Services.AddTransient<IDataService, DataRepository>();
 
