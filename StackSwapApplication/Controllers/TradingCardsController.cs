@@ -31,6 +31,20 @@ namespace StackSwapApplication.Controllers
             return View(clist);
         }
 
+        [HttpGet]
+        public IActionResult GetCardByTier()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public IActionResult GetCardByTierPost(Tier tier)
+        {
+            List<Card> tierlist = cardService.GetCardByTier(tier);
+            return View(tierlist);
+        }
+
+
 
         public IActionResult ShowCards()
         {

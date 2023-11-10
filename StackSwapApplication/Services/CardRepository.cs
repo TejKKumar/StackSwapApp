@@ -24,6 +24,12 @@ namespace StackSwapApplication.Services
             return cards;
         }
 
+        public List<Card> GetCardByTier(Tier tier)
+        {
+            List<Card> card = _tradeContext.Cards.Where(c=>c.CardTier == tier).ToList();
+            return card;
+        }
+
         public List<Card> GetCardByUserName(string userName)
         {
             throw new NotImplementedException();
