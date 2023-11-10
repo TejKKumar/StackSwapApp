@@ -33,3 +33,20 @@
     }
  
 </div>
+
+
+<div>
+    <header style="font-weight:bold">Test Catalogue</header>
+    @foreach (var item in Model.testCatalogueItems)
+    {
+        <div>
+            <label>Champion: @item.GetChampion</label><br />
+            <label>Tier: @item.GetTier</label><br/>
+            <label>Damage: @item.GetDamage</label><br/>
+            <label>Id: @item.GetId</label>
+        </div>
+
+        <br />
+    }
+
+</div>

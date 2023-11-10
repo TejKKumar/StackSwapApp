@@ -17,6 +17,8 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("StackSwappContex
 
 builder.Services.AddTransient<IDataService, DataRepository>();
 
+builder.Services.AddScoped<ICatalogueService, CatalogueRepository>();
+
 
 var app = builder.Build();
 

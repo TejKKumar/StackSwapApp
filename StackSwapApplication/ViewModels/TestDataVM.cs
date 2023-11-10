@@ -6,5 +6,7 @@ namespace StackSwapApplication.ViewModels
     {
         public IEnumerable<Card> testCards { get; set; }
         public IEnumerable<TradeUser> testUsers { get; set; }
+
+        public IEnumerable<CatalogueItem> testCatalogueItems { get; set; }
     }
 }
