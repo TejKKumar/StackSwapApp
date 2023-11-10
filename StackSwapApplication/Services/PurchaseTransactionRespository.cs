@@ -13,7 +13,7 @@ namespace StackSwapApplication.Services
             _tradeContext = tradeContext;
         }
 
-        public void AddPurchase(User buyer, List<Card> cards)
+        public void AddPurchase(TradeUser buyer, List<Card> cards)
         {
             foreach (Card card in cards)
             {

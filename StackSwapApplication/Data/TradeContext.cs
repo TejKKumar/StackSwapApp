@@ -15,7 +15,9 @@ namespace StackSwapApplication.Data
 
         public DbSet<Card> Cards { get; set; }
 
-        
+        public DbSet<Purchase> Purchases { get; set; }
+
+        public DbSet<Trade> Trades { get; set; }
         
 
 

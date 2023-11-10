@@ -8,8 +8,7 @@ namespace StackSwapApplication.Utility
         public static void Initialize(TradeContext context)
         {
             if (context.Users.Any() &&
-               context.Cards.Any()
-                )
+               context.Cards.Any())
             {
                 foreach(var card in context.Cards) 
                 {
