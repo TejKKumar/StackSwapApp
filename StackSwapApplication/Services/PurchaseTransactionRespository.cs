@@ -17,7 +17,7 @@ namespace StackSwapApplication.Services
         {
             foreach (Card card in cards)
             {
-                card.OwnerID = buyer.GetId;
+                card.OwnerID = buyer.Id;
                 card.Owner = buyer;
             }
             Purchase purchase = new()

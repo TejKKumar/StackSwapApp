@@ -10,10 +10,6 @@ namespace StackSwapApplication.Models.BaseEntities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public override uint Id { get => _id; set => SetProperty(ref _id, value); }
 
-
-        
-       
-
         public uint GetID => _id;
     }
 

@@ -1,6 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.ComponentModel.DataAnnotations.Schema;
 using StackSwapApplication.Models.BaseEntities;
+using System.ComponentModel.DataAnnotations;
 
 namespace StackSwapApplication.Models
 {
@@ -19,10 +20,10 @@ namespace StackSwapApplication.Models
 
         public uint GetId => _id;
 
-        public string Name { get => _name; set=> SetProperty(ref _name, value); }
+        public string Name { get => _name; set => SetProperty(ref _name, value); }
         public string Email { get => _email; set => SetProperty(ref _email, value); }
         public string Password { get => _password; set => SetProperty(ref _password, value); }
-        public string UserName { get => _userName; set => SetProperty(ref _userName, value);}
+        public string UserName { get => _userName; set => SetProperty(ref _userName, value); }
         public uint Credits { get => _credits; set => SetProperty(ref _credits, value); }
         public List<Card>? Cards { get; set; }
 
@@ -35,7 +36,7 @@ namespace StackSwapApplication.Models
             this.UserName = user.UserName;
             this.Cards = user.Cards;
             this.Credits = user.Credits;
-        }  
+        }
 
 
 
