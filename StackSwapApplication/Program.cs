@@ -19,7 +19,7 @@ builder.Services.AddTransient<IDataService, DataRepository>();
 
 builder.Services.AddScoped<ICatalogueService, CatalogueRepository>();
 
-
+builder.Services.AddScoped<ICardService, CardRepository>(); 
 var app = builder.Build();
 
 
