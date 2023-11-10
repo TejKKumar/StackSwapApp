@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<StackSwapApplication.Models.Card>
 
 @{
-    ViewData["Title"] = "ShowCards";
+    ViewData["Title"] = "GetCardByNamePost";
 }
 
-<h1>ShowCards</h1>
+<h1>GetCardByNamePost</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -12,9 +12,6 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Champion)
             </th>
@@ -30,18 +27,13 @@
             <th>
                 @Html.DisplayNameFor(model => model.Health)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Owner)
-            </th>
+            
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Champion)
             </td>
@@ -57,10 +49,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Health)
             </td>
-           
-            <td>
-                @Html.DisplayFor(modelItem => item.Owner.Id)
-            </td>
+            
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

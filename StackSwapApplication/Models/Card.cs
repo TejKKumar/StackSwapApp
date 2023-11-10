@@ -20,7 +20,7 @@ namespace StackSwapApplication.Models
 		private double _damage;
 		private double _magic;
 		private double _health;
-
+		//private uint ownerID;
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public override uint Id { get => _cardId; set => SetProperty(ref _cardId, value); }
 		public uint GetCardId => _cardId;

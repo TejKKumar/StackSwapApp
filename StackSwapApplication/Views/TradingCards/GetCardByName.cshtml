@@ -1,0 +1,15 @@
+﻿@model StackSwapApplication.Models.Card
+@{
+	ViewBag.Title = "Find By Card Name";
+}
+
+@using (Html.BeginForm("GetCardByNamePost", "TradingCards"))
+{
+    <p>
+        Find card by name: @Html.TextBox("name")
+    </p>
+
+    <input type="submit" value="Search" />
+	
+
+}
