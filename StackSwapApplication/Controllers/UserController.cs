@@ -9,15 +9,38 @@ namespace StackSwapApplication.Controllers
     {
 
         private readonly IUserAuthenticationService _authService;
+        private readonly IDataService _repo;
 
-        public UserController(IUserAuthenticationService authService)
+            
+        public UserController(IUserAuthenticationService authService, IDataService repo)
         {
             _authService = authService;
+            _repo = repo;
+
         }
 
         public IActionResult Login()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult Login(LoginVM loginVM)
+        {
+            if (ModelState.IsValid)
+            {
+                var Users = from m in _repo.GetUsers select m;
+                var User = Users.FirstOrDefault(s => s.Username == (loginVM.Username));
+                if(User == null)
+                {
+                    return View();
+                }
+                if (User.Password == loginVM.Password)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+                    return View();
+
         }
 
         public IActionResult Register()
