@@ -17,6 +17,9 @@ builder.Services.AddTransient<IDataService, DataRepository>();
 builder.Services.AddScoped<ICatalogueService, CatalogueRepository>();
 
 builder.Services.AddScoped<ICardService, CardRepository>(); 
+
+builder.Services.AddScoped<IUserAuthenticationService, AuthenticationRepository>();
+
 var app = builder.Build();
 
 

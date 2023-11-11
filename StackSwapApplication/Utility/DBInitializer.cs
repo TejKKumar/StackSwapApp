@@ -23,7 +23,7 @@ namespace StackSwapApplication.Utility
                 Name = "Deepthansu S",
                 Email = "deepthansu@gmail.com",
                 Password = "Password1",
-                UserName = "DS",
+                Username = "DS",
                 Credits = 600,
                 Cards = new List<Card>()
                 {
@@ -64,7 +64,7 @@ namespace StackSwapApplication.Utility
                 Name = "Rasheesh D",
                 Email = "rasheesh@gmail.com",
                 Password = "Password2",
-                UserName = "RD",
+                Username = "RD",
                 Credits = 575,
                 Cards = new List<Card>()
                 {
