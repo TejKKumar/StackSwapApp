@@ -23,5 +23,6 @@ namespace StackSwapApplication.Models
         [Required]
         public DateTime? TradeDate { get; set; }
 
+        
     }
 }

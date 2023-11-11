@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using StackSwapApplication.Services;
 using StackSwapApplication.ViewModels;
 
@@ -10,14 +9,18 @@ namespace StackSwapApplication.Controllers
 
         private readonly IUserAuthenticationService _authService;
         private readonly IDataService _repo;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IUserSession _userSession;
 
             
-        public UserController(IUserAuthenticationService authService, IDataService repo)
+        public UserController(IUserAuthenticationService authService, IDataService repo, IHttpContextAccessor httpContextAccessor, IUserSession userSession)
         {
             _authService = authService;
             _repo = repo;
-
+            _httpContextAccessor = httpContextAccessor;
+            _userSession = userSession;
         }
+
 
         public IActionResult Login()
         {
@@ -28,19 +31,16 @@ namespace StackSwapApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                var Users = from m in _repo.GetUsers select m;
-                var User = Users.FirstOrDefault(s => s.Username == (loginVM.Username));
-                if(User == null)
-                {
-                    return View();
-                }
-                if (User.Password == loginVM.Password)
+                if(_userSession.UserLoginInfo(loginVM))
                 {
                     return RedirectToAction("Index", "Home");
                 }
+                else
+                {
+                    TempData["Error"] = "Invalid Username or Password";
+                }
             }
-                    return View();
-
+            return View();
         }
 
         public IActionResult Register()
@@ -58,6 +58,12 @@ namespace StackSwapApplication.Controllers
             _authService.Register(registerVM);
 
             return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult Welcome() 
+        {
+
+            return View();
         }
 
     }
