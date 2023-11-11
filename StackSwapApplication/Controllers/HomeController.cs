@@ -17,19 +17,22 @@ namespace StackSwapApplication.Controllers
         private IDataService _repo;
         private ICatalogueService _catRepo;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IUserSession _userSession;
 
-        public HomeController(IDataService repo, ICatalogueService catRepo, IHttpContextAccessor httpContextAccessor)
+        public HomeController(IDataService repo, ICatalogueService catRepo, IHttpContextAccessor httpContextAccessor, IUserSession userSession)
         {
             this._repo = repo;
             this._catRepo = catRepo;
             _httpContextAccessor = httpContextAccessor;
+            _userSession = userSession; 
         }
 
         public IActionResult Index()
         {
             try
             {
-                if (HttpContext.Session.GetString("UserName") == null)
+                //this is not validating the session User. This needs
+                if (!_userSession.GetUserSession())
                 {
                     TempData["Error"] = "Invalid Username or Password";
                     return RedirectToAction("Login", "User");

@@ -7,6 +7,7 @@ namespace StackSwapApplication.Services
     public interface IUserSession
     {
         public bool UserLoginInfo(LoginVM loginVM);
+        public bool GetUserSession();
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using StackSwapApplication.ViewModels;
 using Microsoft.AspNetCore.Http;
+using System.Net.Http;
 
 namespace StackSwapApplication.Services
 {
@@ -19,10 +20,10 @@ namespace StackSwapApplication.Services
             var User = Users.FirstOrDefault(s => s.Username == (loginVM.Username));
             if (User != null)
             {
+                var httpContext = _httpContextAccessor.HttpContext;
                 if (User.Password == loginVM.Password && User.Username != null)
                 {
-                    var httpContext = _httpContextAccessor.HttpContext;
-                    if(httpContext != null)
+                    if (httpContext != null)
                     {
                         ISession session = httpContext.Session;
                         session.SetString("UserName", User.Username);
@@ -31,8 +32,22 @@ namespace StackSwapApplication.Services
                 }
             }
             return false;
+        }
 
+        bool IUserSession.GetUserSession()
+        {
+            var httpContext = _httpContextAccessor.HttpContext;
 
+            if (httpContext != null)
+            {
+                ISession session = httpContext.Session;
+                if (session.GetString("UserName") != null)
+                {
+                    return true;
+                }
+                
+            }
+            return false;
         }
     }
 }
