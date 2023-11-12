@@ -1,0 +1,63 @@
+﻿@model IEnumerable<StackSwapApplication.Models.CatalogueItem>
+
+@{
+    ViewData["Title"] = "Catalogue";
+}
+
+<h1>Catalogue</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Champion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tier)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Damage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Magic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Health)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Champion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tier)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Damage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Magic)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Health)
+                </td>
+                s
+                <td>
+                    <a asp-action="ConfirmPurchase" asp-route-id="@item.Id">Buy Card</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

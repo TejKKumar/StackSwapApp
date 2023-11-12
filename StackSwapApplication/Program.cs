@@ -16,11 +16,14 @@ builder.Services.AddTransient<IDataService, DataRepository>();
 
 builder.Services.AddScoped<ICatalogueService, CatalogueRepository>();
 
+builder.Services.AddScoped<IPurchaseTransactionService, PurchaseTransactionRespository>();
+
 builder.Services.AddScoped<ICardService, CardRepository>(); 
 
 builder.Services.AddScoped<IUserAuthenticationService, AuthenticationRepository>();
 
 builder.Services.AddScoped<IUserSession, UserSessionRepo>();
+
 
 builder.Services.AddHttpContextAccessor(); 
 

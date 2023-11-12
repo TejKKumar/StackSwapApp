@@ -5,16 +5,15 @@ namespace StackSwapApplication.Models
 {
     public class CatalogueItem 
     {
-        private string _champion;
+        private string? _champion;
         private Tier _tier;
         private double _damage;
         private double _magic;
         private double _health;
         private uint _credits;
         private uint _id;
-
         
-        public CatalogueItem(uint id,string champion, Tier tier, double damage, double magic, double health, uint credits)
+        public CatalogueItem(uint id, string champion, Tier tier, double damage, double magic, double health, uint credits)
         {
             _id = id;   
             _champion = champion;
@@ -23,17 +22,16 @@ namespace StackSwapApplication.Models
             _magic = magic;
             _health = health;
             _credits = credits;
-
         }
 
 
-        public string GetChampion { get => _champion; }
-        public Tier GetTier { get => _tier; }
-        public double GetDamage { get => _damage; }
-        public double GetMagic { get => _magic; }
-        public double GetHealth { get => _health; }
-        public uint GetCredits { get => _credits;}
-        public uint GetId { get => _id; }
+        public uint Id { get => _id; }
+        public string? Champion { get => _champion; }
+        public Tier Tier { get => _tier; }
+        public double Damage { get => _damage; }
+        public double Magic { get => _magic; }
+        public double Health { get => _health; }
+        public uint Credits { get => _credits;}
         
         
     }

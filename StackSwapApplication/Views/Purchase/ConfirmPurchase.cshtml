@@ -1,0 +1,20 @@
+﻿@model StackSwapApplication.Models.CatalogueItem
+
+@{
+    ViewData["Title"] = "Make Purchase";
+}
+
+<h1>Make Purchase</h1>
+
+<h2>Are you sure you want to buy this card?</h2>
+@Html.DisplayFor(model => model.Champion)
+@Html.DisplayFor(model => model.Tier)
+@Html.DisplayFor(model => model.Damage)
+@Html.DisplayFor(model => model.Magic)
+@Html.DisplayFor(model => model.Health)
+
+<form method="post" asp-action="MakePurchase">
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Buy Card" class="btn btn-primary" />
+    <a asp-action="Index">Back to Catalogue</a>
+</form>

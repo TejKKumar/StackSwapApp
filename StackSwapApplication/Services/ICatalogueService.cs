@@ -5,7 +5,7 @@ namespace StackSwapApplication.Services
     public interface ICatalogueService
     {
         public void CreateCard(out Card newCard, CatalogueItem cItem);
-
+        CatalogueItem? GetCatalogueItemById(uint id);
         public IEnumerable<CatalogueItem>GetCatalogueItems();
     }
 }
