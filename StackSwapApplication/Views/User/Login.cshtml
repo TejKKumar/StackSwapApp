@@ -6,6 +6,20 @@
 
 <h1>Register</h1>
 
+@{
+    try
+    {
+        if(TempData["Error"] != null){
+
+            <script>swal("StackSwap", "Incorrect Username/Password!", "Error");</script>
+        }
+    }
+    catch (Exception)
+    {
+        <label style="color:red">An error Occured</label>
+        
+    }
+}
 <form method="post" asp-controller="User" asp-action="Login">
     <div asp-validation-summary="ModelOnly"></div>
 

@@ -16,20 +16,41 @@ namespace StackSwapApplication.Controllers
         //}
         private IDataService _repo;
         private ICatalogueService _catRepo;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IUserSession _userSession;
 
-        public HomeController(IDataService repo, ICatalogueService catRepo)
+        public HomeController(IDataService repo, ICatalogueService catRepo, IHttpContextAccessor httpContextAccessor, IUserSession userSession)
         {
             this._repo = repo;
             this._catRepo = catRepo;
+            _httpContextAccessor = httpContextAccessor;
+            _userSession = userSession; 
         }
 
         public IActionResult Index()
         {
-            TestDataVM vm = new TestDataVM();
-            vm.testCards = _repo.GetCards.AsEnumerable();
-            vm.testUsers = _repo.GetUsers.AsEnumerable();
-            vm.testCatalogueItems = _catRepo.GetCatalogueItems();
-            return View(vm);
+            try
+            {
+                if (!_userSession.GetUserSession())
+                {
+                    TempData["Error"] = "Invalid Username or Password";
+                    return RedirectToAction("Login", "User");
+                }
+                else
+                {
+                    TestDataVM vm = new TestDataVM();
+                    vm.testCards = _repo.GetCards.AsEnumerable();
+                    vm.testUsers = _repo.GetUsers.AsEnumerable();
+                    vm.testCatalogueItems = _catRepo.GetCatalogueItems();
+                    return View(vm);
+                }
+            } 
+            catch (Exception)
+            {
+                return RedirectToAction("Login", "User");
+            }
+
+
         }
 
         public IActionResult Privacy()
