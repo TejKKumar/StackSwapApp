@@ -11,6 +11,7 @@ namespace StackSwapApplication.Controllers
         private readonly IDataService _repo;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IUserSession _userSession;
+       // private readonly ILoginValidationService _loginValidationService;
 
             
         public UserController(IUserAuthenticationService authService, IDataService repo, IHttpContextAccessor httpContextAccessor, IUserSession userSession)
@@ -31,17 +32,25 @@ namespace StackSwapApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                if(_userSession.UserLoginInfo(loginVM))
+                var Users = from m in _repo.GetUsers select m;
+                var user = Users.FirstOrDefault(s => s.Username == loginVM.Username);
+
+                if (user != null && user.Password == loginVM.Password && user.Username != null)
                 {
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    TempData["Error"] = "Invalid Username or Password";
+                    if (_userSession.UserLoginInfo(loginVM))
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        TempData["Error"] = "Invalid Username or Password";
+                    }
                 }
             }
             return View();
         }
+
+
 
         public IActionResult Register()
         {

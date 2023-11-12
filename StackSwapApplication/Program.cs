@@ -20,9 +20,9 @@ builder.Services.AddScoped<ICardService, CardRepository>();
 
 builder.Services.AddScoped<IUserAuthenticationService, AuthenticationRepository>();
 
-builder.Services.AddSingleton<IUserSession, UserSessionRepo>();
+builder.Services.AddScoped<IUserSession, UserSessionRepo>();
 
-builder.Services.AddHttpContextAccessor();
+builder.Services.AddHttpContextAccessor(); 
 
 builder.Services.AddDistributedMemoryCache();
 

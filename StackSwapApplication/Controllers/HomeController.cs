@@ -31,7 +31,6 @@ namespace StackSwapApplication.Controllers
         {
             try
             {
-                //this is not validating the session User. This needs
                 if (!_userSession.GetUserSession())
                 {
                     TempData["Error"] = "Invalid Username or Password";
