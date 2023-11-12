@@ -31,11 +31,10 @@ namespace StackSwapApplication.Services
             {
                 Buyer = buyer,
                 Seller = seller,
-                buyerCards = buyerCards,
-                sellerCards = sellerCards
+                BuyerCards = buyerCards,
+                SellerCards = sellerCards
             };
-
-            _tradeContext.Trades.Add(trade);
+            
             _tradeContext.SaveChanges();
 
         }

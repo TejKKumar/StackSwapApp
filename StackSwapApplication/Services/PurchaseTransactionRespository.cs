@@ -27,7 +27,6 @@ namespace StackSwapApplication.Services
                 PurchaseDate = DateTime.Now
             };
 
-            _tradeContext.Purchases.Add(purchase);
             _tradeContext.SaveChanges();
 
         }

@@ -15,16 +15,11 @@ namespace StackSwapApplication.Data
 
         public DbSet<Card> Cards { get; set; }
 
-        public DbSet<Purchase> Purchases { get; set; }
-
-        public DbSet<Trade> Trades { get; set;}
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Card>().ToTable("Cards");
             modelBuilder.Entity<TradeUser>().ToTable("Users");
-
 
             modelBuilder.Entity<Card>(entity =>
             {
@@ -38,9 +33,7 @@ namespace StackSwapApplication.Data
                 entity.HasMany(u => u.Cards)
                 .WithOne(c => c.Owner)
                 .HasForeignKey(c => c.OwnerID);
-
             });
-
         }
     }
 }
