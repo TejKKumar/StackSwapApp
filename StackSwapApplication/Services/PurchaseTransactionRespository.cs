@@ -14,7 +14,7 @@ namespace StackSwapApplication.Services
         }
 
         public void MakePurchase(TradeUser buyer, Card card)
-        {
+        { 
 
             card.Owner = buyer;
             card.OwnerID = buyer.Id;
