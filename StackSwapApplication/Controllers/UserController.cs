@@ -41,10 +41,10 @@ namespace StackSwapApplication.Controllers
                     {
                         return RedirectToAction("Index", "Home");
                     }
-                    else
-                    {
-                        TempData["Error"] = "Invalid Username or Password";
-                    }
+                }
+                else
+                {
+                    TempData["Error"] = "Invalid Username or Password";
                 }
             }
             return View();
