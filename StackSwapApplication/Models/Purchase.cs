@@ -11,6 +11,9 @@ namespace StackSwapApplication.Models
         public TradeUser? Buyer { get; set; }
 
         [Required]
+        public uint BuyerId { get; set; }   
+
+        [Required]
         public List<Card>? Cards { get; set; }
 
         [Required]

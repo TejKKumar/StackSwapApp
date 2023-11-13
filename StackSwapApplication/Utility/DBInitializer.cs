@@ -1,4 +1,5 @@
-﻿using StackSwapApplication.Data;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+using StackSwapApplication.Data;
 using StackSwapApplication.Models;
 
 namespace StackSwapApplication.Utility
@@ -8,11 +9,26 @@ namespace StackSwapApplication.Utility
         public static void Initialize(TradeContext context)
         {
             if (context.Users.Any() &&
-               context.Cards.Any())
+               context.Cards.Any() && 
+               context.Trades.Any() &&
+               context.Purchases.Any())
             {
                 foreach(var card in context.Cards) 
                 {
                     card.Owner = context.Users.Single(u => u.Id == card.OwnerID);                                   
+                }
+
+                foreach(var trade in context.Trades)
+                {
+                    trade.Buyer = context.Users.Single(u => u.Id == trade.BuyerId);
+                    trade.Seller = context.Users.Single(u => u.Id == trade.SellerId);
+                }
+
+                foreach(var purchase in context.Purchases) 
+                { 
+                    purchase.Buyer = context.Users.Single(u=> u.Id == purchase.BuyerId);   
+                    
+                
                 }
 
                 return;

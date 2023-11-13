@@ -39,8 +39,17 @@ namespace StackSwapApplication.Data
                 .WithOne(c => c.Owner)
                 .HasForeignKey(c => c.OwnerID);
 
+                entity.HasMany(u => u.Purchases)
+                .WithOne(p => p.Buyer)
+                .HasForeignKey(p => p.BuyerId);
+
+                entity.HasMany(u => u.Trades)
+                .WithOne(t => t.Buyer)
+                .HasForeignKey(t => t.BuyerId);
+
             });
 
+           
         }
     }
 }
