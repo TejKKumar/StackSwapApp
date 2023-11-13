@@ -6,6 +6,10 @@ namespace StackSwapApplication.Utility
 {
     public static class DBInitializer
     {
+
+
+
+
         public static void Initialize(TradeContext context)
         {
             if (context.Users.Any() &&

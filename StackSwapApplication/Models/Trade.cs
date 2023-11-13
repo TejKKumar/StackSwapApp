@@ -18,14 +18,21 @@ namespace StackSwapApplication.Models
         public TradeUser? Buyer { get; set; }
 
         [Required]
-        public uint BuyerId { get; set; }   
+        public uint BuyerId { get; set; }
+
+        //[Required]
+        //public List<Card>? sellerCards { get; set; }
+
+        //[Required]
+        //public List<Card>? buyerCards { get; set; }
 
         [Required]
-        public List<Card>? sellerCards { get; set; }
+        public List<TradeBuyerCard> buyerCardsInfo { get; set; }
 
         [Required]
-        public List<Card>? buyerCards { get; set; }
+        public List<TradeSellerCard> sellerCardsInfo { get; set;}
 
+  
         [Required]
         public DateTime? TradeDate { get; set; }
 

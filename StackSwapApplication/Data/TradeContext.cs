@@ -19,11 +19,16 @@ namespace StackSwapApplication.Data
 
         public DbSet<Trade> Trades { get; set;}
 
+        public DbSet<TradeBuyerCard> TradeBuyerCards { get; set; }
+        public DbSet<TradeSellerCard> TradeSellerCards { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Card>().ToTable("Cards");
             modelBuilder.Entity<TradeUser>().ToTable("Users");
+            modelBuilder.Entity<Trade>().ToTable("Trades");
+            modelBuilder.Entity<Purchase>().ToTable("Purchases");
 
 
             modelBuilder.Entity<Card>(entity =>
@@ -49,7 +54,35 @@ namespace StackSwapApplication.Data
 
             });
 
-           
+            modelBuilder.Entity<Trade>(entity =>
+            {
+                entity.HasMany(t => t.buyerCardsInfo)
+                .WithOne(b => b.Trade)
+                .HasForeignKey(b => b.TradeId);
+            });
+
+            modelBuilder.Entity<Trade>(entity =>
+            {
+                entity.HasMany(t => t.sellerCardsInfo)
+                .WithOne(s => s.Trade)
+                .HasForeignKey(s => s.TradeId);
+            });
+
+            modelBuilder.Entity<TradeBuyerCard>(entity =>
+            {
+                entity.HasOne(t => t.Trade)
+                .WithMany(t => t.buyerCardsInfo)
+                .HasForeignKey(t => t.TradeId);
+ 
+            });
+
+            modelBuilder.Entity<TradeSellerCard>(entity =>
+            {
+                entity.HasOne(t => t.Trade)
+                .WithMany(t => t.sellerCardsInfo)
+                .HasForeignKey(t => t.TradeId);
+
+            });
         }
     }
 }

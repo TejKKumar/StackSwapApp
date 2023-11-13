@@ -80,7 +80,7 @@ namespace StackSwapApplication.Migrations
 
                     b.HasIndex("BuyerId");
 
-                    b.ToTable("Purchases");
+                    b.ToTable("Purchases", (string)null);
                 });
 
             modelBuilder.Entity("StackSwapApplication.Models.Trade", b =>
@@ -105,7 +105,7 @@ namespace StackSwapApplication.Migrations
 
                     b.HasIndex("SellerId");
 
-                    b.ToTable("Trades");
+                    b.ToTable("Trades", (string)null);
                 });
 
             modelBuilder.Entity("StackSwapApplication.Models.TradeUser", b =>
@@ -160,7 +160,7 @@ namespace StackSwapApplication.Migrations
             modelBuilder.Entity("StackSwapApplication.Models.Purchase", b =>
                 {
                     b.HasOne("StackSwapApplication.Models.TradeUser", "Buyer")
-                        .WithMany()
+                        .WithMany("Purchases")
                         .HasForeignKey("BuyerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -171,7 +171,7 @@ namespace StackSwapApplication.Migrations
             modelBuilder.Entity("StackSwapApplication.Models.Trade", b =>
                 {
                     b.HasOne("StackSwapApplication.Models.TradeUser", "Buyer")
-                        .WithMany()
+                        .WithMany("Trades")
                         .HasForeignKey("BuyerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -202,6 +202,10 @@ namespace StackSwapApplication.Migrations
             modelBuilder.Entity("StackSwapApplication.Models.TradeUser", b =>
                 {
                     b.Navigation("Cards");
+
+                    b.Navigation("Purchases");
+
+                    b.Navigation("Trades");
                 });
 #pragma warning restore 612, 618
         }
