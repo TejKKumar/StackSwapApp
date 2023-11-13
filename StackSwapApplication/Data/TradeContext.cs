@@ -29,6 +29,8 @@ namespace StackSwapApplication.Data
             modelBuilder.Entity<TradeUser>().ToTable("Users");
             modelBuilder.Entity<Trade>().ToTable("Trades");
             modelBuilder.Entity<Purchase>().ToTable("Purchases");
+            modelBuilder.Entity<TradeBuyerCard>().ToTable("TradeBuyerCards");
+            modelBuilder.Entity<TradeSellerCard>().ToTable("TradeSellerCards");
 
 
             modelBuilder.Entity<Card>(entity =>

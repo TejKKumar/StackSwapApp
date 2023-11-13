@@ -22,7 +22,7 @@ namespace StackSwapApplication.Services
             foreach (Card card in buyerCards)
             {
                 TradeBuyerCard TBC = new TradeBuyerCard();
-                TBC.BuyerId = card.OwnerID;
+                TBC.BuyerId = buyer.Id;
                 TBC.CardId = card.GetCardId;
 
                 card.OwnerID = seller.GetId;
@@ -35,7 +35,7 @@ namespace StackSwapApplication.Services
             {
                 TradeSellerCard TSC = new TradeSellerCard();
 
-                TSC.SellerId = card.OwnerID;
+                TSC.SellerId = seller.Id;
                 TSC.CardId = card.GetCardId;
 
                 card.OwnerID = buyer.GetId;
