@@ -10,7 +10,7 @@ namespace StackSwapApplication.Services
         private readonly IHttpContextAccessor _httpContextAccessor;
 
 
-        public UserSessionRepo(IHttpContextAccessor httpContextAccessor, IDataService repo)
+        public UserSessionRepo(IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
            // _loginValidationService = loginValidationService;
