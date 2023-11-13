@@ -42,12 +42,17 @@ namespace StackSwapApplication.Services
         {
             newCard = new Card
             {
-                Champion = cItem.GetChampion,
-                CardTier = cItem.GetTier,
-                Damage = cItem.GetDamage,
-                Magic = cItem.GetMagic,
-                Health = cItem.GetHealth,
+                Champion = cItem.Champion,
+                CardTier = cItem.Tier,
+                Damage = cItem.Damage,
+                Magic = cItem.Magic,
+                Health = cItem.Health,
             };
+        }
+
+        public CatalogueItem? GetCatalogueItemById(uint id)
+        {
+            return catalogueItems.Find(c => c.Id == id);
         }
 
         public IEnumerable<CatalogueItem> GetCatalogueItems()

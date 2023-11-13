@@ -3,7 +3,7 @@ using StackSwapApplication.Models;
 
 namespace StackSwapApplication.Services
 {
-    public class PurchaseTransactionRespository : PurchaseTransactionService
+    public class PurchaseTransactionRespository : IPurchaseTransactionService
     {
 
         private readonly TradeContext _tradeContext;
@@ -13,21 +13,13 @@ namespace StackSwapApplication.Services
             _tradeContext = tradeContext;
         }
 
-        public void AddPurchase(TradeUser buyer, List<Card> cards)
-        {
-            foreach (Card card in cards)
-            {
-                card.OwnerID = buyer.Id;
-                card.Owner = buyer;
-            }
-            Purchase purchase = new()
-            {
-                Cards = cards,
-                Buyer = buyer,
-                PurchaseDate = DateTime.Now
-            };
+        public void MakePurchase(TradeUser buyer, Card card)
+        { 
 
-            _tradeContext.Purchases.Add(purchase);
+            card.Owner = buyer;
+            card.OwnerID = buyer.Id;
+
+            _tradeContext.Cards.Add(card);
             _tradeContext.SaveChanges();
 
         }
