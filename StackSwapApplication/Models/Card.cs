@@ -12,6 +12,9 @@ namespace StackSwapApplication.Models
 		Tier3=3,
 		Tier4=4,
 		Tier5=5
+
+		
+			
 	}
 
 	public class Card : BaseEntity

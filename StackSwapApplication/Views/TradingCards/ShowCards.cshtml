@@ -30,6 +30,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Health)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OwnerID)
+            </th>
            
             <th></th>
         </tr>
@@ -44,7 +47,41 @@
                 @Html.DisplayFor(modelItem => item.Champion)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CardTier)
+                @* @Html.DisplayFor(modelItem => item.CardTier) *@
+
+                    @switch (item.CardTier)
+                    {
+                        case Tier.Tier1:
+                            {
+                                <label>Novice</label><br/>
+                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                break;
+                            }
+                        case Tier.Tier2:
+                            {
+                                <label>Soldier</label><br/>
+                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                break;
+                            }
+                        case Tier.Tier3:
+                            {
+                                <label>Warrior</label><br/>
+                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                break;
+                            }
+                        case Tier.Tier4:
+                            {
+                                <label>Legend</label><br/>
+                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                break;
+                            }
+                        case Tier.Tier5:
+                            {
+                                <label>Celestial</label><br/>
+                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                break;
+                            }
+                    }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Damage)
@@ -57,7 +94,7 @@
             </td>
            
             <td>
-                @Html.DisplayFor(modelItem => item.Owner.Id)
+                @Html.DisplayFor(modelItem => item.OwnerID)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

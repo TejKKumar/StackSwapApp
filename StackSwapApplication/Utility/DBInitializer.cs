@@ -60,7 +60,7 @@ namespace StackSwapApplication.Utility
             //This is one trade: User 7 traded with User 9 where User 7 traded 23, 24 for User 9's Card 15
             modelBuilder.Entity<Trade>().HasData(
 
-                    new Trade() { Id=1,BuyerId = 7, SellerId = 9, TradeDate = new DateTime(2023, 7, 12, 22, 20, 4) }
+                    new Trade() { Id=1,BuyerId = 7, SellerId = 9, TradeDate = new DateTime(2023, 7, 12, 22, 20, 4), IsAccepted=true, IsComplete=true }
                     );
             modelBuilder.Entity<TradeBuyerCard>().HasData(
                     new TradeBuyerCard() { Id=1,BuyerId = 7, CardId = 24, TradeId = 1 },

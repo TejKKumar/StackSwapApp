@@ -11,8 +11,8 @@ using StackSwapApplication.Data;
 namespace StackSwapApplication.Migrations
 {
     [DbContext(typeof(TradeContext))]
-    [Migration("20231114021648_TradePurchaseSeeding")]
-    partial class TradePurchaseSeeding
+    [Migration("20231114184937_TradeNormalization")]
+    partial class TradeNormalization
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -357,6 +357,12 @@ namespace StackSwapApplication.Migrations
                     b.Property<uint>("BuyerId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("IsAccepted")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsComplete")
+                        .HasColumnType("INTEGER");
+
                     b.Property<uint>("SellerId")
                         .HasColumnType("INTEGER");
 
@@ -377,6 +383,8 @@ namespace StackSwapApplication.Migrations
                         {
                             Id = 1u,
                             BuyerId = 7u,
+                            IsAccepted = true,
+                            IsComplete = true,
                             SellerId = 9u,
                             TradeDate = new DateTime(2023, 7, 12, 22, 20, 4, 0, DateTimeKind.Unspecified)
                         });

@@ -36,6 +36,12 @@ namespace StackSwapApplication.Models
         [Required]
         public DateTime? TradeDate { get; set; }
 
+        [Required]
+        public bool IsAccepted { get; set; }
+
+        [Required]
+        public bool IsComplete { get; set; }
+
         
     }
 }
