@@ -12,7 +12,7 @@ string? connectionString = builder.Configuration.GetConnectionString("DefaultCon
 
 builder.Services.AddDbContext<TradeContext>(options => options.UseSqlite(connectionString));
 
-builder.Services.AddTransient<IDataService, DataRepository>();
+builder.Services.AddScoped<IDataService, DataRepository>();
 
 builder.Services.AddScoped<ICatalogueService, CatalogueRepository>();
 

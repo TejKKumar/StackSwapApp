@@ -33,6 +33,7 @@ namespace StackSwapApplication.Data
             modelBuilder.Entity<Purchase>().ToTable("Purchases");
             modelBuilder.Entity<TradeBuyerCard>().ToTable("TradeBuyerCards");
             modelBuilder.Entity<TradeSellerCard>().ToTable("TradeSellerCards");
+            
 
 
             modelBuilder.Entity<Card>(entity =>
