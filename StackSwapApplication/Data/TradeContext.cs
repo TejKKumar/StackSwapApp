@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StackSwapApplication.Models;
 using DbContext = Microsoft.EntityFrameworkCore.DbContext;
+using StackSwapApplication.Utility;
 
 namespace StackSwapApplication.Data
 {
@@ -21,6 +22,7 @@ namespace StackSwapApplication.Data
 
         public DbSet<TradeBuyerCard> TradeBuyerCards { get; set; }
         public DbSet<TradeSellerCard> TradeSellerCards { get; set; }
+        public DbSet<PurchaseCard> PurchaseCards { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -59,16 +61,15 @@ namespace StackSwapApplication.Data
             modelBuilder.Entity<Trade>(entity =>
             {
                 entity.HasMany(t => t.buyerCardsInfo)
-                .WithOne(b => b.Trade)
-                .HasForeignKey(b => b.TradeId);
+                .WithOne(bc => bc.Trade)
+                .HasForeignKey(bc => bc.TradeId);
+
+                entity.HasMany(t => t.sellerCardsInfo)
+                .WithOne(sc => sc.Trade)
+                .HasForeignKey(sc => sc.TradeId);
             });
 
-            modelBuilder.Entity<Trade>(entity =>
-            {
-                entity.HasMany(t => t.sellerCardsInfo)
-                .WithOne(s => s.Trade)
-                .HasForeignKey(s => s.TradeId);
-            });
+            
 
             modelBuilder.Entity<TradeBuyerCard>(entity =>
             {
@@ -85,6 +86,24 @@ namespace StackSwapApplication.Data
                 .HasForeignKey(t => t.TradeId);
 
             });
+
+            modelBuilder.Entity<Purchase>(entity =>
+            {
+                entity.HasMany(p => p.PurchaseCards)
+                .WithOne(pc => pc.Purchase)
+                .HasForeignKey(pc => pc.PurchaseId);
+            });
+
+            modelBuilder.Entity<PurchaseCard>(entity =>
+            {
+                entity.HasOne(pc => pc.Purchase)
+                .WithMany(p => p.PurchaseCards)
+                .HasForeignKey(pc => pc.PurchaseId);
+            });
+
+            modelBuilder.Seed();
+
+            
         }
     }
 }

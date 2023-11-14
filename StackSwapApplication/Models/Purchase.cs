@@ -14,7 +14,7 @@ namespace StackSwapApplication.Models
         public uint BuyerId { get; set; }   
 
         [Required]
-        public List<Card>? Cards { get; set; }
+        public List<PurchaseCard>? PurchaseCards { get; set; }
 
         [Required]
         public DateTime? PurchaseDate { get; set; }
