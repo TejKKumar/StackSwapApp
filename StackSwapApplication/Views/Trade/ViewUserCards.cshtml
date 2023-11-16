@@ -1,0 +1,91 @@
+﻿@model StackSwapApplication.ViewModels.ViewCardsVM
+@{
+    ViewData["Title"] = "ViewUserCards";
+}
+
+<h1>Your Cards</h1>
+
+<table class="tableStyle">
+    <thead>
+        <tr>
+
+            <th>
+
+                Champion
+            </th>
+            <th>
+                 Tier
+            </th>
+            <th>
+                Stats
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.BuyerCards)
+        {
+            <tr>
+                <td >
+                    @item.Champion
+                </td>
+
+                <td>
+                    @item.CardTier
+
+                </td>
+                <td>
+                    <div>Damage : @item.Damage</div><br/>
+                    <div>Health : @item.Health</div><br />
+                    <div>Magic : @item.Magic</div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <h1>@Model.Seller.Username Cards</h1>
+    <table class="tableStyle">
+        <thead>
+            <tr>
+
+                <th>
+
+                    Champion
+                </th>
+                <th>
+                    Tier
+                </th>
+                <th>
+                    Stats
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.SellerCards)
+            {
+                <tr>
+                    <td>
+                        @item.Champion
+                    </td>
+
+                    <td>
+                        @item.CardTier
+
+                    </td>
+                    <td>
+                        <div>Damage : @item.Damage</div><br />
+                        <div>Health : @item.Health</div><br />
+                        <div>Magic : @item.Magic</div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
