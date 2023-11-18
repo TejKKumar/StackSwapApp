@@ -20,3 +20,94 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+.exgrid_Layout {
+    display: grid;
+    grid-template-columns:600px 600px;
+    grid-template-rows: auto
+    width: 650px;
+}
+
+.exgrid_Item {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: white;
+    border: 3px solid lightgray;
+    padding: 10px 5px 10px 5px;
+}
+
+.tableStyle {
+    border-radius: 7px;
+    display: block;
+}
+
+th, td {
+    text-align: left;
+    padding: 4px 4px 4px 4px;
+    border-color: #020921;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-radius: 2px;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+}
+
+
+.tradeOptionsGrd {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 650px;
+}
+
+.exgrid_Item {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: white;
+    border: 3px solid lightgray;
+    padding: 10px 5px 10px 5px;
+}
+
+.alink {
+    color: #0f70cc;
+    border-color: #fd6e39;
+    background-color: white;
+    border-radius: 9px;
+    padding: 2px 3px;
+    border: thick;
+    margin: 0px 5px 0px 0px;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    text-decoration: none;
+}
+
+    .alink:active {
+        background-color: #0f70cc;
+        color: white;
+    }
+
+    .alink:hover {
+        background-color: #0f70cc;
+        color: white;
+    }
+
+.bttn {
+    color: white;
+    border-color: #fd6e39;
+    background-color: #0f70cc;
+    border-radius: 9px;
+    padding: 2px 3px;
+    border: thick;
+    margin: 0px 0px 3px 0px;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    text-decoration: none;
+}
+
+    .bttn:active {
+        background-color: #0f70cc;
+        color: #d35627;
+    }
+
+    .bttn:hover {
+        background-color: #d35627;
+        color: white;
+    }

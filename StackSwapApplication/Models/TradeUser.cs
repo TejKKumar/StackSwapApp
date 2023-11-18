@@ -26,6 +26,9 @@ namespace StackSwapApplication.Models
         public string? Username { get => _userName; set => SetProperty(ref _userName, value); }
         public uint Credits { get => _credits; set => SetProperty(ref _credits, value); }
         public List<Card>? Cards { get; set; }
+        public List<Trade>? Trades { get; set; }
+        public List<Purchase>? Purchases { get; set; }
+      
 
 
         public void Change(TradeUser user)

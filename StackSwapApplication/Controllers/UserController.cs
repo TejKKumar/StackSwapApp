@@ -39,7 +39,7 @@ namespace StackSwapApplication.Controllers
                 {
                     if (_userSession.UserLoginInfo(loginVM))
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Trade");
                     }
                 }
                 else

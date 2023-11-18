@@ -13,9 +13,16 @@ namespace StackSwapApplication.Services
 
         public void UpdateEntity<T>(T entity) where T :BaseEntity;
 
+        public void SaveDatabaseChanges();
+
         
 
         public IQueryable<TradeUser> GetUsers { get; }
         public IQueryable<Card> GetCards { get; }
+        public IQueryable<Trade> GetTrades { get; }
+        public IQueryable<Purchase> GetPurchases { get; }
+        public IQueryable<TradeBuyerCard> GetTradesBuyerCards { get; }
+        public IQueryable<TradeSellerCard> GetTradesSellerCards { get; }
+        public IQueryable<PurchaseCard> GetPurchaseCards { get; }
     }
 }

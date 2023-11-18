@@ -1,0 +1,44 @@
+﻿@model IEnumerable<TradeUser>
+
+@{
+    ViewData["Title"] = "ViewUsers";
+}
+
+<h1>View Users</h1>
+
+<div>
+
+    <table class="tableStyle">
+        <thead>
+            <tr>
+               
+                <th>
+
+                    User Name
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td id="BookId">
+                        @item.Username
+                    </td>
+   
+                    <td>
+                          <form action="ViewUsers/@item.GetId" method="post">
+                              <button action="submit">View Cards</button>
+                              </form>                          
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+

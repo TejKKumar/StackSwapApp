@@ -1,3 +1,4 @@
+using Microsoft.Build.Framework;
 using Microsoft.EntityFrameworkCore;
 using StackSwapApplication.Data;
 using StackSwapApplication.Services;
@@ -12,7 +13,7 @@ string? connectionString = builder.Configuration.GetConnectionString("DefaultCon
 
 builder.Services.AddDbContext<TradeContext>(options => options.UseSqlite(connectionString));
 
-builder.Services.AddTransient<IDataService, DataRepository>();
+builder.Services.AddScoped<IDataService, DataRepository>();
 
 builder.Services.AddScoped<ICatalogueService, CatalogueRepository>();
 
@@ -23,6 +24,8 @@ builder.Services.AddScoped<ICardService, CardRepository>();
 builder.Services.AddScoped<IUserAuthenticationService, AuthenticationRepository>();
 
 builder.Services.AddScoped<IUserSession, UserSessionRepo>();
+
+builder.Services.AddScoped<ITradeService, TradeManager>();
 
 
 builder.Services.AddHttpContextAccessor(); 

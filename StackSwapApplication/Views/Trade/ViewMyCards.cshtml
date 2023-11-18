@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewData["Title"] = "ViewMyCards";
+}
+
+<h1>My Cards</h1>
+
+<table class="tableStyle">
+    <thead>
+        <tr>
+
+            <th>
+
+                Champion
+            </th>
+            <th>
+                Tier
+            </th>
+            <th>
+                Damage
+            </th>
+            <th>
+                Health
+            </th>
+            <th>
+                Magic
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.MyCards)
+        {
+            <tr>
+                <td>
+                    @item.Champion
+
+                </td>
+
+                <td>
+                    @switch (item.CardTier)
+                    {
+                        case Tier.Tier1:
+                            {
+
+                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                break;
+                            }
+                        case Tier.Tier2:
+                            {
+
+                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                break;
+                            }
+                        case Tier.Tier3:
+                            {
+
+                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                break;
+                            }
+                        case Tier.Tier4:
+                            {
+
+                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                break;
+                            }
+                        case Tier.Tier5:
+                            {
+
+                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                break;
+                            }
+                    }
+
+                </td>
+                <td>
+                    <div>@item.Damage</div>
+                </td>
+                <td>
+                    <div>@item.Health</div>
+                </td>
+                <td>
+                    <div>@item.Magic</div>
+                </td>
+            </tr>
+
+
+
+        }
+    </tbody>
+</table>
+<a class="alink" asp-action="Index" asp-controller="Trade">Home</a>
+

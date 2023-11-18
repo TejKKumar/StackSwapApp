@@ -1,0 +1,19 @@
+﻿@model StackSwapApplication.Models.TradeUser
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+<header>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</header>
+<h1>Trade Center</h1>
+<h4>Hey @Model.Username</h4>
+<div class="tradeOptionsGrd">
+
+    <div class="exgrid_Item"><a class="alink" asp-action="ViewUsers" asp-controller="Trade">Make Trade</a></div>
+    <div class="exgrid_Item"><a class="alink" asp-action="ViewRequests" asp-controller="Trade">Requests For Me</a></div>
+    <div class="exgrid_Item"><a class="alink" asp-action="ViewMyCards" asp-controller="Trade">My Cards</a></div>
+</div>

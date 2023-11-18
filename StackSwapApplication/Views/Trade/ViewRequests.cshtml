@@ -1,0 +1,61 @@
+﻿@model IEnumerable<StackSwapApplication.Models.Trade>
+
+@{
+    ViewData["Title"] = "ViewRequests";
+}
+
+<header>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</header>
+
+<h1>Requests made to you..</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Trade ID
+            </th>
+            <th>
+                Bidder
+            </th>
+            <th>
+                Request Date
+            </th>
+            <th>
+                Status
+            </th>
+            <td>
+                View
+            </td>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Buyer.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InitatedDate)
+                </td>
+                <td>
+                    @(item.IsComplete? "Complete":"Pending")
+                </td>
+                <td>
+                    <form action="ViewRequests/@item.Id" method="post">
+                        <button class="alink" type="submit">View Offer</button>
+                    </form>
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
