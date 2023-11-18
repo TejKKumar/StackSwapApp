@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace StackSwapApplication.Migrations
 {
     /// <inheritdoc />
-    public partial class TradeNormalization : Migration
+    public partial class CompletionToTrade : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -41,7 +41,8 @@ namespace StackSwapApplication.Migrations
                     Damage = table.Column<double>(type: "REAL", nullable: false),
                     Magic = table.Column<double>(type: "REAL", nullable: false),
                     Health = table.Column<double>(type: "REAL", nullable: false),
-                    OwnerID = table.Column<uint>(type: "INTEGER", nullable: false)
+                    OwnerID = table.Column<uint>(type: "INTEGER", nullable: false),
+                    Available = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -82,7 +83,8 @@ namespace StackSwapApplication.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     SellerId = table.Column<uint>(type: "INTEGER", nullable: false),
                     BuyerId = table.Column<uint>(type: "INTEGER", nullable: false),
-                    TradeDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    InitatedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CompletedDate = table.Column<DateTime>(type: "TEXT", nullable: true),
                     IsAccepted = table.Column<bool>(type: "INTEGER", nullable: false),
                     IsComplete = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
@@ -183,33 +185,33 @@ namespace StackSwapApplication.Migrations
 
             migrationBuilder.InsertData(
                 table: "Cards",
-                columns: new[] { "Id", "CardTier", "Champion", "Damage", "Health", "Magic", "OwnerID" },
+                columns: new[] { "Id", "Available", "CardTier", "Champion", "Damage", "Health", "Magic", "OwnerID" },
                 values: new object[,]
                 {
-                    { 1u, 1, "Ashe", 1250.0, 800.0, 1500.0, 1u },
-                    { 2u, 2, "Ashe", 1300.0, 850.0, 1550.0, 1u },
-                    { 3u, 1, "Draven", 3550.0, 2800.0, 500.0, 1u },
-                    { 4u, 5, "Urgot", 5250.0, 900.0, 7500.0, 1u },
-                    { 5u, 5, "Draven", 4025.0, 5800.0, 2500.0, 2u },
-                    { 6u, 2, "Jarvan", 3200.0, 2800.0, 4500.0, 2u },
-                    { 7u, 2, "Ashe", 1300.0, 850.0, 1550.0, 3u },
-                    { 8u, 5, "Jax", 1300.0, 1850.0, 4550.0, 4u },
-                    { 9u, 4, "Olaf", 6550.0, 3800.0, 500.0, 4u },
-                    { 10u, 4, "Tarin", 1250.0, 1900.0, 7500.0, 4u },
-                    { 11u, 5, "Jax", 1300.0, 1850.0, 4550.0, 5u },
-                    { 12u, 1, "Draven", 3550.0, 2800.0, 500.0, 5u },
-                    { 13u, 2, "Jarvan", 3200.0, 2800.0, 4500.0, 6u },
-                    { 14u, 2, "Ashe", 1300.0, 850.0, 1550.0, 6u },
-                    { 15u, 5, "Jax", 1300.0, 1850.0, 4550.0, 7u },
-                    { 16u, 4, "Olaf", 6550.0, 3800.0, 500.0, 7u },
-                    { 17u, 4, "Tarin", 1250.0, 1900.0, 7500.0, 7u },
-                    { 18u, 5, "Jax", 1300.0, 1850.0, 4550.0, 7u },
-                    { 19u, 1, "Draven", 3550.0, 2800.0, 500.0, 7u },
-                    { 20u, 5, "Darius", 7300.0, 2850.0, 750.0, 8u },
-                    { 21u, 4, "A", 550.0, 7800.0, 3500.0, 8u },
-                    { 22u, 4, "Olaf", 6550.0, 3800.0, 500.0, 9u },
-                    { 23u, 4, "Tarin", 1250.0, 1900.0, 7500.0, 9u },
-                    { 24u, 5, "Jax", 1300.0, 1850.0, 4550.0, 9u }
+                    { 1u, true, 1, "Ashe", 1250.0, 800.0, 1500.0, 1u },
+                    { 2u, true, 2, "Ashe", 1300.0, 850.0, 1550.0, 1u },
+                    { 3u, true, 1, "Draven", 3550.0, 2800.0, 500.0, 1u },
+                    { 4u, true, 5, "Urgot", 5250.0, 900.0, 7500.0, 1u },
+                    { 5u, true, 5, "Draven", 4025.0, 5800.0, 2500.0, 2u },
+                    { 6u, true, 2, "Jarvan", 3200.0, 2800.0, 4500.0, 2u },
+                    { 7u, true, 2, "Ashe", 1300.0, 850.0, 1550.0, 3u },
+                    { 8u, true, 5, "Jax", 1300.0, 1850.0, 4550.0, 4u },
+                    { 9u, true, 4, "Olaf", 6550.0, 3800.0, 500.0, 4u },
+                    { 10u, true, 4, "Tarin", 1250.0, 1900.0, 7500.0, 4u },
+                    { 11u, true, 5, "Jax", 1300.0, 1850.0, 4550.0, 5u },
+                    { 12u, true, 1, "Draven", 3550.0, 2800.0, 500.0, 5u },
+                    { 13u, true, 2, "Jarvan", 3200.0, 2800.0, 4500.0, 6u },
+                    { 14u, true, 2, "Ashe", 1300.0, 850.0, 1550.0, 6u },
+                    { 15u, true, 5, "Jax", 1300.0, 1850.0, 4550.0, 7u },
+                    { 16u, true, 4, "Olaf", 6550.0, 3800.0, 500.0, 7u },
+                    { 17u, true, 4, "Tarin", 1250.0, 1900.0, 7500.0, 7u },
+                    { 18u, true, 5, "Jax", 1300.0, 1850.0, 4550.0, 7u },
+                    { 19u, true, 1, "Draven", 3550.0, 2800.0, 500.0, 7u },
+                    { 20u, true, 5, "Darius", 7300.0, 2850.0, 750.0, 8u },
+                    { 21u, true, 4, "A", 550.0, 7800.0, 3500.0, 8u },
+                    { 22u, true, 4, "Olaf", 6550.0, 3800.0, 500.0, 9u },
+                    { 23u, true, 4, "Tarin", 1250.0, 1900.0, 7500.0, 9u },
+                    { 24u, true, 5, "Jax", 1300.0, 1850.0, 4550.0, 9u }
                 });
 
             migrationBuilder.InsertData(
@@ -219,8 +221,8 @@ namespace StackSwapApplication.Migrations
 
             migrationBuilder.InsertData(
                 table: "Trades",
-                columns: new[] { "Id", "BuyerId", "IsAccepted", "IsComplete", "SellerId", "TradeDate" },
-                values: new object[] { 1u, 7u, true, true, 9u, new DateTime(2023, 7, 12, 22, 20, 4, 0, DateTimeKind.Unspecified) });
+                columns: new[] { "Id", "BuyerId", "CompletedDate", "InitatedDate", "IsAccepted", "IsComplete", "SellerId" },
+                values: new object[] { 1u, 7u, new DateTime(2023, 7, 15, 12, 30, 4, 0, DateTimeKind.Unspecified), new DateTime(2023, 7, 12, 22, 20, 4, 0, DateTimeKind.Unspecified), true, true, 9u });
 
             migrationBuilder.InsertData(
                 table: "PurchaseCards",

@@ -5,9 +5,13 @@ namespace StackSwapApplication.ViewModels
     public class ViewCardsVM
     {
         public TradeUser Buyer { get; set; }
-        public IEnumerable<Card> BuyerCards {  get; set; } 
+        public List<CardCheckBox> BuyerCards {  get; set; } = new List<CardCheckBox>();
+
+        //public IEnumerable<CardCheckBox> BCards { get; set; }
+        
 
         public TradeUser Seller { get; set; }
-        public IEnumerable<Card> SellerCards { get; set; }
+        public List<CardCheckBox> SellerCards { get; set; } = new List<CardCheckBox>(); 
+        //public IEnumerable<CardCheckBox> SCards { get; set; }   
     }
 }

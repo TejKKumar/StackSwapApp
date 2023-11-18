@@ -23,6 +23,7 @@
     <Folder Include="Models\DefaultModels\" />
     <Folder Include="Database\" />
     <Folder Include="Services\Implementations\" />
+    <Folder Include="ViewModels\TradeViewModel\" />
   </ItemGroup>
 
 </Project>

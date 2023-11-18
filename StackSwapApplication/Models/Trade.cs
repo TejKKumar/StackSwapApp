@@ -1,12 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using StackSwapApplication.Models.BaseEntities;
+using System.ComponentModel.DataAnnotations;
 
 namespace StackSwapApplication.Models
 {
-    public class Trade
+    public class Trade : BaseEntity
     {
 
         [Key]
-        public uint Id { get; set; }
+        public override uint Id { get; set; }
 
         [Required]
         public TradeUser? Seller { get; set; }
@@ -34,7 +35,10 @@ namespace StackSwapApplication.Models
 
   
         [Required]
-        public DateTime? TradeDate { get; set; }
+        public DateTime InitatedDate { get; set; }
+
+        
+        public DateTime? CompletedDate { get; set; }
 
         [Required]
         public bool IsAccepted { get; set; }

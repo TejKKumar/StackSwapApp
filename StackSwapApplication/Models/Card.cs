@@ -39,6 +39,7 @@ namespace StackSwapApplication.Models
 		public double Health { get => _health; set => SetProperty(ref _health, value); }
 		public uint OwnerID { get; set; }
 		public TradeUser? Owner { get; set; }
+		public bool Available { get; set; } = true;
 
 		public void Change(Card c)
 		{

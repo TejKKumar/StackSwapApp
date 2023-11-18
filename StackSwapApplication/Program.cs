@@ -1,3 +1,4 @@
+using Microsoft.Build.Framework;
 using Microsoft.EntityFrameworkCore;
 using StackSwapApplication.Data;
 using StackSwapApplication.Services;
@@ -23,6 +24,8 @@ builder.Services.AddScoped<ICardService, CardRepository>();
 builder.Services.AddScoped<IUserAuthenticationService, AuthenticationRepository>();
 
 builder.Services.AddScoped<IUserSession, UserSessionRepo>();
+
+builder.Services.AddScoped<ITradeService, TradeManager>();
 
 
 builder.Services.AddHttpContextAccessor(); 

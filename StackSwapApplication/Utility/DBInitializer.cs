@@ -56,12 +56,14 @@ namespace StackSwapApplication.Utility
                 new Card() { Id = 23, Champion = "Tarin", OwnerID = 9, CardTier = Tier.Tier4, Damage = 1250, Health = 1900, Magic = 7500 },
                 new Card() { Id = 24, Champion = "Jax", OwnerID = 9, CardTier = Tier.Tier5, Damage = 1300, Health = 1850, Magic = 4550 }
             );
-            
+
             //This is one trade: User 7 traded with User 9 where User 7 traded 23, 24 for User 9's Card 15
             modelBuilder.Entity<Trade>().HasData(
 
-                    new Trade() { Id=1,BuyerId = 7, SellerId = 9, TradeDate = new DateTime(2023, 7, 12, 22, 20, 4), IsAccepted=true, IsComplete=true }
-                    );
+                    new Trade() { Id = 1, BuyerId = 7, SellerId = 9, InitatedDate = new DateTime(2023, 7, 12, 22, 20, 4),
+                        CompletedDate = new DateTime(2023, 7, 15, 12, 30, 4),
+                        IsAccepted = true, IsComplete = true }
+                    ); ;
             modelBuilder.Entity<TradeBuyerCard>().HasData(
                     new TradeBuyerCard() { Id=1,BuyerId = 7, CardId = 24, TradeId = 1 },
                     new TradeBuyerCard() { Id=2,BuyerId = 7, CardId = 23, TradeId = 1 }

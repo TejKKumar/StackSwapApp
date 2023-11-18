@@ -11,8 +11,8 @@ using StackSwapApplication.Data;
 namespace StackSwapApplication.Migrations
 {
     [DbContext(typeof(TradeContext))]
-    [Migration("20231114184937_TradeNormalization")]
-    partial class TradeNormalization
+    [Migration("20231118024013_CompletionToTrade")]
+    partial class CompletionToTrade
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,9 @@ namespace StackSwapApplication.Migrations
                 {
                     b.Property<uint>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Available")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("CardTier")
@@ -54,6 +57,7 @@ namespace StackSwapApplication.Migrations
                         new
                         {
                             Id = 1u,
+                            Available = true,
                             CardTier = 1,
                             Champion = "Ashe",
                             Damage = 1250.0,
@@ -64,6 +68,7 @@ namespace StackSwapApplication.Migrations
                         new
                         {
                             Id = 2u,
+                            Available = true,
                             CardTier = 2,
                             Champion = "Ashe",
                             Damage = 1300.0,
@@ -74,6 +79,7 @@ namespace StackSwapApplication.Migrations
                         new
                         {
                             Id = 3u,
+                            Available = true,
                             CardTier = 1,
                             Champion = "Draven",
                             Damage = 3550.0,
@@ -84,6 +90,7 @@ namespace StackSwapApplication.Migrations
                         new
                         {
                             Id = 4u,
+                            Available = true,
                             CardTier = 5,
                             Champion = "Urgot",
                             Damage = 5250.0,
@@ -94,6 +101,7 @@ namespace StackSwapApplication.Migrations
                         new
                         {
                             Id = 5u,
+                            Available = true,
                             CardTier = 5,
                             Champion = "Draven",
                             Damage = 4025.0,
@@ -104,6 +112,7 @@ namespace StackSwapApplication.Migrations
                         new
                         {
                             Id = 6u,
+                            Available = true,
                             CardTier = 2,
                             Champion = "Jarvan",
                             Damage = 3200.0,
@@ -114,6 +123,7 @@ namespace StackSwapApplication.Migrations
                         new
                         {
                             Id = 7u,
+                            Available = true,
                             CardTier = 2,
                             Champion = "Ashe",
                             Damage = 1300.0,
@@ -124,6 +134,7 @@ namespace StackSwapApplication.Migrations
                         new
                         {
                             Id = 8u,
+                            Available = true,
                             CardTier = 5,
                             Champion = "Jax",
                             Damage = 1300.0,
@@ -134,6 +145,7 @@ namespace StackSwapApplication.Migrations
                         new
                         {
                             Id = 9u,
+                            Available = true,
                             CardTier = 4,
                             Champion = "Olaf",
                             Damage = 6550.0,
@@ -144,6 +156,7 @@ namespace StackSwapApplication.Migrations
                         new
                         {
                             Id = 10u,
+                            Available = true,
                             CardTier = 4,
                             Champion = "Tarin",
                             Damage = 1250.0,
@@ -154,6 +167,7 @@ namespace StackSwapApplication.Migrations
                         new
                         {
                             Id = 11u,
+                            Available = true,
                             CardTier = 5,
                             Champion = "Jax",
                             Damage = 1300.0,
@@ -164,6 +178,7 @@ namespace StackSwapApplication.Migrations
                         new
                         {
                             Id = 12u,
+                            Available = true,
                             CardTier = 1,
                             Champion = "Draven",
                             Damage = 3550.0,
@@ -174,6 +189,7 @@ namespace StackSwapApplication.Migrations
                         new
                         {
                             Id = 13u,
+                            Available = true,
                             CardTier = 2,
                             Champion = "Jarvan",
                             Damage = 3200.0,
@@ -184,6 +200,7 @@ namespace StackSwapApplication.Migrations
                         new
                         {
                             Id = 14u,
+                            Available = true,
                             CardTier = 2,
                             Champion = "Ashe",
                             Damage = 1300.0,
@@ -194,6 +211,7 @@ namespace StackSwapApplication.Migrations
                         new
                         {
                             Id = 15u,
+                            Available = true,
                             CardTier = 5,
                             Champion = "Jax",
                             Damage = 1300.0,
@@ -204,6 +222,7 @@ namespace StackSwapApplication.Migrations
                         new
                         {
                             Id = 16u,
+                            Available = true,
                             CardTier = 4,
                             Champion = "Olaf",
                             Damage = 6550.0,
@@ -214,6 +233,7 @@ namespace StackSwapApplication.Migrations
                         new
                         {
                             Id = 17u,
+                            Available = true,
                             CardTier = 4,
                             Champion = "Tarin",
                             Damage = 1250.0,
@@ -224,6 +244,7 @@ namespace StackSwapApplication.Migrations
                         new
                         {
                             Id = 18u,
+                            Available = true,
                             CardTier = 5,
                             Champion = "Jax",
                             Damage = 1300.0,
@@ -234,6 +255,7 @@ namespace StackSwapApplication.Migrations
                         new
                         {
                             Id = 19u,
+                            Available = true,
                             CardTier = 1,
                             Champion = "Draven",
                             Damage = 3550.0,
@@ -244,6 +266,7 @@ namespace StackSwapApplication.Migrations
                         new
                         {
                             Id = 20u,
+                            Available = true,
                             CardTier = 5,
                             Champion = "Darius",
                             Damage = 7300.0,
@@ -254,6 +277,7 @@ namespace StackSwapApplication.Migrations
                         new
                         {
                             Id = 21u,
+                            Available = true,
                             CardTier = 4,
                             Champion = "A",
                             Damage = 550.0,
@@ -264,6 +288,7 @@ namespace StackSwapApplication.Migrations
                         new
                         {
                             Id = 22u,
+                            Available = true,
                             CardTier = 4,
                             Champion = "Olaf",
                             Damage = 6550.0,
@@ -274,6 +299,7 @@ namespace StackSwapApplication.Migrations
                         new
                         {
                             Id = 23u,
+                            Available = true,
                             CardTier = 4,
                             Champion = "Tarin",
                             Damage = 1250.0,
@@ -284,6 +310,7 @@ namespace StackSwapApplication.Migrations
                         new
                         {
                             Id = 24u,
+                            Available = true,
                             CardTier = 5,
                             Champion = "Jax",
                             Damage = 1300.0,
@@ -357,6 +384,12 @@ namespace StackSwapApplication.Migrations
                     b.Property<uint>("BuyerId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime?>("CompletedDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("InitatedDate")
+                        .HasColumnType("TEXT");
+
                     b.Property<bool>("IsAccepted")
                         .HasColumnType("INTEGER");
 
@@ -365,10 +398,6 @@ namespace StackSwapApplication.Migrations
 
                     b.Property<uint>("SellerId")
                         .HasColumnType("INTEGER");
-
-                    b.Property<DateTime?>("TradeDate")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -383,10 +412,11 @@ namespace StackSwapApplication.Migrations
                         {
                             Id = 1u,
                             BuyerId = 7u,
+                            CompletedDate = new DateTime(2023, 7, 15, 12, 30, 4, 0, DateTimeKind.Unspecified),
+                            InitatedDate = new DateTime(2023, 7, 12, 22, 20, 4, 0, DateTimeKind.Unspecified),
                             IsAccepted = true,
                             IsComplete = true,
-                            SellerId = 9u,
-                            TradeDate = new DateTime(2023, 7, 12, 22, 20, 4, 0, DateTimeKind.Unspecified)
+                            SellerId = 9u
                         });
                 });
 

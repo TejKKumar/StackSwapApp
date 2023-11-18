@@ -29,14 +29,9 @@
                     </td>
    
                     <td>
-                       @*  @using(Html.BeginForm("ViewUsers", "Trade", item.GetId,FormMethod.Post)){
-                        <button action="submit" asp->View Cards</button>
-                        } *@
-                          <form action="/Trade/ViewUser/@item.GetId" method="get">
+                          <form action="ViewUsers/@item.GetId" method="post">
                               <button action="submit">View Cards</button>
-                              </form>  
-                       
-                        
+                              </form>                          
                     </td>
                 </tr>
             }

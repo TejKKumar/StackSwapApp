@@ -1,4 +1,5 @@
-﻿using StackSwapApplication.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using StackSwapApplication.Data;
 using StackSwapApplication.Models;
 using StackSwapApplication.Models.BaseEntities;
 using StackSwapApplication.Utility;
@@ -76,19 +77,19 @@ namespace StackSwapApplication.Services
                     _tradeContext.Cards.Remove(c);
                     break;
                 case Trade t:
-                    _tradeContext.Trades.Add(t);
+                    _tradeContext.Trades.Remove(t);
                     break;
                 case Purchase p:
-                    _tradeContext.Purchases.Add(p);
+                    _tradeContext.Purchases.Remove(p);
                     break;
                 case TradeBuyerCard buyerCard:
-                    _tradeContext.TradeBuyerCards.Add(buyerCard);
+                    _tradeContext.TradeBuyerCards.Remove(buyerCard);
                     break;
                 case TradeSellerCard sellerCard:
-                    _tradeContext.TradeSellerCards.Add(sellerCard);
+                    _tradeContext.TradeSellerCards.Remove(sellerCard);
                     break;
                 case PurchaseCard purchaseCard:
-                    _tradeContext.PurchaseCards.Add(purchaseCard);
+                    _tradeContext.PurchaseCards.Remove(purchaseCard);
                     break;
 
             }
@@ -107,22 +108,30 @@ namespace StackSwapApplication.Services
             {
                 case TradeUser u:
                     {
-                        TradeUser? user = _tradeContext.Users.Find(u.Id);
-                        if (user != null)
-                        {
-                            user.Change(u);
-                        }
+                        _tradeContext.Update(u);
                         break;
+                        
                     }
                 case Card c:
                     {
-                        Card? card = _tradeContext.Cards.Find(c.Id);
-                        if (card != null)
-                        {
-                            card.Change(c);
-                        }
+                        _tradeContext.Update(c);
                         break;
                     }
+                case Trade t:
+                    _tradeContext.Trades.Update(t);
+                    break;
+                case Purchase p:
+                    _tradeContext.Purchases.Update(p);
+                    break;
+                case TradeBuyerCard buyerCard:
+                    _tradeContext.TradeBuyerCards.Update(buyerCard);
+                    break;
+                case TradeSellerCard sellerCard:
+                    _tradeContext.TradeSellerCards.Update(sellerCard);
+                    break;
+                case PurchaseCard purchaseCard:
+                    _tradeContext.PurchaseCards.Update(purchaseCard);
+                    break;
 
             }
 

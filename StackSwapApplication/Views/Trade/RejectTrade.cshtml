@@ -1,0 +1,95 @@
+﻿@model StackSwapApplication.ViewModels.RejectTradeViewModel
+@{
+    ViewData["Title"] = "RejectTrade";
+}
+
+<header>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</header>
+
+<h1>Trade Rejected</h1>
+<h4>Hi @Model.Me.Username you rejected the following cards.</h4>
+  <table class="tableStyle">
+      <thead>
+                <tr>
+
+                    <th>
+
+                        Champion
+                    </th>
+                    <th>
+                        Tier
+                    </th>
+                    <th>
+                        Damage
+                    </th>
+                    <th>
+                        Health
+                    </th>
+                    <th>
+                        Magic
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.rejectedCards)
+                {
+                    <tr>
+                        <td>
+                            @item.Champion
+
+                        </td>
+
+                        <td>
+                            @switch (item.CardTier)
+                            {
+                                case Tier.Tier1:
+                                    {
+
+                                        <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                        break;
+                                    }
+                                case Tier.Tier2:
+                                    {
+
+                                        <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                        break;
+                                    }
+                                case Tier.Tier3:
+                                    {
+
+                                        <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                        break;
+                                    }
+                                case Tier.Tier4:
+                                    {
+
+                                        <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                        break;
+                                    }
+                                case Tier.Tier5:
+                                    {
+
+                                        <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                        break;
+                                    }
+                            }
+
+                        </td>
+                        <td>
+                            <div>@item.Damage</div>
+                        </td>
+                        <td>
+                            <div>@item.Health</div>
+                        </td>
+                        <td>
+                            <div>@item.Magic</div>
+                        </td>
+                    </tr>
+
+
+
+                }
+            </tbody>
+        </table>
+<a class="alink" asp-action="ViewMyCards" action="get">View My Cards</a>

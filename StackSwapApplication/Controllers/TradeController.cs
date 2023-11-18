@@ -1,18 +1,156 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using StackSwapApplication.Models;
 using StackSwapApplication.Services;
 using StackSwapApplication.ViewModels;
+using System.Diagnostics;
 
 namespace StackSwapApplication.Controllers
 {
     public class TradeController : Controller
     {
         public IDataService _repo;
-        public IUserSession _userSession;   
-       public TradeController(IDataService repo, IUserSession userSession)
+        public IUserSession _userSession;
+        public ITradeService _tradeService;
+        public TradeController(IDataService repo, IUserSession userSession, ITradeService tradeService)
         {
             _repo = repo;
             _userSession = userSession;
+            _tradeService = tradeService;
+        }
+
+
+        [HttpGet]
+        public IActionResult ViewRequests()
+        {
+            if (!_userSession.GetUserSession())
+            {
+                TempData["Error"] = "Invalid Username or Password";
+                return RedirectToAction("Login", "User");
+            }
+            else
+            {
+                uint loggedId = _userSession.GetCurrentUser().Id;
+
+                IEnumerable<Trade> tradeRequests = _repo.GetTrades.Where(t => t.SellerId == loggedId && t.IsAccepted == false);
+                return View(tradeRequests);
+            }
+
+        }
+
+        [HttpPost]
+        public IActionResult ViewRequests(uint? Id)
+        {
+            return Id != null || Id != 0 ? RedirectToAction("ProcessTrade", "Trade", new { Id = Id }) : View();
+
+        }
+
+        [HttpGet]
+        public IActionResult ProcessTrade(uint Id)
+        {
+            Trade trade = _repo.GetTrades.Single(t => t.Id == Id);
+            TradeUser Me = _repo.GetUsers.Single(u => u.Id == trade.SellerId);
+            TradeUser Bidder = _repo.GetUsers.Single(u => u.Id == trade.BuyerId);
+
+            List<Card> MyCards = new List<Card>();
+            List<Card> BidderCards = new List<Card>();
+
+            trade.buyerCardsInfo.ForEach(bc =>
+            {
+                var Card = _repo.GetCards.Single(c => c.Id == bc.CardId);
+                BidderCards.Add(Card);
+            });
+
+            trade.sellerCardsInfo.ForEach(sc =>
+            {
+                var Card = _repo.GetCards.Single(c => c.Id == sc.CardId);
+                MyCards.Add(Card);
+            });
+
+            TradeViewModel vm = new TradeViewModel()
+            {
+                Trade = trade,
+                Me = Me,
+                Bidder = Bidder,
+                MyCards = MyCards.AsEnumerable(),
+                BidderCards = BidderCards.AsEnumerable(),
+            };
+
+
+            return View(vm);
+        }
+
+        [HttpGet]
+        public  IActionResult ViewMyCards()
+        {
+            if (!_userSession.GetUserSession())
+            {
+                TempData["Error"] = "Invalid Username or Password";
+                return RedirectToAction("Login", "User");
+            }
+            else
+            {
+                TradeUser u = _userSession.GetCurrentUser();
+
+                IEnumerable<Card> Cards = _repo.GetCards.Where(c => c.OwnerID == u.Id).AsEnumerable();
+
+                ViewBag.MyCards = Cards;
+
+                return View();  
+            }
+        }
+
+        [HttpGet]
+        public IActionResult AcceptTrade(uint Id)
+        {
+            AcceptTradeViewModel vm = null;
+            if (Id != null || Id != 0)
+            {
+                vm = _tradeService.AcceptTrade(Id);
+            }
+
+
+            return View(vm);
+
+
+        }
+
+        [HttpGet]
+        public IActionResult RejectTrade(uint Id)
+        {
+            RejectTradeViewModel vm = null;
+            if (Id != null || Id != 0)
+            {
+                vm = _tradeService.RejectTrade(Id);
+            }
+
+            return View(vm);
+
+        }
+
+        public IActionResult Index()
+        {
+            if (!_userSession.GetUserSession())
+            {
+                TempData["Error"] = "Invalid Username or Password";
+                return RedirectToAction("Login", "User");
+            }
+            else
+            {
+                uint? id = _userSession.GetCurrentUser().GetId;
+
+                if(id != null)
+                {
+                   TradeUser? u = _repo.GetUsers.SingleOrDefault(u => u.Id == id);
+                   return View(u);
+                }
+                else
+                {
+                    return RedirectToAction("Login", "User");
+                } 
+                   
+                
+            }
         }
 
         public IActionResult MakeTrade()
@@ -40,8 +178,8 @@ namespace StackSwapApplication.Controllers
         [HttpGet] //Get Method to get a view of all the users 
         public IActionResult ViewUsers() 
         {
-
-            var userList = _repo.GetUsers;
+            uint loggedId = _userSession.GetCurrentUser().Id;
+            var userList = _repo.GetUsers.Where(u=>u.Id != loggedId);
             return View(userList);
         }
 
@@ -58,19 +196,101 @@ namespace StackSwapApplication.Controllers
             ViewCardsVM vm = new ViewCardsVM();
 
             var Seller = _repo.GetUsers.Single(u => u.Id == Id);
-            var SellerCards = _repo.GetCards.Where(c => c.OwnerID == Id).AsEnumerable();
+            vm.Seller = Seller;
+            List<Card> SellerCards = _repo.GetCards.Where(c => c.OwnerID == Seller.Id && c.Available == true).ToList();
+
+            SellerCards.ForEach(c =>
+            {
+                CardCheckBox check = new CardCheckBox()
+                {
+                    Card = c,
+                    CardId = c.Id,
+
+                };
+                vm.SellerCards.Add(check);
+            });
+
+            //vm.BCards = vm.BuyerCards.AsEnumerable();
+
 
             TradeUser? Buyer = _userSession.GetCurrentUser();
-            var BuyerCards = _repo.GetCards.Where(c => c.Id == Seller.Id);
+            List<Card> BuyerCards = _repo.GetCards.Where(c => c.OwnerID == Buyer.Id && c.Available == true).ToList();
 
             vm.Buyer = Buyer;
-            vm.BuyerCards = BuyerCards;
 
-            vm.Seller = Seller;
-            vm.SellerCards = SellerCards;
+            BuyerCards.ForEach(c =>
+            {
+                CardCheckBox check = new CardCheckBox()
+                {
+                    Card = c,
+                    CardId = c.Id,
+                };
+                vm.BuyerCards.Add(check);
+            });
+
+           // vm.SCards = vm.SellerCards.AsEnumerable();
+
+            
+            
             return View(vm);
         }
 
+        [HttpPost]
+        public IActionResult ViewUserCards(ViewCardsVM vm)
+        {
+            
+            List<uint> buyerCardIDs = new List<uint>();
+            List<uint> sellerCardIDs = new List<uint>();
+
+            vm.BuyerCards.ForEach(c =>
+            {
+                if (c.IsChecked)
+                {
+                    buyerCardIDs.Add(c.CardId);
+                }
+
+            });
+
+            vm.SellerCards.ForEach(c =>
+            {
+                if (c.IsChecked)
+                {
+                    sellerCardIDs.Add(c.CardId);
+
+                }
+            });
+            Trade newTrade = _tradeService.MakeTradeRequest(vm.Buyer.Id, vm.Seller.Id,buyerCardIDs ,sellerCardIDs);
+
+            return RedirectToAction("RequestSent", "Trade", new { tradeID = newTrade.Id });
+        }
+
+        public IActionResult RequestSent(uint tradeID)
+        {
+            List<Card> Offered = new List<Card>();
+            List<Card> Requested = new List<Card>();
+            
+
+            Trade t = _repo.GetTrades.Single(t=> t.Id == tradeID);
+            TradeUser u = _repo.GetUsers.Single(u => u.Id == t.BuyerId);
+
+            t.buyerCardsInfo.ForEach(b =>
+            {
+                var Card = _repo.GetCards.Single(c => c.Id == b.CardId);
+                Offered.Add(Card);
+            });
+
+            t.sellerCardsInfo.ForEach(s =>
+            {
+                var Card = _repo.GetCards.Single(t=> t.Id ==  s.CardId); 
+                Requested.Add(Card);
+
+            });
+            
+            ViewBag.Offered = Offered;
+            ViewBag.Requested = Requested;
+            ViewBag.Me = u.Username;
+            return View(); 
+        }
 
     }
 }
