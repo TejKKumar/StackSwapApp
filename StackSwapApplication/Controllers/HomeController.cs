@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Elfie.Serialization;
+using Microsoft.AspNetCore.Mvc;
 using StackSwapApplication.Models;
 using StackSwapApplication.Services;
 using StackSwapApplication.ViewModels;
@@ -29,6 +30,7 @@ namespace StackSwapApplication.Controllers
 
         public IActionResult Index()
         {
+			
             try
             {
                 if (!_userSession.GetUserSession())
@@ -49,9 +51,10 @@ namespace StackSwapApplication.Controllers
             {
                 return RedirectToAction("Login", "User");
             }
+            
+			//return View("~/Views/Home/MainPage.cshtml");
 
-
-        }
+		}
 
         public IActionResult Privacy()
         {
@@ -87,6 +90,11 @@ namespace StackSwapApplication.Controllers
             //this saves the changes 
             _repo.UpdateEntity(purchaser);
             
+        }
+        
+        public IActionResult MainPage()
+        {
+            return View();
         }
     }
 }
