@@ -34,21 +34,18 @@ namespace StackSwapApplication.Services
             purchase.PurchaseCards = new List<PurchaseCard> 
             { 
                 new PurchaseCard{ CardId= card.GetCardId} 
-            
             };
-
-            
 
             _tradeContext.Purchases.Add(purchase);
 
-            purchase.PurchaseCards.ForEach(purchaseCard =>
-            {
-                purchaseCard.PurchaseId = purchase.Id;
-                purchaseCard.Purchase = purchase;
+            //purchase.PurchaseCards.ForEach(purchaseCard =>
+            //{
+            //    purchaseCard.PurchaseId = purchase.Id;
+            //    purchaseCard.Purchase = purchase;
 
-            });
+            //});
 
-            _tradeContext.PurchaseCards.Add(purchaseCard);
+            //_tradeContext.PurchaseCards.Add(purchaseCard);
 
 
             _tradeContext.SaveChanges();
