@@ -31,11 +31,9 @@ namespace StackSwapApplication.Services
             purchase.BuyerId = buyer.Id;
             purchase.PurchaseDate = DateTime.Now;
 
-            purchase.PurchaseCards = new List<PurchaseCard> 
-            { 
-                new PurchaseCard{ CardId= card.GetCardId} 
-            
-            };
+            purchaseCard.CardId = card.Id;
+
+            purchase.PurchaseCards = new List<PurchaseCard>() { purchaseCard };  
 
             
 
@@ -45,10 +43,11 @@ namespace StackSwapApplication.Services
             {
                 purchaseCard.PurchaseId = purchase.Id;
                 purchaseCard.Purchase = purchase;
+                _tradeContext.PurchaseCards.Add(purchaseCard);
 
             });
 
-            _tradeContext.PurchaseCards.Add(purchaseCard);
+            
 
 
             _tradeContext.SaveChanges();

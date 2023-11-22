@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="FullSignature">
+  <Class Name="StackSwapApplication.Models.Card">
+    <Position X="0.5" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>QAACGADAAAFACAAAABAIAAhAAAAABAAAAAAAAAQABAA=</HashCode>
+      <FileName>Models\Card.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CardTier" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="StackSwapApplication.Models.CatalogueItem">
+    <Position X="15.75" Y="8.25" Width="6.75" />
+    <TypeIdentifier>
+      <HashCode>wAACGADAAAEBAAAAAABAAAgAAAAAAAAAAAAAgAQABAA=</HashCode>
+      <FileName>Models\CatalogueItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StackSwapApplication.Models.Purchase">
+    <Position X="14.75" Y="1.75" Width="3.5" />
+    <AssociationLine Name="PurchaseCards" Type="StackSwapApplication.Models.PurchaseCard">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-2.618" Y="0.987" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAIAQAAAAAQAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Models\Purchase.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Buyer" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="PurchaseCards" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="StackSwapApplication.Models.PurchaseCard">
+    <Position X="15.25" Y="4.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAABAAAAAAAAABAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Models\PurchaseCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StackSwapApplication.Models.Trade">
+    <Position X="10.25" Y="2" Width="3.75" />
+    <AssociationLine Name="buyerCardsInfo" Type="StackSwapApplication.Models.TradeBuyerCard">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-2.628" Y="0.492" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="sellerCardsInfo" Type="StackSwapApplication.Models.TradeSellerCard">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.215" Y="0.65" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>EQACAAEACAAAAAAAAAAQAAQAAQEAAQAAAAAAAAAACAA=</HashCode>
+      <FileName>Models\Trade.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Seller" />
+      <Property Name="Buyer" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="buyerCardsInfo" />
+      <Property Name="sellerCardsInfo" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="StackSwapApplication.Models.TradeBuyerCard">
+    <Position X="12" Y="5.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAABAAAAAAQAAACIAAAAAAAgAAAA=</HashCode>
+      <FileName>Models\TradeBuyerCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StackSwapApplication.Models.TradeSellerCard">
+    <Position X="8.75" Y="5.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAABAAAAAAAAAASIAAAAAAAgAAAA=</HashCode>
+      <FileName>Models\TradeSellerCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StackSwapApplication.Models.TradeUser">
+    <Position X="4.75" Y="2" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>gAQCIAAAACBBAAAAAQBAAAQIAAAAAAICAAIAAAIAAAE=</HashCode>
+      <FileName>Models\TradeUser.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Cards" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="StackSwapApplication.Models.BaseEntities.BaseEntity">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAIAAAAAAAgAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\BaseEntities\BaseEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Enum Name="StackSwapApplication.Models.Tier">
+    <Position X="2.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAQAAAAAAAABAAAAAAAIEAAAA=</HashCode>
+      <FileName>Models\Card.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

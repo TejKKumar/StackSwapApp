@@ -2,6 +2,7 @@
 using StackSwapApplication.Models;
 using StackSwapApplication.ViewModels;
 
+//Created by Deeptanshu, completed by Tejas Kumar
 namespace StackSwapApplication.Services
 {
     public class TradeManager : ITradeService
@@ -9,6 +10,10 @@ namespace StackSwapApplication.Services
 
         private readonly TradeContext _tradeContext;
 
+        /// <summary>
+        /// Constructor for TradeManager class which uses constructor injection to inject depencey on TradeContext 
+        /// </summary>
+        /// <param name="tradeContext"></param>
         public TradeManager(TradeContext tradeContext)
         {
             _tradeContext = tradeContext;

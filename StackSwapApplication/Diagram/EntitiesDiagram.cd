@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="FullSignature">
+  <Class Name="StackSwapApplication.Models.BaseEntities.BaseEntity">
+    <Position X="4.75" Y="0.5" Width="5.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAIAAAAAAAgAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\BaseEntities\BaseEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="StackSwapApplication.Models.BaseEntities.BaseCard" Collapsed="true">
+    <Position X="4.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAABAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\BaseEntities\BaseCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StackSwapApplication.Models.BaseEntities.BaseCatalogueItem" Collapsed="true">
+    <Position X="6.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAABAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\BaseEntities\BaseCatalogueItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StackSwapApplication.Models.BaseEntities.BaseCharacter" Collapsed="true">
+    <Position X="9" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAABAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\BaseEntities\BaseCharacter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

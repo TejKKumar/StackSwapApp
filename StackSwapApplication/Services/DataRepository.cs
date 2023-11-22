@@ -5,20 +5,31 @@ using StackSwapApplication.Models.BaseEntities;
 using StackSwapApplication.Utility;
 using System.CodeDom;
 
+//Created by Tejas Kumar
 namespace StackSwapApplication.Services
 {
     //This class is meant for managing the data an will be added as transient in the services of the program 
     public class DataRepository : IDataService
     {
+        /// <summary>
+        /// Private reference that will be used to get TradeContext functions
+        /// </summary>
+        private TradeContext _tradeContext;
 
-        public TradeContext _tradeContext;
 
+        /// <summary>
+        /// Constructor for the DataRepository class which uses constructor injection to add TradeContext dependency.
+        /// </summary>
+        /// <param name="tradeContext"></param>
         public DataRepository(TradeContext tradeContext)
         {
             _tradeContext = tradeContext;
             DBInitializer.Initialize(_tradeContext);
         }
 
+        /// <summary>
+        /// Public collection for getting data. This collection of IQueryable to improve performance. 
+        /// </summary>
         public IQueryable<TradeUser> GetUsers => _tradeContext.Users;
 
         public IQueryable<Card> GetCards => _tradeContext.Cards;
