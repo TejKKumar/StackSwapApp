@@ -4,42 +4,62 @@
     ViewBag.Title = "Login";
 }
 
-<h1>Register</h1>
 
-@{
-    try
-    {
-        if(TempData["Error"] != null){
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="~/css/StylePlatform.css" asp-append-version="true" />
+        <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    </head>
+    <body>
+        <Header>
+            
+            <img src="~/images/StackSwapLogo.jpg" alt="StackSwapLogo"/>
+        <div class="btn-head">
+            <a asp-action="MainPage" asp-controller="Home" class="btn btn-primary">Home</a>
+        </div>
+        </Header>
+          <h1>Please Sign in here</h1>
+ 
 
-            <script>swal("StackSwap", "Incorrect Username/Password!", "Error");</script>
-        }
-    }
-    catch (Exception)
-    {
-        <label style="color:red">An error Occured</label>
+        @{
+            try
+            {
+                if(TempData["Error"] != null){
+
+                    <script>swal("StackSwap", "Incorrect Username/Password!", "Error");</script>
+                }
+            }
+            catch (Exception)
+            {
+                <label style="color:red">An error Occured</label>
         
-    }
-}
-<form method="post" asp-controller="User" asp-action="Login">
-    <div asp-validation-summary="ModelOnly"></div>
+            }
+        }
 
 
-    <div>
-        <label asp-for="Username"></label>
-        <input asp-for="Username" />
-        <span asp-validation-for="Username"></span>
-    </div>
-
-    <div>
-        <label asp-for="Password"></label>
-        <input asp-for="Password" />
-        <span asp-validation-for="Password"></span>
-    </div>
+        <form method="post" asp-controller="User" asp-action="Login">
+            <div asp-validation-summary="ModelOnly"></div>
 
 
+            <div>
+                <label asp-for="Username"></label>
+                <input asp-for="Username" />
+                <span asp-validation-for="Username"></span>
+            </div>
 
-    <div>
-        <input type="submit" value="Login" />
-    </div>
+            <div>
+                <label asp-for="Password"></label>
+                <input asp-for="Password" />
+                <span asp-validation-for="Password"></span>
+            </div>
 
-</form>
+
+
+            <div>
+                <input type="submit" value="Login"/>
+            </div>
+
+        </form>
+        </body>
+</html>

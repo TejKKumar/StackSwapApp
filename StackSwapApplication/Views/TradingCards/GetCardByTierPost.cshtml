@@ -3,12 +3,24 @@
 @{
     ViewData["Title"] = "GetCardByTierPost";
 }
+<!DOCKTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/StyleShowCards.css" asp-append-version="true" />
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
 
+</head>
+<body>
+    <header>
+        <img src="~/images/StackSwapLogo.jpg" alt="StackSwapLogo" />
+        <div class="btn-head">
+            <a asp-action="ShowCards" asp-controller="TradingCards" class="btn btn-primary">Cards Deck</a>
+        </div>
+
+    </header>
 <h1>GetCardByTierPost</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -39,9 +51,53 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Champion)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CardTier)
-            </td>
+                <td>
+                    @* @Html.DisplayFor(modelItem => item.CardTier) *@
+
+                    @switch (item.CardTier)
+                    {
+                        case Tier.Tier1:
+                            {
+                                @Html.DisplayFor(modelItem => item.CardTier)
+
+                                <br />
+                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                break;
+                            }
+                        case Tier.Tier2:
+                            {
+                                @Html.DisplayFor(modelItem => item.CardTier)
+
+                                <br />
+                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                break;
+                            }
+                        case Tier.Tier3:
+                            {
+
+                                @Html.DisplayFor(modelItem => item.CardTier)
+                                <br />
+                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                break;
+                            }
+                        case Tier.Tier4:
+                            {
+
+                                @Html.DisplayFor(modelItem => item.CardTier)
+                                <br />
+                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                break;
+                            }
+                        case Tier.Tier5:
+                            {
+
+                                @Html.DisplayFor(modelItem => item.CardTier)
+                                <br />
+                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                break;
+                            }
+                    }
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Damage)
             </td>
@@ -52,12 +108,12 @@
                 @Html.DisplayFor(modelItem => item.Health)
             </td>
            
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OwnerID)
+                </td>
         </tr>
 }
     </tbody>
 </table>
+</body>
+</html>

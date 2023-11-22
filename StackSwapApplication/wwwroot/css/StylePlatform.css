@@ -35,8 +35,9 @@ header {
 .btn-primary {
     background-color: #007bff;
     color: white;
-    background-image: url('/images/Tier2.PNG'); 
-    background-size: cover; 
+    background-image: url('/images/Tier2.PNG');
+    background-size: cover;
+    width: 110px
 }
 
 .btn-success {
@@ -44,6 +45,7 @@ header {
     color: white;
     background-image: url('/images/Tier2.png'); /* Replace with your image path */
     background-size: cover; /* Adjust the image size */
+    
 }
 .btn-danger{
     background-color: #28a745;
@@ -52,9 +54,53 @@ header {
     background-size: cover; /* Adjust the image size */
 }
 
-
-
 /* Hover effect for buttons */
 .btn-head a:hover {
     opacity: 0.8;
 }
+
+/* Basic styling for form elements */
+form {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 400px; /* Adjust the maximum width as needed */
+    background-color: #f9f9f9;
+}
+
+form div {
+      margin-bottom: 15px;
+  }
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: calc(100% - 10px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    background-image: url('/images/Tier2.PNG');
+    background-size: cover;
+    font-weight: bold;
+    width: 150px;
+}
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+       
+    }
+/* Styling for the RegisterForm */

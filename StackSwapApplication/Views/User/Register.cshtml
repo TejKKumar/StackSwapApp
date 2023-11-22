@@ -4,43 +4,62 @@
     ViewBag.Title = "Register";
 }
 
-<h1>Register</h1>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/StyleRegisterForm.css" asp-append-version="true" />
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+    <Header>
 
-<form method="post" asp-controller="User" asp-action="Register">
-    <div asp-validation-summary="ModelOnly"></div>
+        <img src="~/images/StackSwapLogo.jpg" alt="StackSwapLogo" />
+        <div class="btn-head">
+            <a asp-action="MainPage" asp-controller="Home" class="btn btn-primary">Home</a>
+        </div>
+    </Header>
+    <main>
+        <h1>Please Register Here!</h1>
+        <div class="RegisterForm">
+             <form method="post" asp-controller="User" asp-action="Register">
+                <div asp-validation-summary="ModelOnly"></div>
 
-    <div>
-        <label asp-for="Email"></label>
-        <input asp-for="Email" />
-        <span asp-validation-for="Email"></span>
-    </div>
+                <div>
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" />
+                    <span asp-validation-for="Email"></span>
+                </div>
 
-    <div>
-        <label asp-for="Name"></label>
-        <input asp-for="Name" />
-        <span asp-validation-for="Name"></span>
-    </div>
+                <div>
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" />
+                    <span asp-validation-for="Name"></span>
+                </div>
 
-    <div>
-        <label asp-for="Username"></label>
-        <input asp-for="Username" />
-        <span asp-validation-for="Username"></span>
-    </div>
+                <div>
+                    <label asp-for="Username"></label>
+                    <input asp-for="Username" />
+                    <span asp-validation-for="Username"></span>
+                </div>
 
-    <div>
-        <label asp-for="Password"></label>
-        <input asp-for="Password" />
-        <span asp-validation-for="Password"></span>
-    </div>
+                <div>
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" />
+                    <span asp-validation-for="Password"></span>
+                </div>
 
-    <div>
-        <label asp-for="ConfirmPassword"></label>
-        <input asp-for="ConfirmPassword" />
-        <span asp-validation-for="ConfirmPassword"></span>
-    </div>
+                <div>
+                    <label asp-for="ConfirmPassword"></label>
+                    <input asp-for="ConfirmPassword" />
+                    <span asp-validation-for="ConfirmPassword"></span>
+                </div>
 
-    <div>
-        <input type="submit" value="Register" />
-    </div>
+                <div>
+                    <input type="submit" value="Register" />
+                </div>
 
-</form>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

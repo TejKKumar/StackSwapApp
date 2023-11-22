@@ -1,14 +1,48 @@
 ﻿@model IEnumerable<StackSwapApplication.Models.Card>
+@using StackSwapApplication.Models
 
 @{
     ViewData["Title"] = "ShowCards";
 }
+<!DOCKTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="~/css/StyleShowCards.css" asp-append-version="true" />
+        <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css"/>
 
-<h1>ShowCards</h1>
+    </head>
+    <body>
+        <header>
+                <img src="~/images/StackSwapLogo.jpg" alt="StackSwapLogo" />
+                
+        <div class="champion">
+                @using (Html.BeginForm("GetCardByNamePost", "TradingCards"))
+                {
+                        <p>
+                            Find card by Champion: @Html.TextBox("name")
+                        </p>
+                        <input type="submit" value="Search" />
+                }
+        </div>
+        <div class="enum-list">
+               @using (Html.BeginForm("GetCardByTierPost", "TradingCards"))
+                {
+                            <p>
+                
+                                 Find Card By Tier : @Html.DropDownList("tier",Html.GetEnumSelectList(typeof(Tier)))
+                            </p>
+                            <input type="submit" value="Search" />
+                }
+        </div>
+        <div class="btn-head">
+            <a asp-action="MainPage" asp-controller="Home" class="btn btn-primary">Home</a>
+        </div>
+        </header>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+        
+<h1>Cards Deck</h1>
+
 <table class="table">
     <thead>
         <tr>
@@ -96,12 +130,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.OwnerID)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+            
         </tr>
 }
     </tbody>
 </table>
+
+
+
+</body>
+</html>
+    
