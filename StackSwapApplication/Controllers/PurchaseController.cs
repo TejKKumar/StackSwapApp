@@ -60,7 +60,7 @@ namespace StackSwapApplication.Controllers
             Card newCard;
             _catalogueService.CreateCard(out newCard, catalogueItem);
 
-            _purchaseTransactionService.MakePurchase(currentUser, newCard);
+            _purchaseTransactionService.PurchaseFromCatalogue(currentUser, newCard);
 
             currentUser.Credits -= catalogueItem.Credits;
             _tradeContext.SaveChanges();

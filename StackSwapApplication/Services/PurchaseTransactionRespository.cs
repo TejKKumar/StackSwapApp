@@ -13,7 +13,7 @@ namespace StackSwapApplication.Services
             _tradeContext = tradeContext;
         }
 
-        public void MakePurchase(TradeUser buyer, Card card)
+        public void PurchaseFromCatalogue(TradeUser buyer, Card card)
         { 
 
             card.Owner = buyer;

@@ -5,7 +5,7 @@ namespace StackSwapApplication.Services
     public interface IPurchaseTransactionService
     {
 
-        public void MakePurchase(TradeUser user, Card card);
+        public void PurchaseFromCatalogue(TradeUser user, Card card);
 
     }
 }
