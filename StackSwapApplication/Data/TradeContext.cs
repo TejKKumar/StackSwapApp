@@ -16,7 +16,7 @@ namespace StackSwapApplication.Data
 
         public DbSet<Card> Cards { get; set; }
 
-        public DbSet<Purchase> Purchases { get; set; }
+        public DbSet<CataloguePurchase> Purchases { get; set; }
 
         public DbSet<Trade> Trades { get; set;}
 
@@ -30,7 +30,7 @@ namespace StackSwapApplication.Data
             modelBuilder.Entity<Card>().ToTable("Cards");
             modelBuilder.Entity<TradeUser>().ToTable("Users");
             modelBuilder.Entity<Trade>().ToTable("Trades");
-            modelBuilder.Entity<Purchase>().ToTable("Purchases");
+            modelBuilder.Entity<CataloguePurchase>().ToTable("Purchases");
             modelBuilder.Entity<TradeBuyerCard>().ToTable("TradeBuyerCards");
             modelBuilder.Entity<TradeSellerCard>().ToTable("TradeSellerCards");
             
@@ -88,7 +88,7 @@ namespace StackSwapApplication.Data
 
             });
 
-            modelBuilder.Entity<Purchase>(entity =>
+            modelBuilder.Entity<CataloguePurchase>(entity =>
             {
                 entity.HasMany(p => p.PurchaseCards)
                 .WithOne(pc => pc.Purchase)

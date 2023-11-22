@@ -27,7 +27,7 @@ namespace StackSwapApplication.Models
         public uint Credits { get => _credits; set => SetProperty(ref _credits, value); }
         public List<Card>? Cards { get; set; }
         public List<Trade>? Trades { get; set; }
-        public List<Purchase>? Purchases { get; set; }
+        public List<CataloguePurchase>? Purchases { get; set; }
       
 
 

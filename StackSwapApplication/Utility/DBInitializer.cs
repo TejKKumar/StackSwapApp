@@ -74,9 +74,9 @@ namespace StackSwapApplication.Utility
                 );
 
             //This is one Purchase 
-            modelBuilder.Entity<Purchase>().HasData(
+            modelBuilder.Entity<CataloguePurchase>().HasData(
 
-                new Purchase() { Id=1,BuyerId=5, PurchaseDate = new DateTime(2020, 5, 1, 13, 30, 0) });
+                new CataloguePurchase() { Id=1,BuyerId=5, PurchaseDate = new DateTime(2020, 5, 1, 13, 30, 0) });
             modelBuilder.Entity<PurchaseCard>().HasData(
 
                 new PurchaseCard() {Id=1, CardId=11, PurchaseId=1 }

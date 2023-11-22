@@ -7,5 +7,7 @@ namespace StackSwapApplication.Services
 
         public void PurchaseFromCatalogue(TradeUser user, Card card);
 
+        public void PurchaseFromUser(TradeUser buyer, TradeUser seller, Card card);
+
     }
 }

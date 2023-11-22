@@ -25,7 +25,7 @@ namespace StackSwapApplication.Services
 
         public IQueryable<Trade> GetTrades => _tradeContext.Trades;
 
-        public IQueryable<Purchase> GetPurchases => _tradeContext.Purchases;
+        public IQueryable<CataloguePurchase> GetPurchases => _tradeContext.Purchases;
 
         public IQueryable<TradeBuyerCard> GetTradesBuyerCards => _tradeContext.TradeBuyerCards;
 
@@ -46,7 +46,7 @@ namespace StackSwapApplication.Services
                 case Trade t:
                     _tradeContext.Trades.Add(t);
                     break;
-                case Purchase p:
+                case CataloguePurchase p:
                     _tradeContext.Purchases.Add(p);
                     break;
                 case TradeBuyerCard buyerCard:
@@ -79,7 +79,7 @@ namespace StackSwapApplication.Services
                 case Trade t:
                     _tradeContext.Trades.Remove(t);
                     break;
-                case Purchase p:
+                case CataloguePurchase p:
                     _tradeContext.Purchases.Remove(p);
                     break;
                 case TradeBuyerCard buyerCard:
@@ -120,7 +120,7 @@ namespace StackSwapApplication.Services
                 case Trade t:
                     _tradeContext.Trades.Update(t);
                     break;
-                case Purchase p:
+                case CataloguePurchase p:
                     _tradeContext.Purchases.Update(p);
                     break;
                 case TradeBuyerCard buyerCard:

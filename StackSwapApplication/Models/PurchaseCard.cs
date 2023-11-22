@@ -7,7 +7,7 @@ namespace StackSwapApplication.Models
         private uint _id;
 
         public override uint Id { get => _id; set => _id = value; }
-        public Purchase Purchase { get; set; }
+        public CataloguePurchase Purchase { get; set; }
         public uint PurchaseId { get; set; }
         public uint CardId { get; set; }
     }

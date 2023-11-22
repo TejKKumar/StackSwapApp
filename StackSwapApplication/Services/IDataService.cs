@@ -20,7 +20,7 @@ namespace StackSwapApplication.Services
         public IQueryable<TradeUser> GetUsers { get; }
         public IQueryable<Card> GetCards { get; }
         public IQueryable<Trade> GetTrades { get; }
-        public IQueryable<Purchase> GetPurchases { get; }
+        public IQueryable<CataloguePurchase> GetPurchases { get; }
         public IQueryable<TradeBuyerCard> GetTradesBuyerCards { get; }
         public IQueryable<TradeSellerCard> GetTradesSellerCards { get; }
         public IQueryable<PurchaseCard> GetPurchaseCards { get; }

@@ -2,7 +2,7 @@
 
 namespace StackSwapApplication.Models
 {
-    public class Purchase
+    public class CataloguePurchase
     {
         [Key]
         public uint Id { get; set; }
