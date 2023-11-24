@@ -1,19 +1,22 @@
 ﻿using StackSwapApplication.Data;
 using StackSwapApplication.Models;
+using StackSwapApplication.Services.DataServices;
+
 
 namespace StackSwapApplication.Services
 {
-    public class PurchaseTransactionRespository : IPurchaseTransactionService
+    public class PurchaseRespository : IPurchaseService
     {
 
-        private readonly TradeContext _tradeContext;
+        private readonly IDataService _dataService;
 
-        public PurchaseTransactionRespository(TradeContext tradeContext)
+        public PurchaseRespository(IDataService dataService)
         {
-            _tradeContext = tradeContext;
+
+            _dataService = dataService;
         }
 
-        public void MakePurchase(TradeUser buyer, Card card)
+        public void MakePurchase(TradeUser buyer, Card card, uint cost)
         { 
 
             card.Owner = buyer;
@@ -23,9 +26,8 @@ namespace StackSwapApplication.Services
 
             PurchaseCard purchaseCard = new PurchaseCard();
 
-            
 
-            _tradeContext.Cards.Add(card);
+            _dataService.AddEntity(card);
 
             purchase.Buyer = buyer;
             purchase.BuyerId = buyer.Id;
@@ -33,24 +35,25 @@ namespace StackSwapApplication.Services
 
             purchaseCard.CardId = card.Id;
 
-            purchase.PurchaseCards = new List<PurchaseCard>() { purchaseCard };  
+            purchase.PurchaseCards = new List<PurchaseCard>() { purchaseCard };
 
-            
 
-            _tradeContext.Purchases.Add(purchase);
+            _dataService.AddEntity(purchase);
 
             purchase.PurchaseCards.ForEach(purchaseCard =>
             {
                 purchaseCard.PurchaseId = purchase.Id;
                 purchaseCard.Purchase = purchase;
-                _tradeContext.PurchaseCards.Add(purchaseCard);
+                _dataService.AddEntity(purchaseCard);
 
             });
 
-            
+            buyer.Credits -= cost;
+            _dataService.UpdateEntity(buyer);
 
 
-            _tradeContext.SaveChanges();
+
+            _dataService.SaveDatabaseChanges();
 
         }
 

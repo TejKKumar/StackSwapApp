@@ -2,6 +2,12 @@ using Microsoft.Build.Framework;
 using Microsoft.EntityFrameworkCore;
 using StackSwapApplication.Data;
 using StackSwapApplication.Services;
+//using StackSwapApplication.Services.CardServices;
+using StackSwapApplication.Services.DataServices;
+
+//using StackSwapApplication.Services.PurchaseServices;
+//using StackSwapApplication.Services.TradeServices;
+//using StackSwapApplication.Services.UserManagment;
 using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,7 +23,7 @@ builder.Services.AddScoped<IDataService, DataRepository>();
 
 builder.Services.AddScoped<ICatalogueService, CatalogueRepository>();
 
-builder.Services.AddScoped<IPurchaseTransactionService, PurchaseTransactionRespository>();
+builder.Services.AddScoped<IPurchaseService, PurchaseRespository>();
 
 builder.Services.AddScoped<ICardService, CardRepository>(); 
 

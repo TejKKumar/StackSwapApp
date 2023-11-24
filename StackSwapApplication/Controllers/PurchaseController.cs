@@ -1,7 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using StackSwapApplication.Services;
 using StackSwapApplication.Models;
 using StackSwapApplication.Data;
+using StackSwapApplication.Services;
+//using StackSwapApplication.Services.CardServices;
+//using StackSwapApplication.Services.PurchaseServices;
+//using StackSwapApplication.Services.UserManagment;
+
 
 namespace StackSwapApplication.Controllers
 {
@@ -9,16 +13,16 @@ namespace StackSwapApplication.Controllers
     {
 
         private readonly ICatalogueService _catalogueService;
-        private readonly IPurchaseTransactionService _purchaseTransactionService;
+        private readonly IPurchaseService _purchaseTransactionService;
         private readonly IUserSession _userSession;
-        private readonly TradeContext _tradeContext;
+        //private readonly TradeContext _tradeContext;
 
-        public PurchaseController(ICatalogueService catalogueService, IPurchaseTransactionService purchaseTransactionService, IUserSession userSession, TradeContext tradeContext)
+        public PurchaseController(ICatalogueService catalogueService, IPurchaseService purchaseTransactionService, IUserSession userSession)
         {
             _catalogueService = catalogueService;
             _purchaseTransactionService = purchaseTransactionService;
             _userSession = userSession;
-            _tradeContext = tradeContext;
+            //_tradeContext = tradeContext;
         }
 
         public IActionResult Index()
@@ -60,10 +64,10 @@ namespace StackSwapApplication.Controllers
             Card newCard;
             _catalogueService.CreateCard(out newCard, catalogueItem);
 
-            _purchaseTransactionService.MakePurchase(currentUser, newCard);
+            _purchaseTransactionService.MakePurchase(currentUser, newCard, catalogueItem.Credits);
 
-            currentUser.Credits -= catalogueItem.Credits;
-            _tradeContext.SaveChanges();
+            //currentUser.Credits -= catalogueItem.Credits;
+            //_tradeContext.SaveChanges();
 
             return RedirectToAction("Index", "Home");
         }
