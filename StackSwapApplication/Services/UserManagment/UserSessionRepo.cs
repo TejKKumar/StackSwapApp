@@ -4,20 +4,20 @@ using System.Net.Http;
 using System.Transactions;
 using StackSwapApplication.Models;
 using StackSwapApplication.Data;
+using StackSwapApplication.Services.DataServices;
 
 namespace StackSwapApplication.Services
 {
     public class UserSessionRepo : IUserSession
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly TradeContext _tradeContext;
+        private readonly IDataService _dataService;
 
 
-        public UserSessionRepo(IHttpContextAccessor httpContextAccessor, IDataService repo, TradeContext tradeContext)
+        public UserSessionRepo(IHttpContextAccessor httpContextAccessor, IDataService dataService)
         {
             _httpContextAccessor = httpContextAccessor;
-            _tradeContext = tradeContext;
-           // _loginValidationService = loginValidationService;
+            _dataService = dataService;
 
         }
         bool IUserSession.UserLoginInfo(LoginVM loginVM)
@@ -66,7 +66,7 @@ namespace StackSwapApplication.Services
 
                 if (session.GetString("UserName") != null)
                 {
-                    user = _tradeContext.Users.FirstOrDefault(u => u.Username == session.GetString("UserName"));
+                    user = _dataService.GetUsers.FirstOrDefault(u => u.Username == session.GetString("UserName"));
                 }
             }
             return user;

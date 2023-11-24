@@ -1,11 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using StackSwapApplication.Models.BaseEntities;
+using System.ComponentModel.DataAnnotations;
 
 namespace StackSwapApplication.Models
 {
-    public class Purchase
+    public class Purchase : BaseEntity
     {
         [Key]
-        public uint Id { get; set; }
+        public override uint Id { get; set; }
 
         [Required]
         public TradeUser? Buyer { get; set; }

@@ -1,4 +1,6 @@
-﻿namespace StackSwapApplication.Services.ServiceHelpers
+﻿using StackSwapApplication.Services.DataServices;
+
+namespace StackSwapApplication.Services.ServiceHelpers
 {
     public interface IServiceFactory
     {
