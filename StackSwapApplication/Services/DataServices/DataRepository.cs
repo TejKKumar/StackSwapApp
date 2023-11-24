@@ -32,6 +32,8 @@ namespace StackSwapApplication.Services.DataServices
         /// </summary>
         public IQueryable<TradeUser> GetUsers => _tradeContext.Users;
 
+        public TradeUser GetUserByUsername(string username) => _tradeContext.Users.FirstOrDefault(u => u.Username == username);
+
         public IQueryable<Card> GetCards => _tradeContext.Cards;
 
         public IQueryable<Trade> GetTrades => _tradeContext.Trades;

@@ -65,6 +65,12 @@ namespace StackSwapApplication.Controllers
                 return View(registerVM);
             }
 
+            if(_repo.GetUserByUsername(registerVM.Username!) != null)
+            {
+                ModelState.AddModelError("Username", "Username already exists");
+                return View(registerVM);
+            }   
+
             _authService.Register(registerVM);
             
 
