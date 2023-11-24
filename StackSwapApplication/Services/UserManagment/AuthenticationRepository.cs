@@ -29,6 +29,8 @@ namespace StackSwapApplication.Services
             };
 
             _dataService.AddEntity(newUser);
+            _dataService.SaveDatabaseChanges();
+
 
         }
 

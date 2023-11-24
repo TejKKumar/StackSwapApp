@@ -66,8 +66,11 @@ namespace StackSwapApplication.Controllers
             }
 
             _authService.Register(registerVM);
+            
 
-            return RedirectToAction("Index", "Home");
+
+
+			return RedirectToAction("Login");
         }
 
         public IActionResult Welcome() 
