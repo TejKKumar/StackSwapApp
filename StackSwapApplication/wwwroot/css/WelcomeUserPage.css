@@ -1,0 +1,249 @@
+﻿h1 {
+    text-align: center;
+    align-content: center;
+}
+body {
+    background-color: #f8f9fa;
+    height: 100%;
+}
+
+
+
+
+
+/* Checkbox */
+.center-menu {
+    height: 10%;
+    display: flex;
+    position: absolute;
+    width: 100%;
+    top: -2%;
+    right: 0;
+    left: 35%;
+
+
+}
+
+.menu {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    
+}
+
+    .menu a {
+        position: absolute;
+        left: calc(50% - 10px);
+        top: 50px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s linear, top 0.2s linear, left 0.2s linear, visibility 0.2s linear;
+    }
+
+
+
+.menu-open:checked ~ .menu a {
+    visibility: visible;
+    opacity: 1;
+}
+    .menu a:nth-child(1) { /* Update Profile */
+        left: 33px;
+        right:auto;
+        top: 35px;
+        font-size: 10px;
+    }
+
+    .menu a:nth-child(2) { /* Logout */
+        right: 34px;
+        top: 48px;
+        left: auto;
+        transition: none;
+        font-size: 10px;
+    }
+
+
+/* Checkbox */
+.menu-open {
+    display: none;
+}
+
+.menu-button {
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    display: block;
+    box-sizing: border-box;
+    padding: 10px;
+    position: absolute;
+    left: calc(50% - 25px);
+    top: calc(20% + 8px);
+    cursor: pointer;
+    background: #eaeaea;
+    border: 1px solid #b9bbbd;
+    box-shadow: 0px 3px 0px 1px #b9bbbd, inset 0px 2px 8px 5px #c9cbcd;
+    border-radius: 50px;
+}
+
+    .menu-button:hover {
+        background: #fafaea;
+    }
+
+/* Menu items */
+a.icon {
+    display: inline-block;
+    cursor: pointer;
+    /* I'm serious about hiding */
+    font-size: 0px;
+    color: rgba(0,0,0,0);
+}
+
+    a.icon:before {
+        position: absolute;
+        top: 10px;
+        color: #2020a0;
+        font-size: 16px;
+    }
+
+    a.icon:hover:before {
+        color: #4040c0;
+    }
+
+
+    /*For the grid/Table */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+/* Add this to your WelcomeUserPage.css file */
+.UserCardTable {
+    width: 80%; 
+    margin: 0 auto; 
+    display: block;
+    overflow-y: auto;
+    height: 60%;
+}
+
+
+    .UserCardTable th, .UserCardTable td {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+.exgrid_Layout {
+    display: grid;
+    grid-template-columns: 600px 600px;
+    grid-template-rows: auto;
+    width: 650px;
+
+
+}
+
+.exgrid_Item {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: white;
+    border: 3px solid lightgray;
+    padding: 10px 5px 10px 5px;
+}
+
+.tableStyle {
+    border-radius: 7px;
+    display: block;
+}
+
+th, td {
+    text-align: left;
+    padding: 4px 4px 4px 4px;
+    border-color: #020921;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-radius: 2px;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+}
+
+
+.tradeOptionsGrd {
+    display: flex;
+    grid-template-columns: auto auto auto;
+    width: 650px;
+    align-items: center;
+    justify-content: center;
+    left:50%;
+}
+
+.exgrid_Item {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: white;
+    border: 3px solid lightgray;
+    padding: 10px 5px 10px 5px;
+}
+
+.alink {
+    color: #0f70cc;
+    border-color: #fd6e39;
+    background-color: white;
+    border-radius: 9px;
+    padding: 2px 3px;
+    border: thick;
+    margin: 0px 5px 0px 0px;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    text-decoration: none;
+}
+
+    .alink:active {
+        background-color: #0f70cc;
+        color: white;
+    }
+
+    .alink:hover {
+        background-color: #0f70cc;
+        color: white;
+    }
+
+.bttn {
+    color: white;
+    border-color: #fd6e39;
+    background-color: #0f70cc;
+    border-radius: 9px;
+    padding: 2px 3px;
+    border: thick;
+    margin: 0px 0px 3px 0px;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    text-decoration: none;
+}
+
+    .bttn:active {
+        background-color: #0f70cc;
+        color: #d35627;
+    }
+
+    .bttn:hover {
+        background-color: #d35627;
+        color: white;
+    }
+
+
+
+
+

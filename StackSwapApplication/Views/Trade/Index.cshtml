@@ -4,18 +4,144 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    Layout = null;
+
 
 }
-<header>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-</header>
-<h1>Trade Center</h1>
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - StackSwap Application</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/WelcomeUserPage.css" asp-append-version="true" />
+    <link href="~/lib/font-awesome/css/all.css" rel="styl   esheet" />
+    <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
+</head>
+
+    <header>
+
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+            <div class ="mx-auto text-center">
+                <h1>Trade Center</h1>
+                </div>
+                
+
+                <div class="center-menu">
+                <label class="menu-button" for="menu-open" aria-hidden="true"><span class="fas fa-user"></span></label>
+                <input class="menu-open" id="menu-open" type="checkbox" aria-hidden="true" />
+                <nav class="menu" role="navigation">
+                    <a href="#" class="icon fas fa-user-edit">Update</a>
+                    <a href="#" class="fas fa-sign-out-alt">Logout</a>
+                </nav>
+            </div>
+            </div>
+        </nav>
+    </header>
+<body>
 <h4>Hey @Model.Username</h4>
 <div class="tradeOptionsGrd">
-
-    <div class="exgrid_Item"><a class="alink" asp-action="ViewUsers" asp-controller="Trade">Make Trade</a></div>
-    <div class="exgrid_Item"><a class="alink" asp-action="ViewRequests" asp-controller="Trade">Requests For Me</a></div>
+@*Making make trade and request for me in the dropdown on top right.*@
     <div class="exgrid_Item"><a class="alink" asp-action="ViewMyCards" asp-controller="Trade">My Cards</a></div>
-    <div class="exgrid_Item"><a class="alink" asp-action="ViewMyCards" asp-controller="Trade">Buy Cards</a></div>
+    </div>
+    <br />
+    <div>
+        @if (Model.Cards == null)
+        {
+            <p>You don't have any cards. Please head over to the catalogue to purchase a card!</p>
+        }
+        else
+        {
+
+            <div>
+                <table class="tableStyle UserCardTable">
+                    <thead>
+                        <tr>
+
+                            <th>
+                                Champion
+                            </th>
+                            <th>
+                                Tier
+                            </th>
+                            <th>
+                                Damage
+                            </th>
+                            <th>
+                                Health
+                            </th>
+                            <th>
+                                Magic
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Cards)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Champion
+
+                                </td>
+
+                                <td>
+                                    @switch (item.CardTier)
+                                    {
+                                        case Tier.Tier1:
+                                            {
+
+                                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                                break;
+                                            }
+                                        case Tier.Tier2:
+                                            {
+
+                                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                                break;
+                                            }
+                                        case Tier.Tier3:
+                                            {
+
+                                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                                break;
+                                            }
+                                        case Tier.Tier4:
+                                            {
+
+                                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                                break;
+                                            }
+                                        case Tier.Tier5:
+                                            {
+
+                                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                                break;
+                                            }
+                                    }
+
+                                </td>
+                                <td>
+                                    <div>@item.Damage</div>
+                                </td>
+                                <td>
+                                    <div>@item.Health</div>
+                                </td>
+                                <td>
+                                    <div>@item.Magic</div>
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+    </div>
+
+       
+    }
+    </div>
+
     
-</div>
+</body>
