@@ -12,14 +12,16 @@ namespace StackSwapApplication.Controllers
 {
     public class TradeController : Controller
     {
-        public IDataService _repo;
-        public IUserSession _userSession;
-        public ITradeService _tradeService;
-        public TradeController(IDataService repo, IUserSession userSession, ITradeService tradeService)
+        private IDataService _repo;
+        private IUserSession _userSession;
+        private ITradeService _tradeService;
+        private ICatalogueService _catalogueService;
+        public TradeController(IDataService repo, IUserSession userSession, ITradeService tradeService, ICatalogueService catService)
         {
             _repo = repo;
             _userSession = userSession;
             _tradeService = tradeService;
+            _catalogueService = catService;
         }
 
 
@@ -145,6 +147,8 @@ namespace StackSwapApplication.Controllers
                 if(id != null)
                 {
                    TradeUser? u = _repo.GetUsers.SingleOrDefault(u => u.Id == id);
+                    var c = _catalogueService.GetCatalogueItems().Take(5);
+                    ViewBag.Catalogue = c;
                    return View(u);
                 }
                 else
