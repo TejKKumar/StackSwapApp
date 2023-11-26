@@ -7,7 +7,9 @@ body {
     height: 100%;
 }
 
-
+h4{
+    color:green
+}
 
 
 
@@ -40,8 +42,6 @@ body {
         transition: opacity 0.2s linear, top 0.2s linear, left 0.2s linear, visibility 0.2s linear;
     }
 
-
-
 .menu-open:checked ~ .menu a {
     visibility: visible;
     opacity: 1;
@@ -49,17 +49,32 @@ body {
     .menu a:nth-child(1) { /* Update Profile */
         left: 33px;
         right:auto;
-        top: 35px;
+        top: 42px;
         font-size: 10px;
     }
 
     .menu a:nth-child(2) { /* Logout */
-        right: 34px;
+        right: 37px;
         top: 48px;
         left: auto;
         transition: none;
-        font-size: 10px;
+        font-size: 20px;
     }
+
+.menu a:nth-child(3) { /* Trade */
+    right: 37px;
+    top: 13px;
+    left: auto;
+    transition: none;
+    font-size: 20px;
+}
+.menu a:nth-child(4) { /* Inbox */
+    right: -51px;
+    top: 15px;
+    left: auto;
+    transition: none;
+    font-size: 20px;
+}
 
 
 /* Checkbox */
@@ -143,44 +158,58 @@ body {
 }
 
 
-    .UserCardTable th, .UserCardTable td {
-        font-size: 16px;
-        padding: 10px;
-    }
+.UserCardTable th, .UserCardTable td {
+    font-size: 16px;
+    padding: 10px;
+}
 
 .exgrid_Layout {
-    display: grid;
+    display: inline-grid;
     grid-template-columns: 600px 600px;
     grid-template-rows: auto;
     width: 650px;
-
-
+    gap: 500px;
 }
 
-.exgrid_Item {
-    text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: white;
-    border: 3px solid lightgray;
-    padding: 10px 5px 10px 5px;
+.right-table {
+    display: inline-block;
+    margin-left: 1000px;
+    overflow-y: auto;
+    border-radius: 1px;
+    display: inline-block;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
+.table-container{
+    display: flex;
+    align-items: flex-start;
+}
 .tableStyle {
-    border-radius: 7px;
-    display: block;
+    border-radius: 1px;
+    display: inline-block;
+    padding-left:20px;
+    padding-right:20px;
 }
 
 th, td {
-    text-align: left;
+    text-align: center;
     padding: 4px 4px 4px 4px;
     border-color: #020921;
     border-bottom: 1px solid #ddd;
     border-top: 1px solid #ddd;
     border-right: 1px solid #ddd;
     border-radius: 2px;
+    width:7vw;
     font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
 }
-
+th{
+    background-color: maroon;
+    color: white;
+}
+td{
+    height:10vh;
+}
 
 .tradeOptionsGrd {
     display: flex;
@@ -191,19 +220,29 @@ th, td {
     left:50%;
 }
 
+
 .exgrid_Item {
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: white;
     border: 3px solid lightgray;
     padding: 10px 5px 10px 5px;
+    justify-content: center;
+}
+
+.exgrid_Item2 {
+    position: absolute;
+    background-color: white;
+    border: 3px solid lightgray;
+    padding: 10px 5px 10px 5px;
+    right: 32vw;
 }
 
 .alink {
     color: #0f70cc;
     border-color: #fd6e39;
     background-color: white;
-    border-radius: 9px;
+    border-radius: 0vw;
     padding: 2px 3px;
     border: thick;
     margin: 0px 5px 0px 0px;
@@ -242,8 +281,3 @@ th, td {
         background-color: #d35627;
         color: white;
     }
-
-
-
-
-
