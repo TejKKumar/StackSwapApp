@@ -74,7 +74,7 @@ namespace StackSwapApplication.Services.DataServices
 
             }
 
-            //_tradeContext.SaveChanges();
+            _tradeContext.SaveChanges();
         }
 
 
@@ -107,7 +107,7 @@ namespace StackSwapApplication.Services.DataServices
 
             }
 
-            //_tradeContext.SaveChanges();
+            _tradeContext.SaveChanges();
         }
 
         public void SaveDatabaseChanges()

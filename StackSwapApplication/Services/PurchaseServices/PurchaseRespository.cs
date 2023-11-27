@@ -40,20 +40,20 @@ namespace StackSwapApplication.Services
 
             _dataService.AddEntity(purchase);
 
-            purchase.PurchaseCards.ForEach(purchaseCard =>
-            {
-                purchaseCard.PurchaseId = purchase.Id;
-                purchaseCard.Purchase = purchase;
-                _dataService.AddEntity(purchaseCard);
+            //purchase.PurchaseCards.ForEach(purchaseCard =>
+            //{
+            //    purchaseCard.PurchaseId = purchase.Id;
+            //    purchaseCard.Purchase = purchase;
+            //    _dataService.AddEntity(purchaseCard);
 
-            });
+            //});
 
             buyer.Credits -= cost;
             _dataService.UpdateEntity(buyer);
 
 
 
-            _dataService.SaveDatabaseChanges();
+            //_dataService.SaveDatabaseChanges();
 
         }
 

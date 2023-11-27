@@ -61,30 +61,44 @@ namespace StackSwapApplication.Services
                 Buyer = _dataService.GetUsers.Single(u=>u.Id == buyerID),
                 SellerId = sellerID,
                 Seller = _dataService.GetUsers.Single(u=>u.Id == sellerID),
-                buyerCardsInfo = buyerTradedCards,
-                sellerCardsInfo = sellerTradedCards,
+                //buyerCardsInfo = buyerTradedCards,
+                //sellerCardsInfo = sellerTradedCards,
                 InitatedDate = DateTime.Now,
             };
 
             _dataService.AddEntity(trade);
 
-            trade.buyerCardsInfo.ForEach(b=> {
-                b.TradeId = trade.Id;
-                b.Trade = trade;
-                _dataService.AddEntity(b);
+            foreach(TradeBuyerCard c in buyerTradedCards)
+            {
+                c.TradeId = trade.Id;
+                c.Trade = trade;
+                _dataService.AddEntity(c);
+            }
+
+            foreach(TradeSellerCard c in sellerTradedCards)
+            {
+                c.TradeId = trade.Id;
+                c.Trade = trade;
+                _dataService.AddEntity(c);
+            }
+
+            //trade.buyerCardsInfo.ForEach(b=> {
+            //    b.TradeId = trade.Id;
+            //    b.Trade = trade;
+            //    _dataService.AddEntity(b);
 
               
-            });
+            //});
 
-            trade.sellerCardsInfo.ForEach(s =>
-            {
-                s.TradeId = trade.Id;
-                s.Trade = trade;
-                _dataService.AddEntity(s);
+            //trade.sellerCardsInfo.ForEach(s =>
+            //{
+            //    s.TradeId = trade.Id;
+            //    s.Trade = trade;
+            //    _dataService.AddEntity(s);
 
-            });
+            //});
 
-            _dataService.SaveDatabaseChanges();
+            //_dataService.SaveDatabaseChanges();
             return trade;
             
 
@@ -126,7 +140,7 @@ namespace StackSwapApplication.Services
             trade.IsComplete = true;
             trade.CompletedDate = DateTime.Now;
             _dataService.UpdateEntity(trade);
-            _dataService.SaveDatabaseChanges();
+            //_dataService.SaveDatabaseChanges();
 
             AcceptTradeViewModel vm = new AcceptTradeViewModel()
             {
@@ -155,7 +169,7 @@ namespace StackSwapApplication.Services
             trade.CompletedDate= DateTime.Now;
 
             _dataService.UpdateEntity(trade);
-            _dataService.SaveDatabaseChanges();
+            //_dataService.SaveDatabaseChanges();
 
             RejectTradeViewModel vm = new RejectTradeViewModel()
             {
