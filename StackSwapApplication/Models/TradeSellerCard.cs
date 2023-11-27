@@ -10,6 +10,7 @@ namespace StackSwapApplication.Models
         public uint TradeId;
         public Trade Trade { get; set; }
         public uint SellerId { get; set; }
+        public virtual Card Card { get; set; }
         public uint CardId { get; set; }
     }
 }
