@@ -148,7 +148,7 @@ namespace StackSwapApplication.Services.DataServices
 
             }
 
-            //_tradeContext.SaveChanges();
+            _tradeContext.SaveChanges();
         }
     }
 }

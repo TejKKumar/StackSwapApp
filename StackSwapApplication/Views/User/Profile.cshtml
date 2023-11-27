@@ -25,7 +25,13 @@
                     @foreach(var item in Model.Purchases!)
                     {
                         <tr>
-                            <td>@item.PurchaseCards[0].Card.Champion (@item.PurchaseCards[0].Card.CardTier)</td>
+                            @* <td>@item.PurchaseCards[0].Card.Champion (@item.PurchaseCards[0].Card.CardTier)</td> *@
+                            <td>
+                                @foreach(var card in item.PurchaseCards)
+                                {
+                                    <p>@card.Card.Champion (@card.Card.CardTier)</p>
+                                }
+                            </td>
                             <td>@item.PurchaseDate.Value.ToString("dd-MM-yyyy")</td>
                         </tr>
                     }
@@ -49,12 +55,32 @@
                         <tr>
                             @if(item.SellerId == Model.User!.Id)
                             {
-                                <td>@item.sellerCardsInfo[0].Card.Champion (@item.sellerCardsInfo[0].Card.CardTier)</td>
-                                <td>@item.buyerCardsInfo[0].Card.Champion (@item.buyerCardsInfo[0].Card.CardTier)</td>
+                                <td>
+                                    @foreach(var card in item.sellerCardsInfo)
+                                    {
+                                        <p>@card.Card.Champion (@card.Card.CardTier)</p>
+                                    }
+                                </td>
+                                <td>
+                                    @foreach (var card in item.buyerCardsInfo)
+                                    {
+                                        <p>@card.Card.Champion (@card.Card.CardTier)</p>
+                                    }
+                                </td>
                             } else
                             {
-                                <td>@item.buyerCardsInfo[0].Card.Champion (@item.buyerCardsInfo[0].Card.CardTier)</td>
-                                <td>@item.sellerCardsInfo[0].Card.Champion (@item.sellerCardsInfo[0].Card.CardTier)</td>
+                                <td>
+                                    @foreach (var card in item.buyerCardsInfo)
+                                    {
+                                        <p>@card.Card.Champion (@card.Card.CardTier)</p>
+                                    }
+                                </td>
+                                <td>
+                                    @foreach (var card in item.sellerCardsInfo)
+                                    {
+                                        <p>@card.Card.Champion (@card.Card.CardTier)</p>
+                                    }
+                                </td>
                             }
                             <td>
                                 @if (item.IsComplete)
