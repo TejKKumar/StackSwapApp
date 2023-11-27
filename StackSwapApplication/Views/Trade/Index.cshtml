@@ -39,6 +39,7 @@
                     <a href="#" class="fas fa-sign-out-alt"></a>
                     <a asp-action="ViewUsers" asp-controller="Trade" class="fas fa-exchange" aria-hidden="true"></a>
                     <a href="#" class="fas fa-inbox"></a>
+                    <a asp-action="Profile" asp-controller="User" class="fas fa-user"></a>
                     
                 </nav>
             </div>
@@ -50,8 +51,7 @@
 <div class="tradeOptionsGrd">
 @*Making make trade and request for me in the dropdown on top right.*@
     <div class="exgrid_Item"><a class="alink" asp-action="ViewMyCards" asp-controller="Trade">My Cards</a></div>
-        <div class="exgrid_Item2"><a class="alink" asp-action="Index" asp-controller="Purchase">Catalogue</a>
-        </div>
+    <div class="exgrid_Item2"><a class="alink" asp-action="Index" asp-controller="Purchase">Catalogue</a></div>
     </div>
 <br/>
 <div>

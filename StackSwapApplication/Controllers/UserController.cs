@@ -72,11 +72,22 @@ namespace StackSwapApplication.Controllers
             }   
 
             _authService.Register(registerVM);
-            
-
-
 
 			return RedirectToAction("Login");
+        }
+
+        public IActionResult Profile()
+        {
+            var user = _userSession.GetCurrentUser();
+            var purchases = _repo.GetPurchases.Where(p => p.BuyerId == user!.Id);
+            var trades = _repo.GetTrades.Where(t => t.BuyerId == user!.Id || t.SellerId == user!.Id);
+            var profileVM = new ProfileViewModel()
+            {
+                User = user,
+                Purchases = purchases,
+                Trades = trades
+            };
+            return View(profileVM);
         }
 
         public IActionResult Welcome() 
