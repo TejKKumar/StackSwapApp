@@ -6,5 +6,7 @@ namespace StackSwapApplication.Services
     { 
         public void Register(RegisterVM registerVM);
 
+        public bool Login(LoginVM loginVM);
+
     }
 }

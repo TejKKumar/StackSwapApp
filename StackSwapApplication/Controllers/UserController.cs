@@ -33,20 +33,30 @@ namespace StackSwapApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                var Users = from m in _repo.GetUsers select m;
-                var user = Users.FirstOrDefault(s => s.Username == loginVM.Username);
+                //var Users = from m in _repo.GetUsers select m;
+                //var user = Users.FirstOrDefault(s => s.Username == loginVM.Username);
 
-                if (user != null && user.Password == loginVM.Password && user.Username != null)
+                //if (user != null && user.Password == loginVM.Password && user.Username != null)
+                //{
+                //    if (_userSession.UserLoginInfo(loginVM))
+                //    {
+                //        return RedirectToAction("Index", "Trade");
+                //    }
+                //}
+                //else
+                //{
+                //    TempData["Error"] = "Invalid Username or Password";
+                //}
+
+                if (_authService.Login(loginVM))
                 {
-                    if (_userSession.UserLoginInfo(loginVM))
-                    {
-                        return RedirectToAction("Index", "Trade");
-                    }
+                    return RedirectToAction("Index", "Trade");
                 }
                 else
                 {
                     TempData["Error"] = "Invalid Username or Password";
                 }
+
             }
             return View();
         }
@@ -73,7 +83,21 @@ namespace StackSwapApplication.Controllers
 
             _authService.Register(registerVM);
 
-			return RedirectToAction("Login");
+            var loginVM = new LoginVM()
+            {
+                Username = registerVM.Username,
+                Password = registerVM.Password
+            };
+
+            if(_authService.Login(loginVM))
+            {
+                return RedirectToAction("Index", "Trade");
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+
         }
 
         public IActionResult Profile()

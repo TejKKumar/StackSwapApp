@@ -8,11 +8,13 @@ namespace StackSwapApplication.Services
     public class AuthenticationRepository : IUserAuthenticationService
     {
 
+        private readonly IUserSession _userSession;
         private readonly IDataService _dataService;
 
-        public AuthenticationRepository(IDataService dataService)
+        public AuthenticationRepository(IDataService dataService, IUserSession userSession)
         {
             _dataService = dataService;
+            _userSession = userSession; 
         }
 
 
@@ -32,6 +34,28 @@ namespace StackSwapApplication.Services
             _dataService.SaveDatabaseChanges();
 
 
+        }
+
+        public bool Login(LoginVM loginVM)
+        {
+            var Users = from m in _dataService.GetUsers select m;
+            var user = Users.FirstOrDefault(s => s.Username == loginVM.Username);
+
+            if (user != null && user.Password == loginVM.Password && user.Username != null)
+            {
+                if(_userSession.UserLoginInfo(loginVM))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }   
+            }
+            else
+            {
+                return false;
+            }
         }
 
     }
