@@ -1,38 +1,39 @@
 ﻿@using StackSwapApplication.Models
 @{
-	ViewBag.Title = "Home Page";
-	Layout = null;
+    ViewBag.Title = "Home Page";
+    Layout = null;
 }
 
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="viewport" content="width=device-width" />
-		<link rel="stylesheet" href="~/css/StylePlatform.css" asp-append-version="true" />
-		<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
-	</head>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
 
-	<body>
-		<header>
-			<img src="~/images/StackSwapLogo.jpg" alt="StackSwapLogo"/>
-			<div class="btn-head">
-				<a asp-action="Login" asp-controller="User" class="btn btn-primary">Login</a>
-				<a asp-action="Register" asp-controller="User" class="btn btn-success">Register</a>
-			</div>
-		</header>
-		<main>
-			<p>TRADE IT. COLLECT IT. LOVE IT.</p>
-			<h1>Digital Online Trading Card Platform</h1>
-			<p> Do you want to create your own custom cards and share them with the world?</p>
-			<a asp-action="Register" asp-controller="User" class="btn btn-success">Start Trading Free Right Now</a>
-		<a asp-action="ShowCards" asp-controller="TradingCards" class="btn btn-danger">Check Out Trading Cards</a>
-		</main>
+<body>
+    @* <nav class="mainpage-nav">
+    <div class="btn-head">
+    <a asp-action="Login" asp-controller="User" class="btn btn-primary">Login</a>
+    <a asp-action="Register" asp-controller="User" class="btn btn-success">Register</a>
+    </div>
+    </nav> *@
+    <main class="d-flex flex-column justify-content-center mainpage-main">
+        <div>
+        <div class="d-flex flex-column align-items-center mb-5">
+        <img class="app-logo" src="~/images/StackSwapLogo.jpg" alt="StackSwapLogo" />
+            <h1 class="display-2">Stack Swap</h1>
+            <p class="display-5">TRADE IT. COLLECT IT. LOVE IT.</p>
+        </div>
+        <div class="d-flex flex-column align-items-center">
+            <a asp-action="Register" asp-controller="User" class="btn btn-success mb-3 btn-lg">Start Trading Free Right Now</a>
+            <a asp-action="ShowCards" asp-controller="TradingCards" class="btn btn-danger btn-lg">Check Out Trading Cards</a>
+        </div>
+        </div>
+    </main>
 
-		<footer>
-
-		</footer>
-
-	</body>
+</body>
 </html>
 
 

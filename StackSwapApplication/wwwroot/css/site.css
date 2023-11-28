@@ -17,10 +17,6 @@ html {
     min-height: 100%;
 }
 
-body {
-    margin-bottom: 60px;
-}
-
 
 .exgrid_Layout {
     display: grid;
@@ -110,4 +106,14 @@ th, td {
         background-color: #d35627;
         color: white;
     }
+
+
+.mainpage-main {
+    height:100vh;
+}
+
+.app-logo {
+    width: 90px;
+    height: 90px;
+}
 
