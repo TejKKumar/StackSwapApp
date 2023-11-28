@@ -194,7 +194,9 @@ body {
     padding-left: 20px;
     padding-right: 20px;
 }
-
+.right-table th {
+        background-color: green;
+    }
 .table-container{
     display: flex;
     align-items: flex-start;
@@ -209,7 +211,7 @@ body {
 th, td {
     text-align: center;
     padding: 4px 4px 4px 4px;
-    border-color: #020921;
+    border-color: red;
     border-bottom: 1px solid #ddd;
     border-top: 1px solid #ddd;
     border-right: 1px solid #ddd;
@@ -218,12 +220,21 @@ th, td {
     font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
 }
 th{
-    background-color: maroon;
     color: white;
 }
-td{
-    height:10vh;
+
+.tableStyle:nth-child(2) th{
+    background-color: green;
 }
+
+.tableStyle:nth-child(1) th{
+    background-color:blue;
+}
+
+
+    td {
+        height: 10vh;
+    }
 
 .tradeOptionsGrd {
     display: flex;
@@ -238,7 +249,7 @@ td{
 .exgrid_Item {
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: white;
+    background-color: blue;
     border: 3px solid lightgray;
     padding: 10px 5px 10px 5px;
     justify-content: center;
@@ -246,23 +257,24 @@ td{
 
 .exgrid_Item2 {
     position: absolute;
-    background-color: white;
+    background-color: green;
     border: 3px solid lightgray;
     padding: 10px 5px 10px 5px;
     right: 32vw;
 }
 
 .alink {
-    color: #0f70cc;
+    color: white;
     border-color: #fd6e39;
-    background-color: white;
     border-radius: 0vw;
     padding: 2px 3px;
     border: thick;
     margin: 0px 5px 0px 0px;
     font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
     text-decoration: none;
+    
 }
+
 
     .alink:active {
         background-color: #0f70cc;
