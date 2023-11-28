@@ -69,7 +69,7 @@ namespace StackSwapApplication.Controllers
             //currentUser.Credits -= catalogueItem.Credits;
             //_tradeContext.SaveChanges();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Trade");
         }
 
     }

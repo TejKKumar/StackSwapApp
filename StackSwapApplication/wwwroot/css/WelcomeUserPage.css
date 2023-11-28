@@ -219,9 +219,6 @@ th, td {
     width:7vw;
     font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
 }
-th{
-    color: white;
-}
 
 .tableStyle:nth-child(2) th{
     background-color: green;

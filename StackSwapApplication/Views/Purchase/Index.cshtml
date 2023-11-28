@@ -2,8 +2,6 @@
 
 @{
     ViewData["Title"] = "Catalogue";
-   
-    Layout = "_NavBarLayout";
 }
 
 
@@ -12,26 +10,25 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.Id)
             </th>
-            <th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.Champion)
             </th>
-            <th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.Tier)
             </th>
-            <th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.Damage)
             </th>
-            <th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.Magic)
             </th>
-            <th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.Health)
             </th>
-
-            <th></th>
+            <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
@@ -56,7 +53,6 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Health)
                 </td>
-                s
                 <td>
                     <a asp-action="ConfirmPurchase" asp-route-id="@item.Id">Buy Card</a>
                 </td>
