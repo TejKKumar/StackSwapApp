@@ -51,44 +51,37 @@ h4{
 }
 
 .menu a:nth-child(1) { /*Logout*/
-    right: 15px;
-    top: 57px;
+    right: 65px;
+    top: 35px;
     left: auto;
     transition: none;
-    font-size: 12px;
+    font-size: 18px;
 }
 
     
     .menu a:nth-child(2) { /*Trade*/
-        right: -15px;
-        top: 57px;
+        right: 95px;
+        top: 35px;
         left: auto;
         transition: none;
-        font-size: 12px;
+        font-size: 17px;
     }
 
 .menu a:nth-child(3) { /* Inbox */
-    right: 27px;
+    right: 35px;
     top: 35px;
     left: auto;
     transition: none;
-    font-size: 12px;
+    font-size: 17px;
 }
-.menu a:nth-child(4) { /* Inbox */
-    right: -31px;
+.menu a:nth-child(4) { /* History */
+    right: 125px;
     top: 35px;
     left: auto;
     transition: none;
-    font-size: 12px;
+    font-size: 17px;
 }
 
-.menu a:nth-child(5) { /* History */
-    right: -4px;
-    top: 62px;
-    left: auto;
-    transition: none;
-    font-size: 12px;
-}
 
 .menu-open{
     display:none;
