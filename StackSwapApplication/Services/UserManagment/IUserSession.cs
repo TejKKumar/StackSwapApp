@@ -10,6 +10,7 @@ namespace StackSwapApplication.Services
         public bool UserLoginInfo(LoginVM loginVM);
         public bool GetUserSession();
         public TradeUser? GetCurrentUser();
+        public void logout();
 
     }
 }

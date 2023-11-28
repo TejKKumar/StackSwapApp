@@ -61,6 +61,12 @@ namespace StackSwapApplication.Controllers
             return View();
         }
 
+        public IActionResult Logout()
+        {
+            _userSession.logout();
+            return RedirectToAction("MainPage", "Home");
+        }
+
 
 
         public IActionResult Register()

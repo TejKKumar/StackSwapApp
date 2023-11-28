@@ -8,7 +8,9 @@ body {
 }
 
 h4{
-    color:green
+    color:black;
+    position: relative;
+    right:30px;
 }
 
 
@@ -45,42 +47,54 @@ h4{
 .menu-open:checked ~ .menu a {
     visibility: visible;
     opacity: 1;
+
 }
+
+
     .menu a:nth-child(1) { /* Update Profile */
-        left: 33px;
+        left: 15px;
         right:auto;
-        top: 42px;
-        font-size: 10px;
+        top: 40px;
+        font-size: 12px !important;
     }
 
     .menu a:nth-child(2) { /* Logout */
-        right: 37px;
-        top: 48px;
+        right: 22px;
+        top: 53px;
         left: auto;
         transition: none;
-        font-size: 20px;
+        font-size: 12px;
     }
 
 .menu a:nth-child(3) { /* Trade */
-    right: 37px;
-    top: 13px;
+    right: 29px;
+    top: 30px;
     left: auto;
     transition: none;
-    font-size: 20px;
+    font-size: 12px;
 }
 .menu a:nth-child(4) { /* Inbox */
-    right: -51px;
-    top: 15px;
+    right: -31px;
+    top: 30px;
     left: auto;
     transition: none;
-    font-size: 20px;
+    font-size: 12px;
+}
+
+.menu a:nth-child(5) { /* History */
+    right: -4px;
+    top: 62px;
+    left: auto;
+    transition: none;
+    font-size: 12px;
+}
+
+.menu-open{
+    display:none;
 }
 
 
-/* Checkbox */
-.menu-open {
-    display: none;
-}
+
 
 .menu-button {
     width: 40px;
@@ -99,6 +113,8 @@ h4{
     border-radius: 50px;
 }
 
+
+
     .menu-button:hover {
         background: #fafaea;
     }
@@ -107,7 +123,6 @@ h4{
 a.icon {
     display: inline-block;
     cursor: pointer;
-    /* I'm serious about hiding */
     font-size: 0px;
     color: rgba(0,0,0,0);
 }
@@ -116,7 +131,6 @@ a.icon {
         position: absolute;
         top: 10px;
         color: #2020a0;
-        font-size: 16px;
     }
 
     a.icon:hover:before {

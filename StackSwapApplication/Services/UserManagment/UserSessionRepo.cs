@@ -71,6 +71,25 @@ namespace StackSwapApplication.Services
             }
             return user;
         }
+
+        public void logout()
+        {
+            var httpContext = _httpContextAccessor.HttpContext;
+
+            if (httpContext != null)
+            {
+                ISession session = httpContext.Session;
+
+                if (session.GetString("UserName") != null)
+                {
+                    session.Clear();
+                    httpContext.Session.Clear();
+                    httpContext.Session.Remove("UserName"); 
+                    httpContext.Response.Cookies.Delete(".AspNetCore.Session");
+
+                }
+            }
+        }
     }
 }
 

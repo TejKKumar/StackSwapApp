@@ -185,9 +185,18 @@ namespace StackSwapApplication.Controllers
         [HttpGet] //Get Method to get a view of all the users 
         public IActionResult ViewUsers() 
         {
-            uint loggedId = _userSession.GetCurrentUser().Id;
-            var userList = _repo.GetUsers.Where(u=>u.Id != loggedId);
-            return View(userList);
+            var loggedUser = _userSession.GetCurrentUser();
+            if (loggedUser != null)
+            {
+                uint loggedId = loggedUser.Id;
+                var userList = _repo.GetUsers.Where(u => u.Id != loggedId);
+                return View(userList);
+            }
+
+            else
+            {
+                return RedirectToAction("Login", "User");
+            }
         }
 
         [HttpPost] //Post action called to view a particular user that redirects to another view // This used to validate the user Id before redirecting

@@ -9,6 +9,7 @@
     
 
 }
+
 <!DOCTYPE html>
 
 <head>
@@ -35,32 +36,30 @@
                 <label class="menu-button" for="menu-open" aria-hidden="true"><span class="fas fa-user"></span></label>
                 <input class="menu-open" id="menu-open" type="checkbox" aria-hidden="true" />
                 <nav class="menu" role="navigation">
-                    <a asp-action="" class="icon fas fa-user-edit"></a>
-                    <a href="#" class="fas fa-sign-out-alt"></a>
-                    <a asp-action="ViewUsers" asp-controller="Trade" class="fas fa-exchange" aria-hidden="true"></a>
-                    <a href="#" class="fas fa-inbox"></a>
-                    <a asp-action="Profile" asp-controller="User" class="fas fa-user"></a>
-                    
+                    @*Need to add edit profile method and view*@
+                    <a asp-action="" class="icon fas fa-user-edit fa-sm"></a>
+                    <a asp-action="Logout" asp-controller="User" class="fas fa-sign-out-alt fa-sm"></a>
+                    <a asp-action="ViewUsers" asp-controller="Trade" class="fas fa-exchange fa-sm" aria-hidden="true"></a>
+                    <a asp-action="ViewRequests" asp-controller="Trade" class="fas fa-inbox fa-sm"></a>
+                    <a asp-action="Profile" asp-controller="User" class="fas fa-history fa-sm"></a>
                 </nav>
             </div>
+            <h4>Hey @Model.Username</h4>
             </div>
         </nav>
     </header>
 <body>
-<h4>Hey @Model.Username</h4>
 <div class="tradeOptionsGrd">
-@*Making make trade and request for me in the dropdown on top right.*@
     <div class="exgrid_Item"><a class="alink" asp-action="ViewMyCards" asp-controller="Trade">My Cards</a></div>
     <div class="exgrid_Item2"><a class="alink" asp-action="Index" asp-controller="Purchase">Catalogue</a></div>
-    </div>
+</div>
 <br/>
 <div>
     @if (Model.Cards == null)
     {
         <p style="margin-left: 10px;">You don't have any cards. Please head over to the catalogue to purchase a card!</p>
         <script>
-            var divElement = document.getElementsByClassName("exgrid_Item2")[0];
-            divElement.innerHTML = '<a class="alink" asp-action="Index" asp-controller="Purchase"> <b>Catalogue</b>';
+            document.getElementsByClassName("exgrid_Item2")[0].innerHTML.fontcolor("red");
         </script>
         <table class="right-table">
             <thead>
