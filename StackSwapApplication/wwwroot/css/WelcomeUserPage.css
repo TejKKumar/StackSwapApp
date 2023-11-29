@@ -172,7 +172,7 @@ body {
 }
 
 .exgrid_Layout {
-    display: inline-grid;
+    display: inline-grid !important;
     grid-template-columns: 600px 600px;
     grid-template-rows: auto;
     width: 650px;
@@ -180,11 +180,10 @@ body {
 }
 
 .right-table {
-    display: inline-block;
+    display:inline-block;
     margin-left: 1000px;
     overflow-y: auto;
     border-radius: 1px;
-    display: inline-block;
     padding-left: 20px;
     padding-right: 20px;
 }

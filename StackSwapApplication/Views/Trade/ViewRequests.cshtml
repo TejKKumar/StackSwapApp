@@ -4,52 +4,46 @@
     ViewData["Title"] = "ViewRequests";
 }
 
-<header>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-</header>
+<!-- No need for a separate header tag for styles as it should be included in the _Layout.cshtml -->
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
-<h1>Requests made to you..</h1>
+<div class="container mt-4">
+    <h1>Requests made to you..</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Bidder
-            </th>
-            <th>
-                Request Date
-            </th>
-            <th>
-                Status
-            </th>
-            <td>
-                View
-            </td>
-
-
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <table class="table table-hover">
+        <thead class="thead-light">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Buyer.Username)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.InitatedDate)
-                </td>
-                <td>
-                    @(item.IsComplete? "Complete":"Pending")
-                </td>
-                <td>
-                    <form action="ViewRequests/@item.Id" method="post">
-                        <button class="alink" type="submit">View Offer</button>
-                    </form>
-                    
-                </td>
+                <th>Bidder</th>
+                <th>Request Date</th>
+                <th>Status</th>
+                <th>View</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Buyer.Username)
+                    </td>
+                    <td> @Html.DisplayFor(modelItem => item.InitatedDate)</td>
+                    <td class="@(item.IsComplete ? "table-success" : "table-warning")" >@(item.IsComplete ? "Complete" : "Pending")</td>
+                    <td>
+                        <!-- The form action should point to your controller action handling the view offer -->
+                        <form asp-controller="YourControllerName" asp-action="ViewOffer" asp-route-id="@item.Id" method="post">
+                            <button type="submit" class="btn btn-primary">View Offer</button>
+                        </form>
+                    </td>
 
+                </tr>
+                
+            }
+
+        </tbody>
+    </table>
+</div>
+
+<!-- Ensure you have these scripts included in your _Layout.cshtml or here if not using a layout -->
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
