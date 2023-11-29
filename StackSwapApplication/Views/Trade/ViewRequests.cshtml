@@ -14,9 +14,6 @@
     <thead>
         <tr>
             <th>
-                Trade ID
-            </th>
-            <th>
                 Bidder
             </th>
             <th>
@@ -29,16 +26,13 @@
                 View
             </td>
 
-            <th></th>
+
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Buyer.Username)
                 </td>

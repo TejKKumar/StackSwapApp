@@ -142,6 +142,8 @@ namespace StackSwapApplication.Controllers
             }
             else
             {
+                
+       
                 uint? id = _userSession.GetCurrentUser().GetId;
 
                 if(id != null)
