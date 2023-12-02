@@ -15,7 +15,7 @@
         <div class="cardDisplay">
             @foreach (var item in Model.recievedCards)
             {
-                <div class="newCardContainer">
+                <div class="@item.CardTier.ToString()">
                     <div class="newCardName">@item.Champion</div>
                     <div class="newCardTier">
                         @switch (item.CardTier)
@@ -60,7 +60,7 @@
         <div class="cardDisplay">
             @foreach (var item in Model.tradedCards)
             {
-                <div class="newCardContainer">
+                <div class="@item.CardTier.ToString()">
                     <div class="newCardName">@item.Champion</div>
                     <div class="newCardTier">
                         @switch (item.CardTier)

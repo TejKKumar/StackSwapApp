@@ -15,7 +15,7 @@
                 <div class="cardDisplay">
                     @for (var i = 0; i < @Model.BuyerCards.Count; i++)
                     {
-                        <div class="newCardContainer">
+                        <div class="@Model.BuyerCards[i].Card.CardTier.ToString()">
                             <div class="newCardName">@Model.BuyerCards[i].Card.Champion</div>
                             <div class="newCardTier">
                                 @switch (Model.BuyerCards[i].Card.CardTier)
@@ -62,7 +62,7 @@
                 <div class="cardDisplay">
                     @for(var i = 0;  i < Model.SellerCards.Count; i++)
                     {
-                        <div class="newCardContainer">
+                        <div class="@Model.SellerCards[i].Card.CardTier.ToString()">
                             <div class="newCardName">@Model.SellerCards[i].Card.Champion</div>
                             <div class="newCardTier">
                                 @switch (Model.SellerCards[i].Card.CardTier)

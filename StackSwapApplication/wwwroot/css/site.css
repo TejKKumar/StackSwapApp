@@ -177,6 +177,71 @@ viewTable th  viewTable td {
 
 }
 
+.Tier1 {
+    display: grid;
+    grid-template-rows: 50px 100px;
+    border: solid;
+    border-width: 2.5px;
+    border-radius: 16px;
+    border-color: #f1c3f5;
+    box-shadow: 2px 4px 1px #b788e6;
+    width: 175px;
+    height: 180px;
+    margin-bottom: 20px;
+}
+
+.Tier2 {
+    display: grid;
+    grid-template-rows: 50px 100px;
+    border: solid;
+    border-width: 2.5px;
+    border-radius: 16px;
+    border-color: #afe4be;
+    box-shadow: 2px 4px 1px #d1d87a;
+    width: 175px;
+    height: 180px;
+    margin-bottom: 20px;
+}
+
+.Tier3 {
+    display: grid;
+    grid-template-rows: 50px 100px;
+    border: solid;
+    border-width: 2.5px;
+    border-radius: 16px;
+    border-color: #ee6464;
+    box-shadow: 2px 4px 1px #f8b284;
+    width: 175px;
+    height: 180px;
+    margin-bottom: 20px;
+}
+
+.Tier4 {
+    display: grid;
+    grid-template-rows: 50px 100px;
+    border: solid;
+    border-width: 2.5px;
+    border-radius: 16px;
+    border-color: #f1f267;
+    box-shadow: 2px 4px 1px #83b6e6;
+    width: 175px;
+    height: 180px;
+    margin-bottom: 20px;
+}
+
+.Tier5 {
+    display: grid;
+    grid-template-rows: 50px 100px;
+    border: solid;
+    border-width: 2.5px;
+    border-radius: 16px;
+    border-color: #b773e6;
+    box-shadow: 2px 4px 1px #f56363;
+    width: 175px;
+    height: 180px;
+    margin-bottom: 20px;
+}
+
 .newCardName {
     font-family: Garamond, Geneva, Tahoma, sans-serif, Tahoma, Geneva, Verdana, sans-serif;
     padding: 5px 10px 5px 10px;

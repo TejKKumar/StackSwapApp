@@ -25,7 +25,7 @@ else
         <div class="cardDisplay">
             @foreach (var item in Model.Cards)
             {
-                <div class="newCardContainer">
+                <div class="@item.CardTier.ToString()">
                     <div class="newCardName">@item.Champion</div>
                     <div class="newCardTier">
                         @switch (item.CardTier)

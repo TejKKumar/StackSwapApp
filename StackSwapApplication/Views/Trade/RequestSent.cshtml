@@ -16,7 +16,7 @@
         <div class="cardDisplay">
             @foreach (var item in ViewBag.Offered)
             {
-                <div class="newCardContainer">
+                <div class="@item.CardTier.ToString()">
                     <div class="newCardName">@item.Champion</div>
                     <div class="newCardTier">
                         @switch (item.CardTier)
@@ -61,7 +61,7 @@
         <div class="cardDisplay">
             @foreach (var item in ViewBag.Requested)
             {
-                <div class="newCardContainer">
+                <div class="@item.CardTier.ToString()">
                     <div class="newCardName">@item.Champion</div>
                     <div class="newCardTier">
                         @switch (item.CardTier)
