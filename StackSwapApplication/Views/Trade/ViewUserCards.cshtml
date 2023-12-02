@@ -7,17 +7,111 @@
 </head>
 
 <form asp-action="ViewUserCards" asp-controller="Trade">
-<div class="exgrid_Layout">
+
+    <div class="CardSetGrid">
+        <div>
+            <h4>Your Cards</h4>
+            <div class="wrapperGrid">
+                <div class="cardDisplay">
+                    @for (var i = 0; i < @Model.BuyerCards.Count; i++)
+                    {
+                        <div class="newCardContainer">
+                            <div class="newCardName">@Model.BuyerCards[i].Card.Champion</div>
+                            <div class="newCardTier">
+                                @switch (Model.BuyerCards[i].Card.CardTier)
+                                {
+                                    case Tier.Tier1:
+                                        {
+                                            <img src="@($"/images/{Model.BuyerCards[i].Card.CardTier.ToString()}.png")">
+                                            break;
+                                        }
+                                    case Tier.Tier2:
+                                        {
+                                            <img src="@($"/images/{Model.BuyerCards[i].Card.CardTier.ToString()}.png")">
+                                            break;
+                                        }
+                                    case Tier.Tier3:
+                                        {
+                                            <img src="@($"/images/{Model.BuyerCards[i].Card.CardTier.ToString()}.png")">
+                                            break;
+                                        }
+                                    case Tier.Tier4:
+                                        {
+                                            <img src="@($"/images/{Model.BuyerCards[i].Card.CardTier.ToString()}.png")">
+                                            break;
+                                        }
+                                    case Tier.Tier5:
+                                        {
+                                            <img src="@($"/images/{Model.BuyerCards[i].Card.CardTier.ToString()}.png")">
+                                            break;
+                                        }
+                                }
+                                <div><p><img src="~/images/damage.png" />@Model.BuyerCards[i].Card.Damage <img src="~/images/health.png" />@Model.BuyerCards[i].Card.Health <img src="~/images/magic.png" />@Model.BuyerCards[i].Card.Magic</p></div>
+                            </div>
+                            <input type="checkbox" asp-for="@Model.BuyerCards[i].IsChecked" />
+                            <input type="hidden" asp-for="@Model.BuyerCards[i].CardId" />
+
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div>
+            <h4>@Model.Seller.Username </h4>
+            <div class="wrapperGrid">
+                <div class="cardDisplay">
+                    @for(var i = 0;  i < Model.SellerCards.Count; i++)
+                    {
+                        <div class="newCardContainer">
+                            <div class="newCardName">@Model.SellerCards[i].Card.Champion</div>
+                            <div class="newCardTier">
+                                @switch (Model.SellerCards[i].Card.CardTier)
+                                {
+                                    case Tier.Tier1:
+                                        {
+                                            <img src="@($"/images/{Model.SellerCards[i].Card.CardTier.ToString()}.png")">
+                                            break;
+                                        }
+                                    case Tier.Tier2:
+                                        {
+                                            <img src="@($"/images/{Model.SellerCards[i].Card.CardTier.ToString()}.png")">
+                                            break;
+                                        }
+                                    case Tier.Tier3:
+                                        {
+                                            <img src="@($"/images/{Model.SellerCards[i].Card.CardTier.ToString()}.png")">
+                                            break;
+                                        }
+                                    case Tier.Tier4:
+                                        {
+                                            <img src="@($"/images/{Model.SellerCards[i].Card.CardTier.ToString()}.png")">
+                                            break;
+                                        }
+                                    case Tier.Tier5:
+                                        {
+                                            <img src="@($"/images/{Model.SellerCards[i].Card.CardTier.ToString()}.png")">
+                                            break;
+                                        }
+                                }
+                                <div><p><img src="~/images/damage.png" />@Model.SellerCards[i].Card.Damage <img src="~/images/health.png" />@Model.SellerCards[i].Card.Health <img src="~/images/magic.png" />@Model.SellerCards[i].Card.Magic</p></div>
+                            </div>
+
+                            <input type="checkbox" asp-for="@Model.SellerCards[i].IsChecked" />
+                            <input type="hidden" asp-for="@Model.SellerCards[i].CardId" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        </div>
+@* <div class="exgrid_Layout">
 
 <div class="exgrid_Item">
 <h1>Your Cards</h1>
 
-
-
 <table class="tableStyle">
     <thead>
         <tr>
-
                     <th>
 
                         Champion
@@ -198,27 +292,13 @@
     </table>
 
 </div>
-</div>
+</div> *@
 
 <input asp-for="@Model.Seller.Id" type="hidden"/>
 <input asp-for="@Model.Buyer.Id" type="hidden"/>
-@* <input asp-for="@Model.Seller" type="hidden"/>
-<input asp-for="@Model.Buyer" type="hidden" /> 
- <input asp-for="@Model.BuyerCards" type="hidden" />
-@for (var i = 0; i < Model.SellerCards.Count; i++)
-    {
-        <input type="hidden" asp-for="@Model.SellerCards[i].CardId"/>
-        <input type="hidden" asp-for="@Model.SellerCards[i].Card" />
-        <input type="hidden" asp-for="@Model.SellerCards[i].IsChecked"/>
 
-    }
-    @for(var i = 0; i < Model.BuyerCards.Count; i++)
-    {
-        <input type="hidden" asp-for="@Model.BuyerCards[i].CardId" />
-        <input type="hidden" asp-for="@Model.BuyerCards[i].Card" />
-        <input type="hidden" asp-for="@Model.BuyerCards[i].IsChecked" />
-    }
-    <input asp-for="@Model.SellerCards" type="hidden" /> *@
+
+
 <button type="submit">Make Trade Request</button>
 </form>
 

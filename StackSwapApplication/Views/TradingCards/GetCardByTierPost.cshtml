@@ -39,7 +39,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Health)
             </th>
-            <th></th>
+            <th>
+                Owner
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -104,7 +106,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Health)
             </td>
-           
+           <td>
+               @Html.DisplayFor(modelItem => item.Owner.Username)
+           </td>
 
         </tr>
 }

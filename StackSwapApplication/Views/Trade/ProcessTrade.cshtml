@@ -3,191 +3,105 @@
     ViewData["Title"] = "ProcessTrade";
 }
 
-<h1>Process Trade</h1>
 
-<div class="exgrid_Layout">
+<div class="CardSetGrid">
 
-<div class="exgrid_Item">
-<h4>@Model.Bidder.Username wants to trade</h4>
-
-<table class="tableStyle">
-    <thead>
-        <tr>
-
-                    <th>
-
-                        Champion
-                    </th>
-                    <th>
-                        Tier
-                    </th>
-                    <th>
-                        Damage
-                    </th>
-                    <th>
-                        Health
-                    </th>
-                    <th>
-                        Magic
-                    </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(var item in Model.BidderCards)
-        {           
-                    <tr>
-                        <td>
-                            @item.Champion
-                                
-                        </td>
-
-                        <td>
+    <div>
+        <h4>@Model.Bidder.Username wants to trade</h4>
+        <div class="wrapperGrid">
+            <div class="cardDisplay">
+                @foreach (var item in Model.BidderCards)
+                {
+                    <div class="newCardContainer">
+                        <div class="newCardName">@item.Champion</div>
+                        <div class="newCardTier">
                             @switch (item.CardTier)
                             {
                                 case Tier.Tier1:
-                                    {
-                                      
-                                        <img src="@($"/images/{item.CardTier.ToString()}.png")">
-                                        break;
-                                    }
-                                case Tier.Tier2:
-                                    {
-
-                                            <img src="@($"/images/{item.CardTier.ToString()}.png")">
-                                        break;
-                                    }
-                                case Tier.Tier3:
-                                    {
-
-                                            <img src="@($"/images/{item.CardTier.ToString()}.png")">
-                                        break;
-                                    }
-                                case Tier.Tier4:
-                                    {
-
-                                            <img src="@($"/images/{item.CardTier.ToString()}.png")">
-                                        break;
-                                    }
-                                case Tier.Tier5:
-                                    {
-
-                                            <img src="@($"/images/{item.CardTier.ToString()}.png")">
-                                        break;
-                                    }
-                            }
-
-                        </td>
-                        <td>
-                                <div>@item.Damage</div>
-                        </td>
-                        <td>
-                                <div>@item.Health</div>
-                        </td>
-                        <td>
-                                <div>@item.Magic</div>
-                        </td>
-                    </tr>
-                        
-                      
-                        
-        }
-    </tbody>
-</table>
-    </div>
-<div class="exgrid_Item">
-    <h4>For you cards: </h4>
-    <table class="tableStyle">
-        <thead>
-            <tr>
-
-                <th>
-
-                    Champion
-                </th>
-                <th>
-                    Tier
-                </th>
-                <th>
-                    Damage
-                </th>
-                <th>
-                    Health
-                </th>
-                <th>
-                    Magic
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-                    @foreach(var item in Model.MyCards)
-                    {
-                        <tr>
-                            <td>
-                                @item.Champion
-
-                            </td>
-
-                            <td>
-                                @switch (item.CardTier)
                                 {
-                                    case Tier.Tier1:
-                                        {
-
-                                            <img src="@($"/images/{item.CardTier.ToString()}.png")">
-                                            break;
-                                        }
-                                    case Tier.Tier2:
-                                        {
-
-                                            <img src="@($"/images/{item.CardTier.ToString()}.png")">
-                                            break;
-                                        }
-                                    case Tier.Tier3:
-                                        {
-
-                                            <img src="@($"/images/{item.CardTier.ToString()}.png")">
-                                            break;
-                                        }
-                                    case Tier.Tier4:
-                                        {
-
-                                            <img src="@($"/images/{item.CardTier.ToString()}.png")">
-                                            break;
-                                        }
-                                    case Tier.Tier5:
-                                        {
-
-                                            <img src="@($"/images/{item.CardTier.ToString()}.png")">
-                                            break;
-                                        }
+                                    <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                    break;
                                 }
+                                case Tier.Tier2:
+                                {
+                                    <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                    break;
+                                }
+                                case Tier.Tier3:
+                                {
+                                    <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                    break;
+                                }
+                                case Tier.Tier4:
+                                {
+                                    <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                    break;
+                                }
+                                case Tier.Tier5:
+                                {
+                                    <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                    break;
+                                }
+                        }
+                    </div>
 
-                            </td>
-                            <td>
-                                <div>@item.Damage</div>
-                            </td>
-                            <td>
-                                <div>@item.Health</div>
-                            </td>
-                            <td>
-                                <div>@item.Magic</div>
-                            </td>
-
-                        </tr>
-
-
-                    }
-    </table>
+                    <div><p><img src="~/images/damage.png" />@item.Damage <img src="~/images/health.png" />@item.Health <img src="~/images/magic.png" />@item.Magic</p></div>
+                </div>
+            }
+            </div>
     </div>
-<div/>
+  </div>
+  <div>
+    <h4>For you cards: </h4>
+    <div class="wrapperGrid">
+        <div class="cardDisplay">
+            @foreach (var item in Model.MyCards)
+            {
+                <div class="newCardContainer">
+                    <div class="newCardName">@item.Champion</div>
+                    <div class="newCardTier">
+                        @switch (item.CardTier)
+                        {
+                            case Tier.Tier1:
+                                {
+                                    <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                    break;
+                                }
+                            case Tier.Tier2:
+                                {
+                                    <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                    break;
+                                }
+                            case Tier.Tier3:
+                                {
+                                    <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                    break;
+                                }
+                            case Tier.Tier4:
+                                {
+                                    <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                    break;
+                                }
+                            case Tier.Tier5:
+                                {
+                                    <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                    break;
+                                }
+                        }
+                    </div>
+                    <div><p><img src="~/images/damage.png" />@item.Damage <img src="~/images/health.png" />@item.Health <img src="~/images/magic.png" />@item.Magic</p></div>
+                </div>
+            }
+        </div>
+    </div>
+  </div>
 </div>
-<div class="tradeOptionsGrd">
-<form class="exgrid_Item" action="/Trade/AcceptTrade/@Model.Trade.Id" method="get">
+<form action="/Trade/AcceptTrade/@Model.Trade.Id" method="get">
     <button class="bttn" type="submit" action="submit">Accept</button>
 </form>
-<form class="exgrid_Item" action="/Trade/RejectTrade/@Model.Trade.Id" method="get">
+<form action="/Trade/RejectTrade/@Model.Trade.Id" method="get">
     <button class="bttn" type="submit" action="submit">Reject</button>
 </form>
-</div>
+
 
 

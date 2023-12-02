@@ -3,272 +3,67 @@
 
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    
 *@
 
-@* <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - StackSwap Application</title>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/WelcomeUserPage.css" asp-append-version="true" />
-    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
-    <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
-</head> *@
 
-@* <header>
+<h2>Welcome @Model.Username</h2>
 
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container-fluid">
-            <div class="mx-auto text-center">
-                <h1>Trade Center</h1>
-
-            </div>
-
-
-            <div class="center-menu">
-                <label class="menu-button" for="menu-open" aria-hidden="true"><span class="fas fa-user"></span></label>
-                <input class="menu-open" id="menu-open" type="checkbox" aria-hidden="true" />
-                <nav class="menu" role="navigation"> *@
-                    @*Need to add edit profile method and view*@
-                  @*   <a asp-action="" class="icon fas fa-user-edit fa-sm"></a>
-                    <a asp-action="Logout" asp-controller="User" class="fas fa-sign-out-alt fa-sm"></a>
-                    <a asp-action="ViewUsers" asp-controller="Trade" class="fas fa-exchange fa-sm" aria-hidden="true"></a>
-                    <a asp-action="ViewRequests" asp-controller="Trade" class="fas fa-inbox fa-sm"></a>
-                    <a asp-action="Profile" asp-controller="User" class="fas fa-history fa-sm"></a>
-                </nav>
-            </div>
-            <h4>Hey @Model.Username</h4>
-        </div>
-    </nav>
-</header> *@
-
-<h1>Trade Center</h1>
-<br />
-
-    <div class="tradeOptionsGrd">
-        @*Need to use css to restyle the first link*@
-        <div class="exgrid_Item"><p>My Cards</p></div>
-        <div class="exgrid_Item2"><p>Catalogue</p></div>
-    </div>
-    <br />
+@if(Model.Cards.Count == 0)
+{
     <div>
-        @if (Model.Cards == null)
-        {
-            <p style="margin-left: 10px;">You don't have any cards. Please head over to the catalogue to purchase a card!</p>
-            <script>
-                document.getElementsByClassName("exgrid_Item2")[0].innerHTML.fontcolor("red");
-            </script>
-            <table class="right-table">
-                <thead>
-                    <tr>
-                        <th>Champion</th>
-                        <th>Tier</th>
-                        <th>Damage</th>
-                        <th>Health</th>
-                        <th>Magic</th>
-                        <th>Cost</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in ViewBag.Catalogue)
-                    {
-                        <tr>
-                            <td>
-                                @item.Champion
-                            </td>
-                            <td>
-                                @switch (item.Tier)
-                                {
-                                    case Tier.Tier1:
-                                        {
+        <p>Oof such empty, you got no Cards @Model.Username</p><br>
+        <p>Header over to the <a asp-action="Index" asp-controller="Purchase">catalogue</a> to get yourself some cards</p>
 
-                                            <img src="@($"/images/{item.Tier.ToString()}.png")">
-                                            break;
-                                        }
-                                    case Tier.Tier2:
-                                        {
-
-                                            <img src="@($"/images/{item.Tier.ToString()}.png")">
-                                            break;
-                                        }
-                                    case Tier.Tier3:
-                                        {
-
-                                            <img src="@($"/images/{item.Tier.ToString()}.png")">
-                                            break;
-                                        }
-                                    case Tier.Tier4:
-                                        {
-
-                                            <img src="@($"/images/{item.Tier.ToString()}.png")">
-                                            break;
-                                        }
-                                    case Tier.Tier5:
-                                        {
-
-                                            <img src="@($"/images/{item.Tier.ToString()}.png")">
-                                            break;
-                                        }
-                                }
-                            </td>
-                            <td>
-                                <div>@item.Damage</div>
-                            </td>
-                            <td>
-                                <div>@item.Health</div>
-                            </td>
-                            <td>
-                                <div>@item.Magic</div>
-                            </td>
-                            <td>
-                                <div>@item.Credits</div>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        <div><a asp-action="Index" asp-controller="" class="text-danger">*** To view more Cards, please head over to the Catalogue ***</a></div>
-        }
-        else
-        {
-            <div class="table-container">
-                <table class="tableStyle">
-                    <thead>
-                        <tr>
-                            <th>Champion</th>
-                            <th>Tier</th>
-                            <th>Damage</th>
-                            <th>Health</th>
-                            <th>Magic</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model.Cards)
-                        {
-                            <tr>
-                                <td>
-                                    @item.Champion
-                                </td>
-                                <td>
-                                    @switch (item.CardTier)
-                                    {
-                                        case Tier.Tier1:
-                                            {
-
-                                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
-                                                break;
-                                            }
-                                        case Tier.Tier2:
-                                            {
-
-                                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
-                                                break;
-                                            }
-                                        case Tier.Tier3:
-                                            {
-
-                                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
-                                                break;
-                                            }
-                                        case Tier.Tier4:
-                                            {
-
-                                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
-                                                break;
-                                            }
-                                        case Tier.Tier5:
-                                            {
-
-                                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
-                                                break;
-                                            }
-                                    }
-                                </td>
-                                <td>
-                                    <div>@item.Damage</div>
-                                </td>
-                                <td>
-                                    <div>@item.Health</div>
-                                </td>
-                                <td>
-                                    <div>@item.Magic</div>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-                <table style="margin-left: 100px;" class="tableStyle">
-                    <thead>
-                        <tr>
-                            <th>Champion</th>
-                            <th>Tier</th>
-                            <th>Damage</th>
-                            <th>Health</th>
-                            <th>Magic</th>
-                            <th>Cost</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        @foreach (var item in ViewBag.Catalogue)
-                        {
-                            <tr>
-                                <td>
-                                    @item.Champion
-                                </td>
-                                <td>
-                                    @switch (item.Tier)
-                                    {
-                                        case Tier.Tier1:
-                                            {
-
-                                                <img src="@($"/images/{item.Tier.ToString()}.png")">
-                                                break;
-                                            }
-                                        case Tier.Tier2:
-                                            {
-
-                                                <img src="@($"/images/{item.Tier.ToString()}.png")">
-                                                break;
-                                            }
-                                        case Tier.Tier3:
-                                            {
-
-                                                <img src="@($"/images/{item.Tier.ToString()}.png")">
-                                                break;
-                                            }
-                                        case Tier.Tier4:
-                                            {
-
-                                                <img src="@($"/images/{item.Tier.ToString()}.png")">
-                                                break;
-                                            }
-                                        case Tier.Tier5:
-                                            {
-
-                                                <img src="@($"/images/{item.Tier.ToString()}.png")">
-                                                break;
-                                            }
-                                    }
-                                </td>
-                                <td>
-                                    <div>@item.Damage</div>
-                                </td>
-                                <td>
-                                    <div>@item.Health</div>
-                                </td>
-                                <td>
-                                    <div>@item.Magic</div>
-                                </td>
-                                <td>
-                                    <div>@item.Credits</div>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        <div><a asp-action="Index" asp-controller="" class="text-danger">*** To view more Cards, please head over to the Catalogue ***</a></div>
-        }
     </div>
+}
+else
+{
+    <div class="wrapperT">
+
+
+        <div class="cardDisplay">
+            @foreach (var item in Model.Cards)
+            {
+                <div class="newCardContainer">
+                    <div class="newCardName">@item.Champion</div>
+                    <div class="newCardTier">
+                        @switch (item.CardTier)
+                        {
+                            case Tier.Tier1:
+                                {
+                                    <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                    break;
+                                }
+                            case Tier.Tier2:
+                                {
+                                    <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                    break;
+                                }
+                            case Tier.Tier3:
+                                {
+                                    <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                    break;
+                                }
+                            case Tier.Tier4:
+                                {
+                                    <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                    break;
+                                }
+                            case Tier.Tier5:
+                                {
+                                    <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                    break;
+                                }
+                        }
+                    </div>
+                    <div><p><img src="~/images/damage.png" />@item.Damage <img src="~/images/health.png" />@item.Health <img src="~/images/magic.png" />@item.Magic</p></div>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+
+
+   

@@ -7,56 +7,105 @@
 
 <h1>Catalogue</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th scope="col">
-                @Html.DisplayNameFor(model => model.Champion)
-            </th>
-            <th scope="col">
-                @Html.DisplayNameFor(model => model.Tier)
-            </th>
-            <th scope="col">
-                @Html.DisplayNameFor(model => model.Damage)
-            </th>
-            <th scope="col">
-                @Html.DisplayNameFor(model => model.Magic)
-            </th>
-            <th scope="col">
-                @Html.DisplayNameFor(model => model.Health)
-            </th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<div class="wrapper">
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Champion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tier)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Damage)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Magic)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Health)
-                </td>
-                <td>
-                    <a asp-action="ConfirmPurchase" asp-route-id="@item.Id">Buy Card</a>
-                </td>
+                @*    <th scope="col">
+                @Html.DisplayNameFor(model => model.Id)
+                </th> *@
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Champion)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Tier)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Damage)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Magic)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Health)
+                </th>
+                <th scope="col"></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @*    <td>
+                @Html.DisplayFor(modelItem => item.Id)
+                </td> *@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Champion)
+                    </td>
+                    <td>
+                        @*  @Html.DisplayFor(modelItem => item.Tier) *@
+                        @switch (item.Tier)
+                        {
+                            case Tier.Tier1:
+                                {
+                                    <label>Novice</label>
+
+                                    <br />
+                                    <img src="@($"/images/{item.Tier.ToString()}.png")">
+                                    break;
+                                }
+                            case Tier.Tier2:
+                                {
+                                    <div class="t1">
+                                        <label>Soldier</label>
+
+                                        <br />
+                                        <img src="@($"/images/{item.Tier.ToString()}.png")">
+                                    </div>
+
+                                    break;
+                                }
+                            case Tier.Tier3:
+                                {
+                                    <label>Warrior</label>
+
+                                    <br />
+                                    <img src="@($"/images/{item.Tier.ToString()}.png")">
+                                    break;
+                                }
+                            case Tier.Tier4:
+                                {
+                                    <label>Legend</label>
+
+                                    <br />
+                                    <img src="@($"/images/{item.Tier.ToString()}.png")">
+                                    break;
+                                }
+                            case Tier.Tier5:
+                                {
+                                    <label>Celestial</label>
+
+                                    <br />
+                                    <img src="@($"/images/{item.Tier.ToString()}.png")">
+                                    break;
+                                }
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Damage)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Magic)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Health)
+                    </td>
+                    <td>
+                        <a class="alink" asp-action="ConfirmPurchase" asp-route-id="@item.Id">BUY</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

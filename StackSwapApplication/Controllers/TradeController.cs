@@ -37,7 +37,7 @@ namespace StackSwapApplication.Controllers
             {
                 uint loggedId = _userSession.GetCurrentUser().Id;
 
-                IEnumerable<Trade> tradeRequests = _repo.GetTrades.Where(t => t.SellerId == loggedId && t.IsAccepted == false);
+                IEnumerable<Trade> tradeRequests = _repo.GetTrades.Where(t => t.SellerId == loggedId && t.IsComplete == false);
                 return View(tradeRequests);
             }
 
@@ -254,6 +254,7 @@ namespace StackSwapApplication.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult ViewUserCards(ViewCardsVM vm)
         {
             

@@ -31,7 +31,7 @@
                     <td class="@(item.IsComplete ? "table-success" : "table-warning")" >@(item.IsComplete ? "Complete" : "Pending")</td>
                     <td>
                         <!-- The form action should point to your controller action handling the view offer -->
-                        <form asp-controller="YourControllerName" asp-action="ViewOffer" asp-route-id="@item.Id" method="post">
+                        <form asp-controller="Trade" asp-action="ViewRequests" asp-route-id="@item.Id" method="post">
                             <button type="submit" class="btn btn-primary">View Offer</button>
                         </form>
                     </td>

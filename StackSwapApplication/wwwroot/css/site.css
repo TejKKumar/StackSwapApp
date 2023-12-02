@@ -33,12 +33,13 @@ html {
     padding: 10px 5px 10px 5px;
 }
 
-.tableStyle {
+.viewTable {
     border-radius: 7px;
     display: block;
+
 }
 
-th, td {
+viewTable th  viewTable td {
     text-align: left;
     padding: 4px 4px 4px 4px;
     border-color: #020921;
@@ -47,8 +48,33 @@ th, td {
     border-right: 1px solid #ddd;
     border-radius: 2px;
     font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    background: #15559a;
+    color: white;
 }
 
+.viewTable:nth-child(1) th {
+    background-color: #13375f;
+    color: white;
+}
+
+.tableStyle {
+    border-radius: 7px;
+    display: block;
+}
+
+ th td{
+        text-align: left;
+        padding: 4px 4px 4px 4px;
+        border-color: #020921;
+        border-bottom: 1px solid #ddd;
+        border-top: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-radius: 2px;
+        font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+        background: #15559a;
+        color: white;
+            
+}
 
 .tradeOptionsGrd {
     display: grid;
@@ -64,25 +90,45 @@ th, td {
     padding: 10px 5px 10px 5px;
 }
 
-.alink {
-    color: #0f70cc;
+.alinkB {
+    color: white;
     border-color: #fd6e39;
+    background-color: #0f70cc;
     border-radius: 9px;
-    padding: 2px 3px;
+    padding: 5px 1px 5px 1px;
     border: thick;
-    margin: 0px 5px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    text-decoration: none;
+}
+
+    .alinkB:active {
+        background-color: #0f70cc;
+        color: white;
+    }
+
+    .alinkB:hover {
+        background-color: #42bd66;
+        color: white;
+    }
+
+.alink {
+    color: #0e59a0;
+    padding: 5px 1px 5px 1px;
+    border: thick;
+    margin: 0px 0px 0px 0px;
     font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
     text-decoration: none;
 }
 
     .alink:active {
-        background-color: #0f70cc;
-        color: white;
+       /* background-color: #0f70cc;*/
+        color: black;
     }
 
     .alink:hover {
-        background-color: #0f70cc;
-        color: white;
+       /* background-color: #42bd66;*/
+        color: black;
     }
 
 .bttn {
@@ -92,7 +138,7 @@ th, td {
     border-radius: 9px;
     padding: 2px 3px;
     border: thick;
-    margin: 0px 0px 3px 0px;
+    margin: 0px 0px 0px 0px;
     font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
     text-decoration: none;
 }
@@ -103,7 +149,7 @@ th, td {
     }
 
     .bttn:hover {
-        background-color: #d35627;
+        background-color: #42bd66;
         color: white;
     }
 
@@ -117,3 +163,98 @@ th, td {
     height: 90px;
 }
 
+.newCardContainer {
+    display:grid;
+    grid-template-rows: 50px 100px;
+    border: solid;
+    border-width: 2.5px;
+    border-radius:16px;
+    border-color: #b7f6c9;
+    box-shadow: 2px 4px 1px #88c3fa;
+    width: 175px;
+    height: 180px;
+    margin-bottom: 20px;
+
+}
+
+.newCardName {
+    font-family: Garamond, Geneva, Tahoma, sans-serif, Tahoma, Geneva, Verdana, sans-serif;
+    padding: 5px 10px 5px 10px;
+    text-align: center;
+    font-weight: bold;
+/*    border: double;
+    border-color: #c35050;
+    border-radius: 10px;*/
+}
+
+.newCardTier {
+    padding: 20px 5px 20px 5px;
+    text-align: center;
+ /*   border: double;
+    border-color: #4da5f7;
+    border-radius: 10px;*/
+    font-family: Garamond, Geneva, Tahoma, sans-serif, Tahoma, Geneva, Verdana, sans-serif;
+    padding: 5px 5px 5px 5px;
+}
+
+.newCardInfo {
+    font-family: Garamond, Geneva, Tahoma, sans-serif, Tahoma, Geneva, Verdana, sans-serif;
+    padding: 5px 5px 5px 5px;
+    text-align: center
+}
+
+.header {
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+}
+
+.tblHeaderD{
+    background: #42bd66;
+    color: white;
+}
+
+.wrapper {
+    height: 75vh;
+    overflow-y: scroll;
+
+
+}
+
+.wrapperT {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.cardDisplay{
+    display : grid;
+    grid-template-columns: 198px 198px 198px;
+
+}
+
+.cardDisplayI{
+
+}
+
+.CardSetGrid{
+    display : grid;
+    grid-template-columns : auto auto;
+}
+
+.leftSet{
+    border-right : thin;
+    border-color : black;
+}
+
+.rightSet{
+    border-left :  thin;
+}
+
+
+.wrapperGrid {
+    display: flex;
+    border: thin;
+    /*    justify-content: center;
+    align-items: center;
+    text-align: center;*/
+}

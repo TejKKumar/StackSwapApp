@@ -177,6 +177,23 @@ namespace StackSwapApplication.Services
                 rejectedCards = rejectedCards.AsEnumerable(),
             };
 
+            trade.buyerCardsInfo.ForEach((b) =>
+            {
+
+                var Card = _dataService.GetCards.Single(c => c.Id == b.CardId);
+                Card.Available = true;
+                _dataService.UpdateEntity(Card);
+                //recivedCards.Add(Card);
+
+            });
+
+            trade.sellerCardsInfo.ForEach(s =>
+            {
+                var Card = _dataService.GetCards.Single(c => c.Id == s.CardId);
+                Card.Available = true;
+                _dataService.UpdateEntity(Card);
+                //tradedCards.Add(Card);
+            });
 
 
             return vm;

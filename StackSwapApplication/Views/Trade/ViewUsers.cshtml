@@ -4,11 +4,15 @@
     ViewData["Title"] = "ViewUsers";
 }
 
+
+<header>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</header>
 <h1>View Users</h1>
 
 <div>
 
-    <table class="tableStyle">
+    <table class="viewTable">
         <thead>
             <tr>
                
@@ -16,8 +20,26 @@
 
                     User Name
                 </th>
+                <th>
+                    <img src="~/images/Tier1.PNG"/>
+                </th>
+                 <th>
+                    <img src="~/images/Tier2.png"/>
+                </th>
+                 <th>
+                    <img src="~/images/Tier3.png"/>
+                </th>
+                <th>
+                    <img src="~/images/Tier4.png" />
 
-                <th></th>
+                </th>
+                <th>
+                    <img src="~/images/Tier5.png" />
+                </th>
+
+                <th>
+                    Check Out
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +48,21 @@
                 <tr>
                     <td id="BookId">
                         @item.Username
+                    </td>
+                    <td>
+                        @item.Cards.Where(c=>c.CardTier == Tier.Tier1).Count()
+                    </td>
+                     <td>
+                        @item.Cards.Where(c=>c.CardTier == Tier.Tier2).Count()
+                    </td>
+                    <td>
+                        @item.Cards.Where(c=>c.CardTier == Tier.Tier3).Count()
+                    </td>
+                    <td>
+                        @item.Cards.Where(c=>c.CardTier == Tier.Tier4).Count()
+                    </td>
+                    <td>
+                        @item.Cards.Where(c=>c.CardTier == Tier.Tier5).Count()
                     </td>
    
                     <td>

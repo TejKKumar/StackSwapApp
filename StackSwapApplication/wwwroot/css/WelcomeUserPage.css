@@ -188,7 +188,8 @@ body {
     padding-right: 20px;
 }
 .right-table th {
-        background-color: green;
+        background-color: #22cf7a;
+        color: white;
     }
 .table-container{
     display: flex;
@@ -214,11 +215,11 @@ th, td {
 }
 
 .tableStyle:nth-child(2) th{
-    background-color: green;
+    background-color: white;
 }
 
 .tableStyle:nth-child(1) th{
-    background-color:blue;
+    background-color:white;
 }
 
 
@@ -302,3 +303,4 @@ th, td {
         background-color: #d35627;
         color: white;
     }
+
