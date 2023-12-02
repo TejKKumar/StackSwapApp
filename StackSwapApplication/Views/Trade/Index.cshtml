@@ -7,19 +7,69 @@
 *@
 
 
-<h2>Welcome @Model.Username</h2>
+<h2 class="h2Style">Welcome @Model.Username</h2>
+
+<div>
+
 
 @if(Model.Cards.Count == 0)
 {
-    <div>
+    <div class="font">
         <p>Oof such empty, you got no Cards @Model.Username</p><br>
         <p>Header over to the <a asp-action="Index" asp-controller="Purchase">catalogue</a> to get yourself some cards</p>
 
     </div>
 }
 else
-{
+{       <div class="wrapperT">
+        <table class="viewTable">
+            <thead>
+                <tr>
+                    <th>
+                        <img src="~/images/Tier1.PNG" />
+                    </th>
+                    <th>
+                        <img src="~/images/Tier2.png" />
+                    </th>
+                    <th>
+                        <img src="~/images/Tier3.png" />
+                    </th>
+                    <th>
+                        <img src="~/images/Tier4.png" />
+
+                    </th>
+                    <th>
+                        <img src="~/images/Tier5.png" />
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Model.Cards.Where(c=>c.CardTier == Tier.Tier1).Count()
+                    </td>
+                    <td>
+                        @Model.Cards.Where(c=>c.CardTier == Tier.Tier2).Count()
+                    </td>
+                    <td>
+                        @Model.Cards.Where(c=>c.CardTier == Tier.Tier3).Count()
+                    </td>
+                    <td>
+                        @Model.Cards.Where(c=>c.CardTier == Tier.Tier4).Count()
+                    </td>
+                    <td>
+                        @Model.Cards.Where(c=>c.CardTier == Tier.Tier5).Count()
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        </div>
+        <br />
     <div class="wrapperT">
+
+           
 
 
         <div class="cardDisplay">
@@ -63,6 +113,7 @@ else
         </div>
     </div>
 }
+
 
 
 

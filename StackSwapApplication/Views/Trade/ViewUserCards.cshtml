@@ -10,8 +10,8 @@
 
     <div class="CardSetGrid">
         <div>
-            <h4>Your Cards</h4>
-            <div class="wrapperGrid">
+            <h4 class="h2Style buyer">Your Cards</h4>
+            <div class="wrapperGridL">
                 <div class="cardDisplay">
                     @for (var i = 0; i < @Model.BuyerCards.Count; i++)
                     {
@@ -57,8 +57,8 @@
             </div>
         </div>
         <div>
-            <h4>@Model.Seller.Username </h4>
-            <div class="wrapperGrid">
+            <h4 class="h2Style seller">@Model.Seller.Username's Cards </h4>
+            <div class="wrapperGridR">
                 <div class="cardDisplay">
                     @for(var i = 0;  i < Model.SellerCards.Count; i++)
                     {
@@ -298,7 +298,9 @@
 <input asp-for="@Model.Buyer.Id" type="hidden"/>
 
 
-
-<button type="submit">Make Trade Request</button>
+<br />
+<button type="submit" class="btn btn-primary">Make Request</button><br />
 </form>
+<br />
+<a asp-action="ViewUsers" asp-controller="Trade" class="btn btn-primary">Back</a>
 

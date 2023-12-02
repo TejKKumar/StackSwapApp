@@ -4,32 +4,35 @@
     ViewData["Title"] = "Catalogue";
 }
 
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
 
-<h1>Catalogue</h1>
+<h1 class="font">Catalogue</h1>
 
-<div class="wrapper">
-    <table class="table">
+<div class="wrapperT">
+    <table class="viewTable">
         <thead>
             <tr>
                 @*    <th scope="col">
                 @Html.DisplayNameFor(model => model.Id)
                 </th> *@
-                <th scope="col">
+                <th scope="col" class="font">
                     @Html.DisplayNameFor(model => model.Champion)
                 </th>
-                <th scope="col">
+                <th scope="col" class="font">
                     @Html.DisplayNameFor(model => model.Tier)
                 </th>
-                <th scope="col">
+                <th scope="col" class="font">
                     @Html.DisplayNameFor(model => model.Damage)
                 </th>
-                <th scope="col">
+                <th scope="col" class="font">
                     @Html.DisplayNameFor(model => model.Magic)
                 </th>
-                <th scope="col">
+                <th scope="col" class="font">
                     @Html.DisplayNameFor(model => model.Health)
                 </th>
-                <th scope="col"></th>
+                <th scope="col" class="font"></th>
             </tr>
         </thead>
         <tbody>

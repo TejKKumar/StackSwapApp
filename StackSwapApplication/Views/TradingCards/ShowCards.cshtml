@@ -3,20 +3,22 @@
 
 @{
     ViewData["Title"] = "ShowCards";
+    Layout = "";
 }
 <!DOCKTYPE html>
 <html>
     <head>
         <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
         <link rel="stylesheet" href="~/css/StyleShowCards.css" asp-append-version="true" />
         <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css"/>
 
     </head>
     <body>
-        <header>
+        <header class="headerH">
                 <img src="~/images/StackSwapLogo.jpg" alt="StackSwapLogo" />
                 
-        <div class="champion">
+        <div class="champion font">
                 @using (Html.BeginForm("GetCardByNamePost", "TradingCards"))
                 {
                         <p>
@@ -25,7 +27,7 @@
                         <input type="submit" value="Search" />
                 }
         </div>
-        <div class="enum-list">
+        <div class="enum-list font">
                @using (Html.BeginForm("GetCardByTierPost", "TradingCards"))
                 {
                             <p>
@@ -41,96 +43,108 @@
         </header>
 
         
-<h1>Cards Deck</h1>
+<h2 class="h2Style">Cards Deck</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Champion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CardTier)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Damage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Magic)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Health)
-            </th>
-                <th>
+<div class="wrapperT">
+        <table class="table font">
+            <thead>
+                <tr>
+                    <th>
+                            @Html.DisplayNameFor(model => model.Champion)
+                    </th>
+                    <th>
+                            @Html.DisplayNameFor(model => model.CardTier)
+                    </th>
+                    <th>
+                            @Html.DisplayNameFor(model => model.Damage)
+                    </th>
+                    <th>
+                            @Html.DisplayNameFor(model => model.Magic)
+                    </th>
+                    <th>
+                            @Html.DisplayNameFor(model => model.Health)
+                    </th>
+                    <th>
                         Owner
-                </th>
+                    </th>
 
-           
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Champion)
-            </td>
-            <td>
-                @* @Html.DisplayFor(modelItem => item.CardTier) *@
 
-                    @switch (item.CardTier)
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                    @foreach (var item in Model)
                     {
-                        case Tier.Tier1:
-                            {
-                                <label>Novice</label><br/>
-                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
-                                break;
-                            }
-                        case Tier.Tier2:
-                            {
-                                <label>Soldier</label><br/>
-                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
-                                break;
-                            }
-                        case Tier.Tier3:
-                            {
-                                <label>Warrior</label><br/>
-                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
-                                break;
-                            }
-                        case Tier.Tier4:
-                            {
-                                <label>Legend</label><br/>
-                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
-                                break;
-                            }
-                        case Tier.Tier5:
-                            {
-                                <label>Celestial</label><br/>
-                                <img src="@($"/images/{item.CardTier.ToString()}.png")">
-                                break;
-                            }
-                    }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Damage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Magic)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Health)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Owner.Username)
-            </td>
-           
-            
-        </tr>
-}
-    </tbody>
-</table>
+                    <tr>
+                        <td>
+                                @Html.DisplayFor(modelItem => item.Champion)
+                        </td>
+                        <td>
+                                @* @Html.DisplayFor(modelItem => item.CardTier) *@
 
+                                @switch (item.CardTier)
+                                {
+                                    case Tier.Tier1:
+                                        {
+                                        <label>Novice</label>
+
+                                            <br />
+                                        <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                            break;
+                                        }
+                                    case Tier.Tier2:
+                                        {
+                                        <label>Soldier</label>
+
+                                            <br />
+                                        <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                            break;
+                                        }
+                                    case Tier.Tier3:
+                                        {
+                                        <label>Warrior</label>
+
+                                            <br />
+                                        <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                            break;
+                                        }
+                                    case Tier.Tier4:
+                                        {
+                                        <label>Legend</label>
+
+                                            <br />
+                                        <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                            break;
+                                        }
+                                    case Tier.Tier5:
+                                        {
+                                        <label>Celestial</label>
+
+                                            <br />
+                                        <img src="@($"/images/{item.CardTier.ToString()}.png")">
+                                            break;
+                                        }
+                                }
+                        </td>
+                        <td>
+                                @Html.DisplayFor(modelItem => item.Damage)
+                        </td>
+                        <td>
+                                @Html.DisplayFor(modelItem => item.Magic)
+                        </td>
+                        <td>
+                                @Html.DisplayFor(modelItem => item.Health)
+                        </td>
+                        <td>
+                                @Html.DisplayFor(modelItem => item.Owner.Username)
+                        </td>
+
+
+                    </tr>
+                    }
+            </tbody>
+        </table>
+</div>
 
 
 </body>

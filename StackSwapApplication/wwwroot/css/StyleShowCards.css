@@ -87,6 +87,7 @@ header img {
 .table td {
     padding: 10px 8px;
     border-bottom: 1px solid #ddd;
+    text-align: center;
 }
 
 table label {

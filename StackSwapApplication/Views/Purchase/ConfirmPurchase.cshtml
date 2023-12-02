@@ -8,52 +8,55 @@
 
 
 <br />
-<div class="newCardContainer">
-    <div class="newCardName">@Model.Champion</div>
-    <div class="newCardTier">
-         @switch (Model.Tier)
+<div class="wrapperT">
+    <div class="@Model.Tier.ToString()">
+        <div class="newCardName">@Model.Champion</div>
+        <div class="newCardTier">
+            @switch (Model.Tier)
+            {
+                case Tier.Tier1:
                     {
-                        case Tier.Tier1:
-                            {
-                                <img src="@($"/images/{Model.Tier.ToString()}.png")">
-                                break;
-                            }
-                        case Tier.Tier2:
-                            {
-                                <img  src="@($"/images/{Model.Tier.ToString()}.png")">
-                                break;
-                            }
-                        case Tier.Tier3:
-                            {
-                                <img  src="@($"/images/{Model.Tier.ToString()}.png")">
-                                break;
-                            }
-                        case Tier.Tier4:
-                            {
-                                <img  src="@($"/images/{Model.Tier.ToString()}.png")">
-                                break;
-                            }
-                        case Tier.Tier5:
-                            {
-                                <img  src="@($"/images/{Model.Tier.ToString()}.png")">
-                                break;
-                            }
-                  }
-        <div><p><img src="~/images/damage.png" />@Model.Damage <img src="~/images/health.png" />@Model.Health <img src="~/images/magic.png" />@Model.Magic</p></div>
+                        <img src="@($"/images/{Model.Tier.ToString()}.png")">
+                        break;
+                    }
+                case Tier.Tier2:
+                    {
+                        <img src="@($"/images/{Model.Tier.ToString()}.png")">
+                        break;
+                    }
+                case Tier.Tier3:
+                    {
+                        <img src="@($"/images/{Model.Tier.ToString()}.png")">
+                        break;
+                    }
+                case Tier.Tier4:
+                    {
+                        <img src="@($"/images/{Model.Tier.ToString()}.png")">
+                        break;
+                    }
+                case Tier.Tier5:
+                    {
+                        <img src="@($"/images/{Model.Tier.ToString()}.png")">
+                        break;
+                    }
+            }
+            <div><p><img src="~/images/damage.png" />@Model.Damage <img src="~/images/health.png" />@Model.Health <img src="~/images/magic.png" />@Model.Magic</p></div>
+        </div>
+
+
+
+
+
+
     </div>
-    
 
-
-
-
+    <br />
 
 </div>
-
-<br />
-
-<form method="post" asp-action="MakePurchase">
-    <input type="hidden" asp-for="Id" />
-    <input type="submit" value="Buy" class="bttn"/>
-    <br />
-    <a asp-action="Index" class="alinkB">Back</a>
-</form>
+<div class="wrapperT">
+    <form method="post" asp-action="MakePurchase">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Buy" class="bttn" />
+        <a asp-action="Index" class="alinkB">Back</a>
+    </form>
+</div>

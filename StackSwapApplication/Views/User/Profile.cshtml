@@ -1,16 +1,178 @@
 ﻿@model StackSwapApplication.ViewModels.ProfileViewModel
 
-<h1>@Model.User!.Name's profile</h1>
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<h1 class="font">@Model.User.Username</h1>
+<div class="wrapperT">
+    <div class="profileTbl">
+        <div>
+            <h2 class="h2Style">Profile</h2>
+            <div class="wrapperTables">
+                <table class="viewTable">
+                    <thead>
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Email
+                            </th>
+                            <th>
+                                Credits
+                            </th>
+                            <th>
+                                No. Cards
+                            </th>
+                            <th>
+                                No. Trades
+                            </th>
+                            <th>
+                                No. Purchases
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                @Model.User.Name
+                            </td>
+                            <td>
+                                @Model.User.Email
+                            </td>
+                            <td>
+                                @Model.User.Credits
+                            </td>
+                            <td>
+                                @Model.User.Cards!.Count
+                            </td>
+                            <td>
+                                @Model.User.Trades!.Count
+                            </td>
+                            <td>
+                                @Model.User.Purchases!.Count
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div>
+            <h2 class="h2Style">Trade History</h2>
+            <div class="wrapperTables">
+                <table class="viewTable">
+                    <thead>
+                        <tr>
+                            <th>You offered</th>
+                            <th>For</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Trades!)
+                        {
+                            <tr>
+                                @if (item.SellerId == Model.User!.Id)
+                                {
+                                    <td>
+                                        @foreach (var card in item.sellerCardsInfo)
+                                        {
+                                            <p>@card.Card.Champion (@card.Card.CardTier)</p>
+                                        }
+                                    </td>
+                                    <td>
+                                        @foreach (var card in item.buyerCardsInfo)
+                                        {
+                                            <p>@card.Card.Champion (@card.Card.CardTier)</p>
+                                        }
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        @foreach (var card in item.buyerCardsInfo)
+                                        {
 
-<div class="container">
+                                            <p>@card.Card.Champion (@card.Card.CardTier)</p>
+                                        }
+                                    </td>
+                                    <td>
+                                        @foreach (var card in item.sellerCardsInfo)
+                                        {
+                                            <p>@card.Card.Champion (@card.Card.CardTier)</p>
+                                        }
+                                    </td>
+                                }
+                                <td>
+                                    @if (item.IsComplete)
+                                    {
+                                        @if (item.IsAccepted)
+                                        {
+                                            <p>Accepted</p>
+                                        }
+                                        else
+                                        {
+                                            <p>Declined</p>
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        <p>Pending</p>
+                                    }
+                                </td>
+                                <td>@item.InitatedDate.ToString("dd-MM-yyyy")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+           
+        </div>
+       <div>
+           <h2 class="h2Style">Purchase History</h2>
+           <div class="wrapperTables">
+               <table class="viewTable">
+                    <thead>
+                        <tr>
+                            <th>Card</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Purchases!)
+                        {
+                            <tr>
+
+                                <td>
+                                    @foreach (var card in item.PurchaseCards)
+                                    {
+                                        <p>@card.Card.Champion (@card.Card.CardTier)</p>
+                                    }
+                                </td>
+                                <td>@item.PurchaseDate.Value.ToString("dd-MM-yyyy")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+       </div>
+        
+
+    </div>
+</div>
+
+@* <div class="container">
     <div class="row">
-        <div class="col">
+        <div>
             <p>Name: @Model.User!.Name</p>
             <p>Username: @Model.User!.Username</p>
             <p>Email: @Model.User!.Email</p>
             <p>Credits: @Model.User!.Credits</p>
         </div>
     </div>
+    <br />
     <div class="row">
         <div class="col">
             <h2>Purchase History</h2>
@@ -25,7 +187,7 @@
                     @foreach(var item in Model.Purchases!)
                     {
                         <tr>
-                            @* <td>@item.PurchaseCards[0].Card.Champion (@item.PurchaseCards[0].Card.CardTier)</td> *@
+                          
                             <td>
                                 @foreach(var card in item.PurchaseCards)
                                 {
@@ -107,4 +269,4 @@
             </table>
         </div>
     </div>
-</div>
+</div> *@

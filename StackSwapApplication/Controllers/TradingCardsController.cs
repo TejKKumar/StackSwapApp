@@ -28,6 +28,7 @@ namespace StackSwapApplication.Controllers
         public IActionResult GetCardByNamePost(string name)
         {
             IEnumerable<Card> clist = cardService.GetCardByName(name);
+            ViewBag.ChampName = name;
             return View(clist);
         }
 
@@ -40,6 +41,7 @@ namespace StackSwapApplication.Controllers
         [HttpPost]
         public IActionResult GetCardByTierPost(Tier tier)
         {
+            ViewBag.ChampTier = tier;
             List<Card> tierlist = cardService.GetCardByTier(tier);
             return View(tierlist);
         }

@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "GetCardByTier";
+    Layout = "";
 }
 <!DOCKTYPE html>
 <html>
@@ -9,6 +10,7 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="~/css/StyleShowCards.css" asp-append-version="true" />
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
 </head>
 <body>
@@ -19,9 +21,8 @@
         </div>
 
     </header>
-<h1>GetCardByTier</h1>
-
-<table class="table">
+<h2 class="h2Style">@ViewBag.ChampTier Collection</h2>
+<table class="table font">
     <thead>
         <tr>
             <th>

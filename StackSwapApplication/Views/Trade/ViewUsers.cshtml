@@ -8,9 +8,10 @@
 <header>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </header>
-<h1>View Users</h1>
+<h2 class="h2Style">Trade Center</h2>
 
-<div>
+
+<div class="wrapperT">
 
     <table class="viewTable">
         <thead>
@@ -67,7 +68,7 @@
    
                     <td>
                           <form action="ViewUsers/@item.GetId" method="post">
-                              <button action="submit">View Cards</button>
+                              <button action="submit" class="btn btn-primary">View Cards</button>
                               </form>                          
                     </td>
                 </tr>

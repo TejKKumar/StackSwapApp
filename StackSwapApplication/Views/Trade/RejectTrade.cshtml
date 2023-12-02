@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </header>
 
-<h1>Trade Rejected</h1>
-<h4>Hi @Model.Me.Username you rejected the following cards.</h4>
-  <table class="tableStyle">
+<h1 class="font">Trade Rejected</h1>
+<h4 class="font">Hi @Model.Me.Username you rejected the following cards.</h4>
+  <table class="viewTable">
       <thead>
                 <tr>
 
@@ -92,4 +92,4 @@
                 }
             </tbody>
         </table>
-<a class="alink" asp-action="ViewMyCards" action="get">View My Cards</a>
+<a class="btn btn-primary font" asp-action="Index" asp-controller="Trade" action="get">View My Cards</a>

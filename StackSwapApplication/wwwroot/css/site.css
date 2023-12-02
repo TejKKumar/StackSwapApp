@@ -36,6 +36,7 @@ html {
 .viewTable {
     border-radius: 7px;
     display: block;
+    justify-content: center;
 
 }
 
@@ -289,6 +290,7 @@ viewTable th  viewTable td {
     justify-content: center;
     align-items: center;
     text-align: center;
+    border: thin;
 }
 
 .cardDisplay{
@@ -304,7 +306,9 @@ viewTable th  viewTable td {
 .CardSetGrid{
     display : grid;
     grid-template-columns : auto auto;
+    padding: 5px 2px 5px 2px;   
 }
+
 
 .leftSet{
     border-right : thin;
@@ -315,11 +319,112 @@ viewTable th  viewTable td {
     border-left :  thin;
 }
 
+.buyer {
+    color: #021c35;
+}
 
-.wrapperGrid {
+.wrapperGridL {
     display: flex;
     border: thin;
     /*    justify-content: center;
     align-items: center;
     text-align: center;*/
+    border-width: 2.5px;
+    border-radius: 16px;
+    border-color: #f88989;
+    box-shadow: 2px 4px 1px #559de9;
+    height: 75vh;
+    overflow-y: scroll;
+    margin-right: 20px;
+}
+
+.seller {
+    color: #042f11;
+}
+.wrapperGridR {
+    display: flex;
+    border: thin;
+    /*    justify-content: center;
+    align-items: center;
+    text-align: center;*/
+    border-width: 2.5px;
+    border-radius: 16px;
+    border-color: #9be5b1;
+    box-shadow: 2px 4px 1px #70e292;
+    height: 75vh;
+    overflow-y: scroll;
+}
+
+.homeGrid{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.homeProfile{
+    display: grid;
+    grid-template-rows: 100px 300px;
+}
+.col{
+    overflow-y:scroll;
+    height: 75vh;
+}
+
+
+
+.h2Style {
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+}
+
+.tableWrapper {
+    height: 75vh;
+    overflow-y: scroll;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.profileContainer{
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+.profileTbl{
+    display: grid;
+    grid-template-columns : 500px 500px 500px;
+}
+
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #a8bbbf;
+    }
+
+.font {
+    font-family: Garamond, Geneva, Tahoma, sans-serif, Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.wrapperTables {
+    display: flex;
+    height: 70vh;
+    overflow-y: scroll;
+    justify-content: center;
+    border: thin;
+    /*    justify-content: center;
+    align-items: center;
+    text-align: center;*/
+ 
 }

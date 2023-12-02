@@ -7,7 +7,7 @@
 <div class="CardSetGrid">
 
     <div>
-        <h4>@Model.Bidder.Username wants to trade</h4>
+        <h4 class="font">@Model.Bidder.Username wants to trade</h4>
         <div class="wrapperGrid">
             <div class="cardDisplay">
                 @foreach (var item in Model.BidderCards)
@@ -52,7 +52,7 @@
     </div>
   </div>
   <div>
-    <h4>For you cards: </h4>
+    <h4 class="font">For you cards: </h4>
     <div class="wrapperGrid">
         <div class="cardDisplay">
             @foreach (var item in Model.MyCards)
@@ -96,12 +96,16 @@
     </div>
   </div>
 </div>
-<form action="/Trade/AcceptTrade/@Model.Trade.Id" method="get">
-    <button class="bttn" type="submit" action="submit">Accept</button>
-</form>
-<form action="/Trade/RejectTrade/@Model.Trade.Id" method="get">
-    <button class="bttn" type="submit" action="submit">Reject</button>
-</form>
+<div>
+    <form action="/Trade/AcceptTrade/@Model.Trade.Id" method="get">
+        <button class="btn btn-primary" type="submit" action="submit">Accept</button>
+    </form>
+    <br />
+    <form action="/Trade/RejectTrade/@Model.Trade.Id" method="get">
+        <button class="btn btn-primary" type="submit" action="submit">Reject</button>
+    </form>
+</div>
+
 
 
 
