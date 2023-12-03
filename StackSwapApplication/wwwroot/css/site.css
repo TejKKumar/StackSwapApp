@@ -391,7 +391,7 @@ viewTable th  viewTable td {
 
 .profileTbl{
     display: grid;
-    grid-template-columns : 500px 500px 500px;
+    grid-template-columns : 525px 500px 500px;
 }
 
 ::-webkit-scrollbar {
