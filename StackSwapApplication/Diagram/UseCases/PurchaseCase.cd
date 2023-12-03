@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="StackSwapApplication.Services.UserSessionRepo" Collapsed="true">
+    <Position X="10" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAACAAAAIAAAAAAIACAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Services\UserManagment\UserSessionRepo.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_dataService" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="StackSwapApplication.Models.Card" Collapsed="true">
+    <Position X="6.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAACGADAAAFACAAAABAIAAhAAAAABAAAAAAAAAQABAA=</HashCode>
+      <FileName>Models\Card.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StackSwapApplication.Models.TradeUser" Collapsed="true">
+    <Position X="5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQCIAAAACBBAAAAAQBAAAQIAAAAAAICAAIAAAIAAAE=</HashCode>
+      <FileName>Models\TradeUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StackSwapApplication.Services.CatalogueRepository" Collapsed="true">
+    <Position X="5.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAQAAAAAEAAAAAAAQAA=</HashCode>
+      <FileName>Services\CardServices\CatalogueRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="StackSwapApplication.Services.PurchaseRespository" Collapsed="true">
+    <Position X="7.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Services\PurchaseServices\PurchaseRespository.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_dataService" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="StackSwapApplication.Controllers.PurchaseController">
+    <Position X="7.25" Y="1.25" Width="2.25" />
+    <AssociationLine Name="_userSession" Type="StackSwapApplication.Services.IUserSession">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.13" Y="0.143" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="_purchaseTransactionService" Type="StackSwapApplication.Services.IPurchaseService">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.037" Y="0.32" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAACAAAAAAAAAAAAAAAEgAABACAE=</HashCode>
+      <FileName>Controllers\PurchaseController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_catalogueService" />
+      <Field Name="_purchaseTransactionService" />
+      <Field Name="_userSession" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="StackSwapApplication.Models.Purchase" Collapsed="true">
+    <Position X="8.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAIAQAAAAAQAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Models\Purchase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StackSwapApplication.Models.PurchaseCard" Collapsed="true">
+    <Position X="10.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARCAAAABAAAAAAAAABAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Models\PurchaseCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="StackSwapApplication.Services.IUserSession" Collapsed="true">
+    <Position X="10" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAACAAAAAAAAAQAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\UserManagment\IUserSession.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="StackSwapApplication.Services.DataServices.IDataService" Collapsed="true">
+    <Position X="7.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAAAgAQAAAAAAAAAAAIBIAAAABAAAAAAAIACAGAAAAA=</HashCode>
+      <FileName>Services\DataServices\IDataService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="StackSwapApplication.Services.IPurchaseService" Collapsed="true">
+    <Position X="7.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Services\PurchaseServices\IPurchaseService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="StackSwapApplication.Services.ICatalogueService" Collapsed="true">
+    <Position X="5.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAQAA=</HashCode>
+      <FileName>Services\CardServices\ICatalogueService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,19 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="StackSwapApplication.Controllers.TradeController">
-    <Position X="11.25" Y="2" Width="2.25" />
+    <Position X="7.5" Y="1.25" Width="2.25" />
     <Members>
       <Field Name="_catalogueService" Hidden="true" />
     </Members>
-    <AssociationLine Name="_dataService" Type="StackSwapApplication.Services.DataServices.IDataService" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="_userSession" Type="StackSwapApplication.Services.IUserSession" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="12.438" Y="5.305" />
-        <Point X="12.438" Y="5.68" />
-        <Point X="4.188" Y="5.68" />
-        <Point X="4.188" Y="3.631" />
+        <Point X="8.918" Y="4.555" />
+        <Point X="8.918" Y="4.75" />
+        <Point X="11.062" Y="4.75" />
+        <Point X="11.062" Y="5" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.143" Y="0.344" />
+        <Position X="-1.18" Y="0.055" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="_tradeService" Type="StackSwapApplication.Services.ITradeService" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.023" Y="4.555" />
+        <Point X="8.023" Y="4.75" />
+        <Point X="5.875" Y="4.75" />
+        <Point X="5.875" Y="5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.198" Y="0.055" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="_dataService" Type="StackSwapApplication.Services.DataServices.IDataService" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.5" Y="4.555" />
+        <Point X="8.5" Y="5.109" />
+        <Point X="8.5" Y="5.109" />
+        <Point X="8.5" Y="7" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.873" Y="-0.689" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
@@ -27,7 +49,14 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="StackSwapApplication.Services.UserSessionRepo" Collapsed="true">
-    <Position X="6.5" Y="2.25" Width="1.5" />
+    <Position X="10" Y="6" Width="1.5" />
+    <AssociationLine Name="_dataService" Type="StackSwapApplication.Services.DataServices.IDataService" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="10.5" Y="6.631" />
+        <Point X="10.5" Y="7.25" />
+        <Point X="9.25" Y="7.25" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAABAAACAAAAIAAAAAAIACAAAAAAAAAAEAAAA=</HashCode>
       <FileName>Services\UserManagment\UserSessionRepo.cs</FileName>
@@ -38,10 +67,10 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="StackSwapApplication.Services.TradeManager" Collapsed="true">
-    <Position X="6.25" Y="4.5" Width="1.5" />
+    <Position X="5.5" Y="6" Width="1.5" />
     <AssociationLine Name="_dataService" Type="StackSwapApplication.Services.DataServices.IDataService">
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-1.13" Y="0.184" />
+        <Position X="-0.574" Y="0.399" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
@@ -53,22 +82,57 @@
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
+  <Class Name="StackSwapApplication.Models.Trade" Collapsed="true">
+    <Position X="7.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQACAAEACAAAAAAAAAAQAAQAAQEAAQAAAAAAAAAACAA=</HashCode>
+      <FileName>Models\Trade.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StackSwapApplication.Models.TradeBuyerCard" Collapsed="true">
+    <Position X="11.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABCAAAAAAAAAAAAAABAAAAAAQAAACIAAAAAAAgAAAA=</HashCode>
+      <FileName>Models\TradeBuyerCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StackSwapApplication.Models.TradeSellerCard" Collapsed="true">
+    <Position X="9.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABCAAAAAAAAAAAAAABAAAAAAAAAASIAAAAAAAgAAAA=</HashCode>
+      <FileName>Models\TradeSellerCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StackSwapApplication.Models.Card" Collapsed="true">
+    <Position X="5.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAACGADAAAFACAAAABAIAAhAAAAABAAAAAAAAAQABAA=</HashCode>
+      <FileName>Models\Card.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StackSwapApplication.Models.TradeUser" Collapsed="true">
+    <Position X="3.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQCIAAAACBBAAAAAQBAAAQIAAAAAAICAAIAAAIAAAE=</HashCode>
+      <FileName>Models\TradeUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="StackSwapApplication.Services.ITradeService" Collapsed="true">
-    <Position X="8.25" Y="4.5" Width="1.5" />
+    <Position X="5.5" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAABAAAAgAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Services\TradeServices\ITradeService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="StackSwapApplication.Services.IUserSession" Collapsed="true">
-    <Position X="8.25" Y="2.25" Width="1.5" />
+    <Position X="10" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABAAAAAAAAAACAAAAAAAAAQAAACAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Services\UserManagment\IUserSession.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="StackSwapApplication.Services.DataServices.IDataService" Collapsed="true">
-    <Position X="3.75" Y="3" Width="1.5" />
+    <Position X="7.75" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>MAAAgAQAAAAAAAAAAAIBIAAAABAAAAAAAIACAGAAAAA=</HashCode>
       <FileName>Services\DataServices\IDataService.cs</FileName>
