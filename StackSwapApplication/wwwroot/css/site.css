@@ -332,7 +332,7 @@ viewTable th  viewTable td {
     border-width: 2.5px;
     border-radius: 16px;
     border-color: #f88989;
-    box-shadow: 2px 4px 1px #559de9;
+    box-shadow: 2px 4px 12px #15559a;
     height: 75vh;
     overflow-y: scroll;
     margin-right: 20px;
@@ -350,7 +350,7 @@ viewTable th  viewTable td {
     border-width: 2.5px;
     border-radius: 16px;
     border-color: #9be5b1;
-    box-shadow: 2px 4px 1px #70e292;
+    box-shadow: 2px 4px 12px #236436;
     height: 75vh;
     overflow-y: scroll;
 }
