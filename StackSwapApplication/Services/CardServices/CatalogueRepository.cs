@@ -1,9 +1,12 @@
 ﻿using StackSwapApplication.Models;
 
+//by Tejas 
 namespace StackSwapApplication.Services
 {
+    
     public class CatalogueRepository : ICatalogueService
     {
+        //Static list of catalogue items which are not stored on the database 
         public static List<CatalogueItem> catalogueItems = new List<CatalogueItem>()
         {
             new CatalogueItem(1,"Ash",Tier.Tier1,250,890,1200,25),
@@ -37,7 +40,12 @@ namespace StackSwapApplication.Services
             new CatalogueItem(25,"Raven", Tier.Tier5, 1400, 1400, 60, 150),
         };
 
-
+        //
+        /// <summary>
+        /// Method that creates instantiates a card based on a selected catalogue item.
+        /// </summary>
+        /// <param name="newCard"></param>
+        /// <param name="cItem"></param>
         public void CreateCard(out Card newCard, CatalogueItem cItem)
         {
             newCard = new Card
@@ -50,11 +58,22 @@ namespace StackSwapApplication.Services
             };
         }
 
+        //
+        /// <summary>
+        /// Get method for a CatalogueItem
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public CatalogueItem? GetCatalogueItemById(uint id)
         {
             return catalogueItems.Find(c => c.Id == id);
         }
 
+        //
+        /// <summary>
+        /// Get all the catalogue items 
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<CatalogueItem> GetCatalogueItems()
         {
             return catalogueItems.AsEnumerable();

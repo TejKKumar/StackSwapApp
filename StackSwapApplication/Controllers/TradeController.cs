@@ -29,7 +29,11 @@ namespace StackSwapApplication.Controllers
         }
 
 
-        //Get method to load the incoming requests for the logged in user 
+        //
+        /// <summary>
+        /// Get method to load the incoming requests for the logged in user 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult ViewRequests()
         {
@@ -48,7 +52,12 @@ namespace StackSwapApplication.Controllers
 
         }
 
-        //Post method to validate the trade Id before redirecting to the ProcessTrade method
+        //
+        /// <summary>
+        /// Post method to validate the trade Id before redirecting to the ProcessTrade method
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult ViewRequests(uint? Id)
         {
@@ -56,7 +65,12 @@ namespace StackSwapApplication.Controllers
 
         }
 
-        //Get method to load the page where choose can accept of reject a trade
+        //
+        /// <summary>
+        /// Get method to load the page where choose can accept of reject a trade
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult ProcessTrade(uint Id)
         {
@@ -92,7 +106,11 @@ namespace StackSwapApplication.Controllers
             return View(vm);
         }
 
-        //Action method used for user to view there cards 
+        //
+        /// <summary>
+        /// Action method used for user to view there cards 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public  IActionResult ViewMyCards()
         {
@@ -113,7 +131,12 @@ namespace StackSwapApplication.Controllers
             }
         }
 
-        //Action method that allows user to accept a trade 
+        //
+        /// <summary>
+        /// Action method that allows user to accept a trade 
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult AcceptTrade(uint Id)
         {
@@ -129,7 +152,12 @@ namespace StackSwapApplication.Controllers
 
         }
 
-        //Allows user to reject a trade 
+        //
+        /// <summary>
+        /// Allows user to reject a trade 
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult RejectTrade(uint Id)
         {
@@ -143,7 +171,11 @@ namespace StackSwapApplication.Controllers
 
         }
 
-        //Landing page for this controller 
+        //
+        /// <summary>
+        /// Landing page for this controller
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
             if (!_userSession.GetUserSession())
@@ -170,8 +202,11 @@ namespace StackSwapApplication.Controllers
                 
             }
         }
-
-        [HttpGet] //Get Method to get a view of all the users 
+        /// <summary>
+        /// Get Method to get a view of all the users 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet] //
         public IActionResult ViewUsers() 
         {
             var loggedUser = _userSession.GetCurrentUser();
@@ -188,14 +223,23 @@ namespace StackSwapApplication.Controllers
             }
         }
 
-        [HttpPost] //Post action called to view a particular user that redirects to another view // This used to validate the user Id before redirecting
+        /// <summary>
+        /// Post action called to view a particular user that redirects to another view // This used to validate the user Id before redirecting
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        [HttpPost] //
         public IActionResult ViewUsers(uint Id)
         {
             return Id != 0 ? RedirectToAction("ViewUserCards","Trade", new {Id = Id}) : View();
         }
 
-
-        [HttpGet] //Gets The Page to View User Cards to Initiate a Trade
+        /// <summary>
+        /// Gets The Page to View User Cards to Initiate a Trade
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        [HttpGet] //
        public IActionResult ViewUserCards(uint Id)
         {
             ViewCardsVM vm = new ViewCardsVM();
@@ -237,7 +281,12 @@ namespace StackSwapApplication.Controllers
             return View(vm);
         }
 
-        [HttpPost] //Post method for creating a trade and sending a trade request 
+        /// <summary>
+        /// Post method for creating a trade and sending a trade request 
+        /// </summary>
+        /// <param name="vm"></param>
+        /// <returns></returns>
+        [HttpPost] //
         public IActionResult ViewUserCards(ViewCardsVM vm)
         {
             
@@ -266,7 +315,12 @@ namespace StackSwapApplication.Controllers
             return RedirectToAction("RequestSent", "Trade", new { tradeID = newTrade.Id });
         }
 
-        //Action result confirming trade request as been sent
+        /// <summary>
+        /// Action result confirming trade request as been sent
+        /// </summary>
+        /// <param name="tradeID"></param>
+        /// <returns></returns>
+        //
         public IActionResult RequestSent(uint tradeID)
         {
             List<Card> Offered = new List<Card>();

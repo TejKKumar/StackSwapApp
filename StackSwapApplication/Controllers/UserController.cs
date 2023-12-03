@@ -30,32 +30,27 @@ namespace StackSwapApplication.Controllers
         }
 
 
-        //Login get method 
+        //
+        /// <summary>
+        /// Login get method 
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Login()
         {
             return View();
         }
 
-        //Login post method 
+        //
+        /// <summary>
+        /// Login post method 
+        /// </summary>
+        /// <param name="loginVM"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Login(LoginVM loginVM)
         {
             if (ModelState.IsValid)
             {
-                //var Users = from m in _repo.GetUsers select m;
-                //var user = Users.FirstOrDefault(s => s.Username == loginVM.Username);
-
-                //if (user != null && user.Password == loginVM.Password && user.Username != null)
-                //{
-                //    if (_userSession.UserLoginInfo(loginVM))
-                //    {
-                //        return RedirectToAction("Index", "Trade");
-                //    }
-                //}
-                //else
-                //{
-                //    TempData["Error"] = "Invalid Username or Password";
-                //}
 
                 if (_authService.Login(loginVM))
                 {
@@ -69,22 +64,31 @@ namespace StackSwapApplication.Controllers
             }
             return View();
         }
-
-        //Logout action 
+        /// <summary>
+        /// Logout action 
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Logout()
         {
             _userSession.logout();
             return RedirectToAction("MainPage", "Home");
         }
 
-
-        //Get Register method 
+        /// <summary>
+        /// Get Register method 
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Register()
         {
             return View();
         }
 
-        //Post Register method 
+        //
+        /// <summary>
+        /// Post Register method 
+        /// </summary>
+        /// <param name="registerVM"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Register(RegisterVM registerVM)
         {
@@ -93,7 +97,7 @@ namespace StackSwapApplication.Controllers
                 return View(registerVM);
             }
 
-            if(_repo.GetUserByUsername(registerVM.Username!) != null)
+            if(_repo.GetUsers.SingleOrDefault(u => u.Username == registerVM.Username) != null)
             {
                 ModelState.AddModelError("Username", "Username already exists");
                 return View(registerVM);
@@ -118,7 +122,10 @@ namespace StackSwapApplication.Controllers
 
         }
 
-        //Method for view users profile 
+        /// <summary>
+        /// Method for view users profile
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Profile()
         {
             var user = _userSession.GetCurrentUser();

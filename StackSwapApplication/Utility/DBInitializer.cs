@@ -3,11 +3,15 @@ using Microsoft.EntityFrameworkCore;
 using StackSwapApplication.Data;
 using StackSwapApplication.Models;
 
+// by Tejas 
 namespace StackSwapApplication.Utility
 {
     public static class DBInitializer
     {
-
+        /// <summary>
+        /// Extension method for seeding the database data 
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         public static void Seed(this ModelBuilder modelBuilder) 
         {
             modelBuilder.Entity<TradeUser>().HasData(
@@ -85,7 +89,10 @@ namespace StackSwapApplication.Utility
         }
 
 
-
+        /// <summary>
+        /// Initialize the Database 
+        /// </summary>
+        /// <param name="context"></param>
         public static void Initialize(TradeContext context)
         {
             if (context.Users.Any() &&
@@ -220,8 +227,6 @@ namespace StackSwapApplication.Utility
 
             context.Users.Add(u1);
             context.Users.Add(u2);
-
-      //      context.SaveChanges();
 
             u1.Cards.ForEach(c => {
                 c.OwnerID = u1.Id;

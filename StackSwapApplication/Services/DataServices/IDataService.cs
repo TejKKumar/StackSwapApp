@@ -22,7 +22,6 @@ namespace StackSwapApplication.Services.DataServices
 
 
         public IQueryable<TradeUser> GetUsers { get; }
-        public TradeUser GetUserByUsername(string username);
         public IQueryable<Card> GetCards { get; }
         public IQueryable<Trade> GetTrades { get; }
         public IQueryable<Purchase> GetPurchases { get; }

@@ -18,13 +18,21 @@ namespace StackSwapApplication.Controllers
             this.cardService = cardService;
         }
 
-        //Index
+        //
+        /// <summary>
+        /// Index
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
             return View();
         }
 
-        //Get method for finding a card by champion name, this method is currently not used but is kept for expansion 
+        /// <summary>
+        /// Get method for finding a card by champion name, this method is currently not used but is kept for expansion 
+        /// </summary>
+        /// <returns></returns>
+        //
         [HttpGet]
         public IActionResult GetCardByName()
         {
@@ -32,7 +40,11 @@ namespace StackSwapApplication.Controllers
             return View();
         }
 
-        //Post method for the search for cards with a certain Champion
+        /// <summary>
+        /// Post method for the search for cards with a certain Champion
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult GetCardByNamePost(string name)
         {
@@ -41,7 +53,11 @@ namespace StackSwapApplication.Controllers
             return View(clist);
         }
 
-        //Get method for finding cards of certain tier, method currently not used but kept for expansion 
+        //
+        /// <summary>
+        /// Get method for finding cards of certain tier, method currently not used but kept for expansion 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult GetCardByTier()
         {
@@ -49,7 +65,12 @@ namespace StackSwapApplication.Controllers
             return View();
         }
 
-        //Post method for finding the cards of a certain tier
+        //
+        /// <summary>
+        /// Post method for finding the cards of a certain tier
+        /// </summary>
+        /// <param name="tier"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult GetCardByTierPost(Tier tier)
         {

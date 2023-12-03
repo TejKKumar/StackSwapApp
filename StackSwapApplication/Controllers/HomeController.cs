@@ -11,7 +11,11 @@ namespace StackSwapApplication.Controllers
 {
     public class HomeController : Controller
     {
-        //Action method for Landing Page
+        //
+        /// <summary>
+        /// Action method for Landing Page
+        /// </summary>
+        /// <returns></returns>
         public IActionResult MainPage()
         {
             return View();

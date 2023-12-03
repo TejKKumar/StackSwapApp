@@ -27,7 +27,11 @@ namespace StackSwapApplication.Data
         public DbSet<PurchaseCard> PurchaseCards { get; set; }
 
 
-        //Overriden method used to map entites to each other and call an extension method for seeding data
+        //
+        /// <summary>
+        /// Overriden method used to map entites to each other and call an extension method for seeding data
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Card>().ToTable("Cards");

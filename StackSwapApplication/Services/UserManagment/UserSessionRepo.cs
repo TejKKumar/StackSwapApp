@@ -6,6 +6,7 @@ using StackSwapApplication.Models;
 using StackSwapApplication.Data;
 using StackSwapApplication.Services.DataServices;
 
+//Deepthanshu 
 namespace StackSwapApplication.Services
 {
     public class UserSessionRepo : IUserSession
@@ -13,13 +14,23 @@ namespace StackSwapApplication.Services
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IDataService _dataService;
 
-
+        /// <summary>
+        /// Constructor for the UserSessionRepo 
+        /// </summary>
+        /// <param name="httpContextAccessor"></param>
+        /// <param name="dataService"></param>
         public UserSessionRepo(IHttpContextAccessor httpContextAccessor, IDataService dataService)
         {
             _httpContextAccessor = httpContextAccessor;
             _dataService = dataService;
 
         }
+
+        /// <summary>
+        /// Method for verifying users 
+        /// </summary>
+        /// <param name="loginVM"></param>
+        /// <returns></returns>
         bool IUserSession.UserLoginInfo(LoginVM loginVM)
         {
             
@@ -35,6 +46,10 @@ namespace StackSwapApplication.Services
             
             return false;
         }
+        /// <summary>
+        /// Gets user session information 
+        /// </summary>
+        /// <returns>Boolean</returns>
         bool IUserSession.GetUserSession()
         {
             var httpContext = _httpContextAccessor.HttpContext;
@@ -54,6 +69,10 @@ namespace StackSwapApplication.Services
 
         }
 
+        /// <summary>
+        /// Gets the currently logged in user
+        /// </summary>
+        /// <returns>a TradeUser</returns>
         public TradeUser? GetCurrentUser()
         {
             var httpContext = _httpContextAccessor.HttpContext;
@@ -72,6 +91,9 @@ namespace StackSwapApplication.Services
             return user;
         }
 
+        /// <summary>
+        /// Destroys the session 
+        /// </summary>
         public void logout()
         {
             var httpContext = _httpContextAccessor.HttpContext;

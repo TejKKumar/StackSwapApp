@@ -21,6 +21,10 @@ namespace StackSwapApplication.Services
             _dataService = dataService;
         }
 
+        /// <summary>
+        /// Temporarily makes card unavailable to avoid multiple bids 
+        /// </summary>
+        /// <param name="id"></param>
         private void MarkCardUnavailable(uint id)
         {
             var card = _dataService.GetCards.Single(c=>c.Id == id);
@@ -28,6 +32,14 @@ namespace StackSwapApplication.Services
             _dataService.UpdateEntity(card);
         }
 
+        /// <summary>
+        /// Method for creating a trade request 
+        /// </summary>
+        /// <param name="buyerID"></param>
+        /// <param name="sellerID"></param>
+        /// <param name="buyerCardIDs"></param>
+        /// <param name="sellerCardIDs"></param>
+        /// <returns></returns>
         public Trade MakeTradeRequest(uint buyerID, uint sellerID, List<uint> buyerCardIDs, List<uint> sellerCardIDs)
         {
             List<TradeBuyerCard> buyerTradedCards = new List<TradeBuyerCard>();
@@ -61,8 +73,6 @@ namespace StackSwapApplication.Services
                 Buyer = _dataService.GetUsers.Single(u=>u.Id == buyerID),
                 SellerId = sellerID,
                 Seller = _dataService.GetUsers.Single(u=>u.Id == sellerID),
-                //buyerCardsInfo = buyerTradedCards,
-                //sellerCardsInfo = sellerTradedCards,
                 InitatedDate = DateTime.Now,
             };
 
@@ -82,30 +92,17 @@ namespace StackSwapApplication.Services
                 _dataService.AddEntity(c);
             }
 
-            //trade.buyerCardsInfo.ForEach(b=> {
-            //    b.TradeId = trade.Id;
-            //    b.Trade = trade;
-            //    _dataService.AddEntity(b);
-
-              
-            //});
-
-            //trade.sellerCardsInfo.ForEach(s =>
-            //{
-            //    s.TradeId = trade.Id;
-            //    s.Trade = trade;
-            //    _dataService.AddEntity(s);
-
-            //});
-
-            //_dataService.SaveDatabaseChanges();
             return trade;
             
 
         }
 
        
-
+        /// <summary>
+        /// Method for accepting a trade and returning the results 
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         public AcceptTradeViewModel AcceptTrade(uint Id)
         {
 
@@ -140,7 +137,6 @@ namespace StackSwapApplication.Services
             trade.IsComplete = true;
             trade.CompletedDate = DateTime.Now;
             _dataService.UpdateEntity(trade);
-            //_dataService.SaveDatabaseChanges();
 
             AcceptTradeViewModel vm = new AcceptTradeViewModel()
             {
@@ -152,6 +148,11 @@ namespace StackSwapApplication.Services
             return vm;
         }
 
+        /// <summary>
+        /// Method for rejecting a trade and returing the results 
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         public RejectTradeViewModel RejectTrade(uint Id)
         {
             Trade trade = _dataService.GetTrades.Single(t => t.Id == Id);
@@ -169,7 +170,6 @@ namespace StackSwapApplication.Services
             trade.CompletedDate= DateTime.Now;
 
             _dataService.UpdateEntity(trade);
-            //_dataService.SaveDatabaseChanges();
 
             RejectTradeViewModel vm = new RejectTradeViewModel()
             {
@@ -183,7 +183,6 @@ namespace StackSwapApplication.Services
                 var Card = _dataService.GetCards.Single(c => c.Id == b.CardId);
                 Card.Available = true;
                 _dataService.UpdateEntity(Card);
-                //recivedCards.Add(Card);
 
             });
 
@@ -192,7 +191,6 @@ namespace StackSwapApplication.Services
                 var Card = _dataService.GetCards.Single(c => c.Id == s.CardId);
                 Card.Available = true;
                 _dataService.UpdateEntity(Card);
-                //tradedCards.Add(Card);
             });
 
 

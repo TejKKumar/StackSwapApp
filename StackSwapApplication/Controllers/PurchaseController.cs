@@ -42,7 +42,12 @@ namespace StackSwapApplication.Controllers
             return View();
         }
 
-        //Confirmation of a purchase 
+        //
+        /// <summary>
+        /// Confirmation of a purchase 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IActionResult ConfirmPurchase(uint id)
         {
             CatalogueItem? catalogueItem = _catalogueService.GetCatalogueItemById(id);
@@ -53,7 +58,12 @@ namespace StackSwapApplication.Controllers
             return View(catalogueItem);
         }
 
-        //Make a purchase 
+        //
+        /// <summary>
+        /// Make a purchase 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult MakePurchase(uint id)
         {

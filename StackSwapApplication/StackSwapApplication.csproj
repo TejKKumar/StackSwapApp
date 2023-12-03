@@ -8,9 +8,13 @@
 
   <ItemGroup>
     <Compile Remove="Models\DefaultModels\**" />
+    <Compile Remove="Services\Implementations\**" />
     <Content Remove="Models\DefaultModels\**" />
+    <Content Remove="Services\Implementations\**" />
     <EmbeddedResource Remove="Models\DefaultModels\**" />
+    <EmbeddedResource Remove="Services\Implementations\**" />
     <None Remove="Models\DefaultModels\**" />
+    <None Remove="Services\Implementations\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,7 +32,6 @@
   <ItemGroup>
     <Folder Include="Migrations\" />
     <Folder Include="Database\" />
-    <Folder Include="Services\Implementations\" />
     <Folder Include="ViewModels\TradeViewModel\" />
   </ItemGroup>
 

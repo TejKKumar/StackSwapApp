@@ -5,7 +5,7 @@ using StackSwapApplication.Models.BaseEntities;
 using StackSwapApplication.Utility;
 using System.CodeDom;
 
-//Created by Tejas Kumar
+//by Tejas Kumar
 namespace StackSwapApplication.Services.DataServices
 {
     //This class is meant for managing the data an will be added as transient in the services of the program 
@@ -28,11 +28,9 @@ namespace StackSwapApplication.Services.DataServices
         }
 
         /// <summary>
-        /// Public collection for getting data. This collection of IQueryable to improve performance. 
+        /// Public collections of entities for getting data. The collections are of IQueryable since we use an external database (SQLite). 
         /// </summary>
         public IQueryable<TradeUser> GetUsers => _tradeContext.Users;
-
-        public TradeUser GetUserByUsername(string username) => _tradeContext.Users.FirstOrDefault(u => u.Username == username);
 
         public IQueryable<Card> GetCards => _tradeContext.Cards;
 
@@ -46,6 +44,13 @@ namespace StackSwapApplication.Services.DataServices
 
         public IQueryable<PurchaseCard> GetPurchaseCards => _tradeContext.PurchaseCards;
 
+
+
+        /// <summary>
+        /// A generic method to add new entites to the database
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entity"></param>
         public virtual void AddEntity<T>(T entity) where T : BaseEntity
         {
             switch (entity)
@@ -78,7 +83,11 @@ namespace StackSwapApplication.Services.DataServices
         }
 
 
-
+        /// <summary>
+        /// A generic method to remove entites from the database 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entity"></param>
         public virtual void RemoveEntity<T>(T entity) where T : BaseEntity
         {
             switch (entity)
@@ -110,11 +119,17 @@ namespace StackSwapApplication.Services.DataServices
             _tradeContext.SaveChanges();
         }
 
+        //Method to save changes to database 
         public void SaveDatabaseChanges()
         {
             _tradeContext.SaveChanges();
         }
 
+        /// <summary>
+        /// Generic method to update an entity in the database 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entity"></param>
         public virtual void UpdateEntity<T>(T entity) where T : BaseEntity
         {
             switch (entity)

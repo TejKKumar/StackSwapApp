@@ -2,13 +2,17 @@
 using StackSwapApplication.Models;
 using StackSwapApplication.Services.DataServices;
 
-
+//by Imran 
 namespace StackSwapApplication.Services
 {
     public class PurchaseRespository : IPurchaseService
     {
 
         private readonly IDataService _dataService;
+        /// <summary>
+        /// Constructor for the PurchaseRepository
+        /// </summary>
+        /// <param name="dataService"></param>
 
         public PurchaseRespository(IDataService dataService)
         {
@@ -16,6 +20,13 @@ namespace StackSwapApplication.Services
             _dataService = dataService;
         }
 
+
+        /// <summary>
+        /// Method for creating a Purchase entity
+        /// </summary>
+        /// <param name="buyer"></param>
+        /// <param name="card"></param>
+        /// <param name="cost"></param>
         public void MakePurchase(TradeUser buyer, Card card, uint cost)
         { 
 
@@ -40,20 +51,9 @@ namespace StackSwapApplication.Services
 
             _dataService.AddEntity(purchase);
 
-            //purchase.PurchaseCards.ForEach(purchaseCard =>
-            //{
-            //    purchaseCard.PurchaseId = purchase.Id;
-            //    purchaseCard.Purchase = purchase;
-            //    _dataService.AddEntity(purchaseCard);
-
-            //});
-
             buyer.Credits -= cost;
             _dataService.UpdateEntity(buyer);
 
-
-
-            //_dataService.SaveDatabaseChanges();
 
         }
 
