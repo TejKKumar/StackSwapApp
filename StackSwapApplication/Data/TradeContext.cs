@@ -3,28 +3,31 @@ using StackSwapApplication.Models;
 using DbContext = Microsoft.EntityFrameworkCore.DbContext;
 using StackSwapApplication.Utility;
 
+//By Tejas 
 namespace StackSwapApplication.Data
 {
     public class TradeContext : DbContext
     {
+        /// <summary>
+        /// Constructor for TradeContext
+        /// </summary>
+        /// <param name="options"></param>
         public TradeContext(DbContextOptions<TradeContext> options) : base(options) 
         { 
             
         }
 
+        //Db Sets for all critical entities/models 
         public DbSet<TradeUser> Users { get; set; }
-
         public DbSet<Card> Cards { get; set; }
-
         public DbSet<Purchase> Purchases { get; set; }
-
         public DbSet<Trade> Trades { get; set;}
-
         public DbSet<TradeBuyerCard> TradeBuyerCards { get; set; }
         public DbSet<TradeSellerCard> TradeSellerCards { get; set; }
         public DbSet<PurchaseCard> PurchaseCards { get; set; }
 
 
+        //Overriden method used to map entites to each other and call an extension method for seeding data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Card>().ToTable("Cards");
