@@ -35,8 +35,8 @@
     <Position X="8.25" Y="0.5" Width="2.25" />
     <AssociationLine Name="_httpContextAccessor" Type="Microsoft.AspNetCore.Http.IHttpContextAccessor" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="10.5" Y="1.824" />
-        <Point X="10.875" Y="1.824" />
+        <Point X="10.5" Y="1.688" />
+        <Point X="10.875" Y="1.688" />
         <Point X="10.875" Y="4.515" />
         <Point X="11.75" Y="4.515" />
       </Path>
@@ -113,5 +113,5 @@
       <FileName>Services\DataServices\IDataService.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Font Name="Segoe UI" Size="9" />
+  <Font Name="Segoe UI" Size="11" />
 </ClassDiagram>

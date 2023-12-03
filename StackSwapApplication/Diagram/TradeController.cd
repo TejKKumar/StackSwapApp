@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="StackSwapApplication.Controllers.TradeController">
+    <Position X="2.25" Y="0.5" Width="3" />
+    <AssociationLine Name="_repo" Type="StackSwapApplication.Services.DataServices.IDataService" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.25" Y="2" />
+        <Point X="7.75" Y="2" />
+        <Point X="7.75" Y="2.724" />
+        <Point X="10.25" Y="2.724" />
+        <Point X="10.25" Y="3.75" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAYAAEBAAQQAAADAQAAAAQAAAQAAAAEAAAAAAQA=</HashCode>
+      <FileName>Controllers\TradeController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_repo" />
+      <Field Name="_tradeService" />
+      <Field Name="_userSession" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="StackSwapApplication.Controllers.PurchaseController">
+    <Position X="2.25" Y="5.25" Width="3.25" />
+    <AssociationLine Name="_catalogueService" Type="StackSwapApplication.Services.ICatalogueService" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4" Y="7.586" />
+        <Point X="4" Y="9.599" />
+        <Point X="8.375" Y="9.599" />
+        <Point X="8.375" Y="9.224" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="_purchaseTransactionService" Type="StackSwapApplication.Services.IPurchaseService" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5" Y="7.586" />
+        <Point X="5" Y="7.961" />
+        <Point X="6.75" Y="7.961" />
+        <Point X="6.75" Y="7.265" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.115" Y="0.826" Height="0.222" Width="2.316" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="_userSession" Type="StackSwapApplication.Services.IUserSession" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.5" Y="5.5" />
+        <Point X="5.875" Y="5.5" />
+        <Point X="5.875" Y="4.324" />
+        <Point X="6.5" Y="4.324" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.634" Y="-0.753" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAACAAAAAAAAAAAAAAAEgAABACAE=</HashCode>
+      <FileName>Controllers\PurchaseController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_catalogueService" />
+      <Field Name="_purchaseTransactionService" />
+      <Field Name="_userSession" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="StackSwapApplication.Controllers.TradingCardsController">
+    <Position X="13.25" Y="1" Width="4" />
+    <AssociationLine Name="cardService" Type="StackSwapApplication.Services.ICardService" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13.688" Y="1" />
+        <Point X="13.688" Y="0.625" />
+        <Point X="11.875" Y="0.625" />
+        <Point X="11.875" Y="1.5" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>IAgAAAAAAAAAAAAAAAEAAIAAAAAAAAAAAAUAAAAAAAg=</HashCode>
+      <FileName>Controllers\TradingCardsController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="cardService" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="StackSwapApplication.Controllers.UserController">
+    <Position X="13.5" Y="5" Width="3.25" />
+    <AssociationLine Name="_authService" Type="StackSwapApplication.Services.IUserAuthenticationService" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="14.125" Y="5" />
+        <Point X="14.125" Y="4.807" />
+        <Point X="12.438" Y="4.807" />
+        <Point X="12.438" Y="6.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.143" Y="0.027" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="_repo" Type="StackSwapApplication.Services.DataServices.IDataService" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="15.188" Y="5" />
+        <Point X="15.188" Y="4.312" />
+        <Point X="11.5" Y="4.312" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="_userSession" Type="StackSwapApplication.Services.IUserSession" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13.938" Y="7.651" />
+        <Point X="13.938" Y="8.026" />
+        <Point X="10.5" Y="8.026" />
+        <Point X="10.5" Y="7.25" />
+        <Point X="8.5" Y="7.25" />
+        <Point X="8.5" Y="5.75" />
+        <Point X="7.375" Y="5.75" />
+        <Point X="7.375" Y="4.724" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.405" Y="0.129" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAABAAAAAAAACAQAAgAAABAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Controllers\UserController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_authService" />
+      <Field Name="_repo" />
+      <Field Name="_userSession" />
+    </ShowAsAssociation>
+  </Class>
+  <Interface Name="StackSwapApplication.Services.DataServices.IDataService">
+    <Position X="9" Y="3.75" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>MAAAgAQAAAAAAAAAAAIBIAAAAAAAAAAAAIACAGAAAAA=</HashCode>
+      <FileName>Services\DataServices\IDataService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="StackSwapApplication.Services.ITradeService">
+    <Position X="8" Y="0.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAgAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\TradeServices\ITradeService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="StackSwapApplication.Services.IUserSession">
+    <Position X="6.5" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAACAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\UserManagment\IUserSession.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="StackSwapApplication.Services.ICardService">
+    <Position X="10.75" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAUAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Services\CardServices\ICardService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="StackSwapApplication.Services.ICatalogueService">
+    <Position X="8" Y="7.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAQAA=</HashCode>
+      <FileName>Services\CardServices\ICatalogueService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="StackSwapApplication.Services.IPurchaseService">
+    <Position X="6.25" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Services\PurchaseServices\IPurchaseService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="StackSwapApplication.Services.IUserAuthenticationService">
+    <Position X="10.75" Y="6.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\UserManagment\IUserAuthenticationService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="11" />
+</ClassDiagram>
