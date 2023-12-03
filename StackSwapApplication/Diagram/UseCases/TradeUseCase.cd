@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="StackSwapApplication.Controllers.TradeController">
+    <Position X="11.25" Y="2" Width="2.25" />
+    <Members>
+      <Field Name="_catalogueService" Hidden="true" />
+    </Members>
+    <AssociationLine Name="_dataService" Type="StackSwapApplication.Services.DataServices.IDataService" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="12.438" Y="5.305" />
+        <Point X="12.438" Y="5.68" />
+        <Point X="4.188" Y="5.68" />
+        <Point X="4.188" Y="3.631" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.143" Y="0.344" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAYAAEBAAQQAAALAAAAAAQAAAQAAAAEgAAAAAQA=</HashCode>
+      <FileName>Controllers\TradeController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_userSession" />
+      <Field Name="_tradeService" />
+      <Field Name="_dataService" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="StackSwapApplication.Services.UserSessionRepo" Collapsed="true">
+    <Position X="6.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAACAAAAIAAAAAAIACAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Services\UserManagment\UserSessionRepo.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_dataService" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="StackSwapApplication.Services.TradeManager" Collapsed="true">
+    <Position X="6.25" Y="4.5" Width="1.5" />
+    <AssociationLine Name="_dataService" Type="StackSwapApplication.Services.DataServices.IDataService">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.13" Y="0.184" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAABAAAAgAAJAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\TradeServices\TradeManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_dataService" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="StackSwapApplication.Services.ITradeService" Collapsed="true">
+    <Position X="8.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAgAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\TradeServices\ITradeService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="StackSwapApplication.Services.IUserSession" Collapsed="true">
+    <Position X="8.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAACAAAAAAAAAQAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\UserManagment\IUserSession.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="StackSwapApplication.Services.DataServices.IDataService" Collapsed="true">
+    <Position X="3.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAAAgAQAAAAAAAAAAAIBIAAAABAAAAAAAIACAGAAAAA=</HashCode>
+      <FileName>Services\DataServices\IDataService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -12,13 +12,13 @@ namespace StackSwapApplication.Controllers
 {
     public class TradeController : Controller
     {
-        private IDataService _repo;
+        private IDataService _dataService;
         private IUserSession _userSession;
         private ITradeService _tradeService;
         private ICatalogueService _catalogueService;
         public TradeController(IDataService repo, IUserSession userSession, ITradeService tradeService, ICatalogueService catService)
         {
-            _repo = repo;
+            _dataService = repo;
             _userSession = userSession;
             _tradeService = tradeService;
             _catalogueService = catService;
@@ -37,7 +37,7 @@ namespace StackSwapApplication.Controllers
             {
                 uint loggedId = _userSession.GetCurrentUser().Id;
 
-                IEnumerable<Trade> tradeRequests = _repo.GetTrades.Where(t => t.SellerId == loggedId && t.IsComplete == false);
+                IEnumerable<Trade> tradeRequests = _dataService.GetTrades.Where(t => t.SellerId == loggedId && t.IsComplete == false);
                 return View(tradeRequests);
             }
 
@@ -53,22 +53,22 @@ namespace StackSwapApplication.Controllers
         [HttpGet]
         public IActionResult ProcessTrade(uint Id)
         {
-            Trade trade = _repo.GetTrades.Single(t => t.Id == Id);
-            TradeUser Me = _repo.GetUsers.Single(u => u.Id == trade.SellerId);
-            TradeUser Bidder = _repo.GetUsers.Single(u => u.Id == trade.BuyerId);
+            Trade trade = _dataService.GetTrades.Single(t => t.Id == Id);
+            TradeUser Me = _dataService.GetUsers.Single(u => u.Id == trade.SellerId);
+            TradeUser Bidder = _dataService.GetUsers.Single(u => u.Id == trade.BuyerId);
 
             List<Card> MyCards = new List<Card>();
             List<Card> BidderCards = new List<Card>();
 
             trade.buyerCardsInfo.ForEach(bc =>
             {
-                var Card = _repo.GetCards.Single(c => c.Id == bc.CardId);
+                var Card = _dataService.GetCards.Single(c => c.Id == bc.CardId);
                 BidderCards.Add(Card);
             });
 
             trade.sellerCardsInfo.ForEach(sc =>
             {
-                var Card = _repo.GetCards.Single(c => c.Id == sc.CardId);
+                var Card = _dataService.GetCards.Single(c => c.Id == sc.CardId);
                 MyCards.Add(Card);
             });
 
@@ -97,7 +97,7 @@ namespace StackSwapApplication.Controllers
             {
                 TradeUser u = _userSession.GetCurrentUser();
 
-                IEnumerable<Card> Cards = _repo.GetCards.Where(c => c.OwnerID == u.Id).AsEnumerable();
+                IEnumerable<Card> Cards = _dataService.GetCards.Where(c => c.OwnerID == u.Id).AsEnumerable();
 
                 ViewBag.MyCards = Cards;
 
@@ -148,7 +148,7 @@ namespace StackSwapApplication.Controllers
 
                 if(id != null)
                 {
-                   TradeUser? u = _repo.GetUsers.SingleOrDefault(u => u.Id == id);
+                   TradeUser? u = _dataService.GetUsers.SingleOrDefault(u => u.Id == id);
                     var c = _catalogueService.GetCatalogueItems().Take(5);
                     ViewBag.Catalogue = c;
                    return View(u);
@@ -173,7 +173,7 @@ namespace StackSwapApplication.Controllers
                 }
                 else
                 {
-                    var cards = _repo.GetCards;
+                    var cards = _dataService.GetCards;
                     return View(cards);
                 }
             }
@@ -191,7 +191,7 @@ namespace StackSwapApplication.Controllers
             if (loggedUser != null)
             {
                 uint loggedId = loggedUser.Id;
-                var userList = _repo.GetUsers.Where(u => u.Id != loggedId);
+                var userList = _dataService.GetUsers.Where(u => u.Id != loggedId);
                 return View(userList);
             }
 
@@ -213,9 +213,9 @@ namespace StackSwapApplication.Controllers
         {
             ViewCardsVM vm = new ViewCardsVM();
 
-            var Seller = _repo.GetUsers.Single(u => u.Id == Id);
+            var Seller = _dataService.GetUsers.Single(u => u.Id == Id);
             vm.Seller = Seller;
-            List<Card> SellerCards = _repo.GetCards.Where(c => c.OwnerID == Seller.Id && c.Available == true).ToList();
+            List<Card> SellerCards = _dataService.GetCards.Where(c => c.OwnerID == Seller.Id && c.Available == true).ToList();
 
             SellerCards.ForEach(c =>
             {
@@ -232,7 +232,7 @@ namespace StackSwapApplication.Controllers
 
 
             TradeUser? Buyer = _userSession.GetCurrentUser();
-            List<Card> BuyerCards = _repo.GetCards.Where(c => c.OwnerID == Buyer.Id && c.Available == true).ToList();
+            List<Card> BuyerCards = _dataService.GetCards.Where(c => c.OwnerID == Buyer.Id && c.Available == true).ToList();
 
             vm.Buyer = Buyer;
 
@@ -289,18 +289,18 @@ namespace StackSwapApplication.Controllers
             List<Card> Requested = new List<Card>();
             
 
-            Trade t = _repo.GetTrades.Single(t=> t.Id == tradeID);
-            TradeUser u = _repo.GetUsers.Single(u => u.Id == t.BuyerId);
+            Trade t = _dataService.GetTrades.Single(t=> t.Id == tradeID);
+            TradeUser u = _dataService.GetUsers.Single(u => u.Id == t.BuyerId);
 
             t.buyerCardsInfo.ForEach(b =>
             {
-                var Card = _repo.GetCards.Single(c => c.Id == b.CardId);
+                var Card = _dataService.GetCards.Single(c => c.Id == b.CardId);
                 Offered.Add(Card);
             });
 
             t.sellerCardsInfo.ForEach(s =>
             {
-                var Card = _repo.GetCards.Single(t=> t.Id ==  s.CardId); 
+                var Card = _dataService.GetCards.Single(t=> t.Id ==  s.CardId); 
                 Requested.Add(Card);
 
             });

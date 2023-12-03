@@ -421,6 +421,7 @@ viewTable th  viewTable td {
     display: flex;
     height: 70vh;
     overflow-y: scroll;
+    overflow-x: scroll;
     justify-content: center;
     border: thin;
     /*    justify-content: center;
