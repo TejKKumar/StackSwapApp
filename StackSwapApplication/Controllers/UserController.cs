@@ -3,6 +3,7 @@ using StackSwapApplication.Services;
 using StackSwapApplication.Services.DataServices;
 using StackSwapApplication.ViewModels;
 
+//By Imran and Deepthanshu 
 namespace StackSwapApplication.Controllers
 {
     public class UserController : Controller
@@ -12,8 +13,13 @@ namespace StackSwapApplication.Controllers
         private readonly IDataService _repo;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IUserSession _userSession;
-       // private readonly ILoginValidationService _loginValidationService;
-
+        /// <summary>
+        /// Constructor for UserController 
+        /// </summary>
+        /// <param name="authService"></param>
+        /// <param name="repo"></param>
+        /// <param name="httpContextAccessor"></param>
+        /// <param name="userSession"></param>
             
         public UserController(IUserAuthenticationService authService, IDataService repo, IHttpContextAccessor httpContextAccessor, IUserSession userSession)
         {
@@ -24,10 +30,13 @@ namespace StackSwapApplication.Controllers
         }
 
 
+        //Login get method 
         public IActionResult Login()
         {
             return View();
         }
+
+        //Login post method 
         [HttpPost]
         public IActionResult Login(LoginVM loginVM)
         {
@@ -61,6 +70,7 @@ namespace StackSwapApplication.Controllers
             return View();
         }
 
+        //Logout action 
         public IActionResult Logout()
         {
             _userSession.logout();
@@ -68,11 +78,13 @@ namespace StackSwapApplication.Controllers
         }
 
 
-
+        //Get Register method 
         public IActionResult Register()
         {
             return View();
         }
+
+        //Post Register method 
         [HttpPost]
         public IActionResult Register(RegisterVM registerVM)
         {
@@ -106,6 +118,7 @@ namespace StackSwapApplication.Controllers
 
         }
 
+        //Method for view users profile 
         public IActionResult Profile()
         {
             var user = _userSession.GetCurrentUser();

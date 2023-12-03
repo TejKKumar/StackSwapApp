@@ -7,6 +7,7 @@ using StackSwapApplication.Services;
 //using StackSwapApplication.Services.UserManagment;
 
 
+//By Imran
 namespace StackSwapApplication.Controllers
 {
     public class PurchaseController : Controller
@@ -15,26 +16,33 @@ namespace StackSwapApplication.Controllers
         private readonly ICatalogueService _catalogueService;
         private readonly IPurchaseService _purchaseTransactionService;
         private readonly IUserSession _userSession;
-        //private readonly TradeContext _tradeContext;
+        /// <summary>
+        /// Constructor the the Purchase Controller
+        /// </summary>
+        /// <param name="catalogueService"></param>
+        /// <param name="purchaseTransactionService"></param>
+        /// <param name="userSession"></param>
 
         public PurchaseController(ICatalogueService catalogueService, IPurchaseService purchaseTransactionService, IUserSession userSession)
         {
             _catalogueService = catalogueService;
             _purchaseTransactionService = purchaseTransactionService;
             _userSession = userSession;
-            //_tradeContext = tradeContext;
         }
 
+        //Landing page for this controller 
         public IActionResult Index()
         {
             return View(_catalogueService.GetCatalogueItems());
         }
 
+        //Error message action result for stating that the user does not have sufficient credits 
         public IActionResult InsufficientCredits()
         {
             return View();
         }
 
+        //Confirmation of a purchase 
         public IActionResult ConfirmPurchase(uint id)
         {
             CatalogueItem? catalogueItem = _catalogueService.GetCatalogueItemById(id);
@@ -45,6 +53,7 @@ namespace StackSwapApplication.Controllers
             return View(catalogueItem);
         }
 
+        //Make a purchase 
         [HttpPost]
         public IActionResult MakePurchase(uint id)
         {

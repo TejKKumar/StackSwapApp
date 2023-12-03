@@ -3,28 +3,33 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using StackSwapApplication.Models;
 using StackSwapApplication.Services;
 using StackSwapApplication.Services.DataServices;
-//using StackSwapApplication.Services.TradeServices;
-//using StackSwapApplication.Services.UserManagment;
 using StackSwapApplication.ViewModels;
 using System.Diagnostics;
 
+//By Tejas and Deepthanshu 
 namespace StackSwapApplication.Controllers
 {
     public class TradeController : Controller
     {
+
         private IDataService _dataService;
         private IUserSession _userSession;
         private ITradeService _tradeService;
-        private ICatalogueService _catalogueService;
-        public TradeController(IDataService repo, IUserSession userSession, ITradeService tradeService, ICatalogueService catService)
+        /// <summary>
+        /// Constructor for the TradeController 
+        /// </summary>
+        /// <param name="repo"></param>
+        /// <param name="userSession"></param>
+        /// <param name="tradeService"></param>
+        public TradeController(IDataService repo, IUserSession userSession, ITradeService tradeService)
         {
             _dataService = repo;
             _userSession = userSession;
             _tradeService = tradeService;
-            _catalogueService = catService;
         }
 
 
+        //Get method to load the incoming requests for the logged in user 
         [HttpGet]
         public IActionResult ViewRequests()
         {
@@ -43,6 +48,7 @@ namespace StackSwapApplication.Controllers
 
         }
 
+        //Post method to validate the trade Id before redirecting to the ProcessTrade method
         [HttpPost]
         public IActionResult ViewRequests(uint? Id)
         {
@@ -50,6 +56,7 @@ namespace StackSwapApplication.Controllers
 
         }
 
+        //Get method to load the page where choose can accept of reject a trade
         [HttpGet]
         public IActionResult ProcessTrade(uint Id)
         {
@@ -85,6 +92,7 @@ namespace StackSwapApplication.Controllers
             return View(vm);
         }
 
+        //Action method used for user to view there cards 
         [HttpGet]
         public  IActionResult ViewMyCards()
         {
@@ -105,6 +113,7 @@ namespace StackSwapApplication.Controllers
             }
         }
 
+        //Action method that allows user to accept a trade 
         [HttpGet]
         public IActionResult AcceptTrade(uint Id)
         {
@@ -120,6 +129,7 @@ namespace StackSwapApplication.Controllers
 
         }
 
+        //Allows user to reject a trade 
         [HttpGet]
         public IActionResult RejectTrade(uint Id)
         {
@@ -133,6 +143,7 @@ namespace StackSwapApplication.Controllers
 
         }
 
+        //Landing page for this controller 
         public IActionResult Index()
         {
             if (!_userSession.GetUserSession())
@@ -149,8 +160,6 @@ namespace StackSwapApplication.Controllers
                 if(id != null)
                 {
                    TradeUser? u = _dataService.GetUsers.SingleOrDefault(u => u.Id == id);
-                    var c = _catalogueService.GetCatalogueItems().Take(5);
-                    ViewBag.Catalogue = c;
                    return View(u);
                 }
                 else
@@ -160,28 +169,6 @@ namespace StackSwapApplication.Controllers
                    
                 
             }
-        }
-
-        public IActionResult MakeTrade()
-        {
-            try
-            {
-                if (!_userSession.GetUserSession())
-                {
-                    TempData["Error"] = "Invalid Username or Password";
-                    return RedirectToAction("Login", "User");
-                }
-                else
-                {
-                    var cards = _dataService.GetCards;
-                    return View(cards);
-                }
-            }
-            catch (Exception)
-            {
-                return RedirectToAction("Login", "User");
-            }
-
         }
 
         [HttpGet] //Get Method to get a view of all the users 
@@ -228,7 +215,6 @@ namespace StackSwapApplication.Controllers
                 vm.SellerCards.Add(check);
             });
 
-            //vm.BCards = vm.BuyerCards.AsEnumerable();
 
 
             TradeUser? Buyer = _userSession.GetCurrentUser();
@@ -246,15 +232,12 @@ namespace StackSwapApplication.Controllers
                 vm.BuyerCards.Add(check);
             });
 
-           // vm.SCards = vm.SellerCards.AsEnumerable();
-
             
             
             return View(vm);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost] //Post method for creating a trade and sending a trade request 
         public IActionResult ViewUserCards(ViewCardsVM vm)
         {
             
@@ -283,6 +266,7 @@ namespace StackSwapApplication.Controllers
             return RedirectToAction("RequestSent", "Trade", new { tradeID = newTrade.Id });
         }
 
+        //Action result confirming trade request as been sent
         public IActionResult RequestSent(uint tradeID)
         {
             List<Card> Offered = new List<Card>();
