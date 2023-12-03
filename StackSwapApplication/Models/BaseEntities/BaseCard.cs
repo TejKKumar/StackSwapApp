@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
+//By Tejas 
 namespace StackSwapApplication.Models.BaseEntities
 {
     public class BaseCard : BaseEntity

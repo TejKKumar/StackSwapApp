@@ -1,5 +1,6 @@
 ﻿using StackSwapApplication.Models.BaseEntities;
 
+//By Tejas 
 namespace StackSwapApplication.Models
 {
     public class TradeSellerCard : BaseEntity

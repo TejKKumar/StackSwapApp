@@ -1,10 +1,12 @@
 ﻿using StackSwapApplication.Models.BaseEntities;
 using System.ComponentModel.DataAnnotations;
 
+//By Imran 
 namespace StackSwapApplication.Models
 {
     public class Purchase : BaseEntity
     {
+        //Properties 
         [Key]
         public override uint Id { get; set; }
 

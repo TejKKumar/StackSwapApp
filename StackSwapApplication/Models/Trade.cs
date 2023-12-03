@@ -1,6 +1,7 @@
 ﻿using StackSwapApplication.Models.BaseEntities;
 using System.ComponentModel.DataAnnotations;
 
+//By Deepthanshu 
 namespace StackSwapApplication.Models
 {
     public class Trade : BaseEntity
